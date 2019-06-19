@@ -6,7 +6,7 @@ A city-based RPG
 ## Tools and Technologies
 * Java/Swing
 * Gradle
-* GitHub
+* GitLab
 
 ## Contributers
 @jseashell
@@ -14,4 +14,3 @@ A city-based RPG
 
 ## License
 All assets and code are under the [GPLv3 LICENSE](LICENSE). This project is closed source (for now).
-

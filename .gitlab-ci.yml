@@ -1,0 +1,31 @@
+image: gradle:alpine
+
+stages:
+  - build
+  - test
+
+variables:
+  GRADLE_OPTS: "-Dorg.gradle.daemon=false"
+
+before_script:
+  - echo `pwd`
+  - export GRADLE_USER_HOME=`pwd`/.gradle
+
+build:
+  stage: build
+  script:
+    gradle --build-cache assemble
+  artifacts:
+    paths:
+      - build/libs/*.jar
+    expire_in: 1 week
+
+test:
+  stage: test
+  script:
+    gradle clean
+    gradle build
+    gradle test
+
+after_script:
+  - echo "End CI"
