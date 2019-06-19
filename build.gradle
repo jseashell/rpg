@@ -2,6 +2,7 @@ plugins {
 	id 'java'
     id 'eclipse'
     id 'jacoco'
+  	id 'de.jansauer.printcoverage' version '2.0.0' // Plugin to print JaCoCo coverage to the console
 }
 
 repositories {
@@ -28,8 +29,23 @@ dependencies {
     
 }
 
-test {
+test {	
 	// Finalize the test task to always run the jacoco test report. 
 	// The report can be found in /build/reports/jacoco/test/html/index.html
-	finalizedBy jacocoTestReport 
+	finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        csv.enabled false
+    }
+    
+    // Print the coverage to the console
+	finalizedBy printCoverage
+}
+
+printCoverage {
+	// Display instruction level coverage in the console.
+	coverageType = 'INSTRUCTION'
 }
