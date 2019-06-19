@@ -11,4 +11,4 @@ A city-based RPG
 * GitLab
 
 ## Contributers
-@jseashell | @cmasekar-inovex
+@jseashell | @cmasekar
