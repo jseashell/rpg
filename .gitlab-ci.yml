@@ -14,7 +14,7 @@ before_script:
 build:
   stage: build
   script:
-    gradle --build-cache jar
+    gradle --build-cache assemble
   artifacts:
     paths:
       - build/libs/*.jar
