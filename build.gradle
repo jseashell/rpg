@@ -1,0 +1,45 @@
+plugins {
+	id 'java'
+    id 'java-library'
+    id 'eclipse'
+    id 'jacoco'
+	id "com.github.dawnwords.jacoco.badge" version "0.1.0"
+}
+
+
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+sourceSets {
+    main {
+        resources {
+            exclude '**/resources/dev/*'
+        }
+    }
+}
+
+dependencies {
+    implementation group: 'org.apache.commons', name:'commons-math3', version: '3.6.1'
+	implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
+    implementation group: 'com.google.guava', name:'guava', version: '23.0'
+
+    // Test suite
+    testImplementation group: 'junit', name: 'junit', version: '4.12'
+	testImplementation group: 'org.mockito', name: 'mockito-all', version: '1.10.19'
+    
+}
+
+test {
+	// Finalize the test task to always run the jacoco test report. The report can be found in /build/reports/jacoco/test/html/index.html
+	finalizedBy jacocoTestReport 
+	finalizedBy generateJacocoBadge
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+    }
+}
