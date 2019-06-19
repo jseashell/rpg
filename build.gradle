@@ -1,12 +1,8 @@
 plugins {
 	id 'java'
-    id 'java-library'
     id 'eclipse'
     id 'jacoco'
-	id "com.github.dawnwords.jacoco.badge" version "0.1.0"
 }
-
-
 
 repositories {
     jcenter()
@@ -33,13 +29,7 @@ dependencies {
 }
 
 test {
-	// Finalize the test task to always run the jacoco test report. The report can be found in /build/reports/jacoco/test/html/index.html
+	// Finalize the test task to always run the jacoco test report. 
+	// The report can be found in /build/reports/jacoco/test/html/index.html
 	finalizedBy jacocoTestReport 
-	finalizedBy generateJacocoBadge
-}
-
-jacocoTestReport {
-    reports {
-        xml.enabled true
-    }
 }
