@@ -3,7 +3,11 @@ package com.seashell.rpg.scene.world;
 import java.awt.Graphics2D;
 
 import com.seashell.rpg.Render;
+import com.seashell.rpg.config.Configuration;
 import com.seashell.rpg.gui.GuiCamera;
+import com.seashell.rpg.scene.world.config.WorldConfiguration;
+import com.seashell.rpg.scene.world.config.WorldConfigurationBuilder;
+import com.seashell.rpg.scene.world.config.WorldConfigurationBuilderException;
 import com.seashell.rpg.scene.world.tile.WorldTile;
 import com.seashell.rpg.tile.Tile;
 
@@ -22,7 +26,14 @@ public final class World implements Render
 	 */
 	private final WorldConfiguration config_;
 
+	/**
+	 * Width of the gui
+	 */
 	private final int guiResolutionWidth_;
+
+	/**
+	 * Height of the gui
+	 */
 	private final int guiResolutionHeight_;
 
 	/**
@@ -31,16 +42,23 @@ public final class World implements Render
 	 * @param camera
 	 *            The {@link GuiCamera}
 	 * @param filename
-	 *            The filename used to {@link WorldConfigurationLoader#load(String) load} the world
-	 * @throws WorldConfigurationLoaderException
+	 *            The filename used to {@link WorldConfigurationBuilder#load(String) load} the world
+	 * @throws WorldConfigurationBuilderException
 	 *             Failure to load a world using the given filename
 	 */
-	public World(GuiCamera camera, String filename, int guiResolutionWidth, int guiResolutionHeight) throws WorldConfigurationLoaderException
+	public World(GuiCamera camera, String filename, Configuration config) throws WorldConfigurationBuilderException
 	{
 		camera_ = camera;
-		config_ = WorldConfigurationLoader.load(filename);
-		guiResolutionWidth_ = guiResolutionWidth;
-		guiResolutionHeight_ = guiResolutionHeight;
+
+		WorldConfigurationBuilder wcb = new WorldConfigurationBuilder();
+		config_ =
+				wcb.setFilename(filename)
+						.setSpawnX(config.getSpawnX())
+						.setSpawnY(config.getSpawnY())
+						.build();
+
+		guiResolutionWidth_ = config.getResolutionWidth();
+		guiResolutionHeight_ = config.getResolutionHeight();
 	}
 
 	@Override

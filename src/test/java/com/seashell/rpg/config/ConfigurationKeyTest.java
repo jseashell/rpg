@@ -65,7 +65,7 @@ public class ConfigurationKeyTest
 	 * Tests the {@link ConfigurationKey#KEY_BINDING_UP}
 	 */
 	@Test
-	public void test_keyKeyBindingUp()
+	public void test_keyBindingUp()
 	{
 		ConfigurationKey key = ConfigurationKey.KEY_BINDING_UP;
 		String expectedKey = "key_binding_up";
@@ -78,7 +78,7 @@ public class ConfigurationKeyTest
 	 * Tests the {@link ConfigurationKey#KEY_BINDING_DOWN}
 	 */
 	@Test
-	public void test_keyKeyBindingDown()
+	public void test_keyBindingDown()
 	{
 		ConfigurationKey key = ConfigurationKey.KEY_BINDING_DOWN;
 		String expectedKey = "key_binding_down";
@@ -91,7 +91,7 @@ public class ConfigurationKeyTest
 	 * Tests the {@link ConfigurationKey#KEY_BINDING_LEFT}
 	 */
 	@Test
-	public void test_keyKeyBindingLeft()
+	public void test_keyBindingLeft()
 	{
 		ConfigurationKey key = ConfigurationKey.KEY_BINDING_LEFT;
 		String expectedKey = "key_binding_left";
@@ -104,7 +104,7 @@ public class ConfigurationKeyTest
 	 * Tests the {@link ConfigurationKey#KEY_BINDING_RIGHT}
 	 */
 	@Test
-	public void test_keyKeyBindingRight()
+	public void test_keyBindingRight()
 	{
 		ConfigurationKey key = ConfigurationKey.KEY_BINDING_RIGHT;
 		String expectedKey = "key_binding_right";
@@ -117,11 +117,37 @@ public class ConfigurationKeyTest
 	 * Tests the {@link ConfigurationKey#KEY_BINDING_SPRINT}
 	 */
 	@Test
-	public void test_keyKeyBindingSprint()
+	public void test_keyBindingSprint()
 	{
 		ConfigurationKey key = ConfigurationKey.KEY_BINDING_SPRINT;
 		String expectedKey = "key_binding_sprint";
 		Class<?> expectedType = String.class;
+
+		runTest(key, expectedKey, expectedType);
+	}
+
+	/**
+	 * Tests the {@link ConfigurationKey#SPAWN_X}
+	 */
+	@Test
+	public void test_spawnX()
+	{
+		ConfigurationKey key = ConfigurationKey.SPAWN_X;
+		String expectedKey = "spawn_x";
+		Class<?> expectedType = Integer.class;
+
+		runTest(key, expectedKey, expectedType);
+	}
+
+	/**
+	 * Tests the {@link ConfigurationKey#SPAWN_Y}
+	 */
+	@Test
+	public void test_spawnY()
+	{
+		ConfigurationKey key = ConfigurationKey.SPAWN_Y;
+		String expectedKey = "spawn_y";
+		Class<?> expectedType = Integer.class;
 
 		runTest(key, expectedKey, expectedType);
 	}

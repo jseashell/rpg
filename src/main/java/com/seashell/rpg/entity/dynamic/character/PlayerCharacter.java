@@ -61,9 +61,6 @@ public final class PlayerCharacter extends AbstractCharacter
 	{
 		readMovementFromKeyManager();
 		move();
-
-		// Once the position has been updated, center the camera on this PC
-		camera_.centerOnEntity(this);
 	}
 
 	private void move()

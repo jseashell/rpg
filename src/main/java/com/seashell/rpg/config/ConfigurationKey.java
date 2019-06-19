@@ -18,6 +18,9 @@ public enum ConfigurationKey
 	KEY_BINDING_RIGHT("key_binding_right", String.class),
 	KEY_BINDING_SPRINT("key_binding_sprint", String.class),
 
+	SPAWN_X("spawn_x", Integer.class),
+	SPAWN_Y("spawn_y", Integer.class),
+
 	;
 
 	/**

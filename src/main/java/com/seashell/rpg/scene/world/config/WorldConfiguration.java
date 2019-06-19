@@ -1,8 +1,9 @@
-package com.seashell.rpg.scene.world;
+package com.seashell.rpg.scene.world.config;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import com.seashell.rpg.scene.world.World;
 import com.seashell.rpg.scene.world.tile.WorldTile;
 import com.seashell.rpg.scene.world.tile.nature.GrassTile;
 import com.seashell.rpg.scene.world.tile.road.RoadBaseTile;
@@ -15,7 +16,7 @@ import com.seashell.rpg.scene.world.tile.structure.WallTile;
 import com.seashell.rpg.tile.Tile;
 
 /**
- * Configuration for a {@link World}
+ * Configuration for a {@link World}. Must be created using a {@link WorldConfigurationBuilder}
  */
 public final class WorldConfiguration
 {
@@ -47,20 +48,16 @@ public final class WorldConfiguration
 	private final WorldTileIndex tileIndex_;
 
 	/**
-	 * Constructor
+	 * Constructor.
 	 *
 	 * @param width
 	 *            Value for {@link #getWidth()}
 	 * @param height
 	 *            Value for {@link #getHeight()}
-	 * @param spawnX
-	 *            Value for {@link #getSpawnX()}
-	 * @param spawnY
-	 *            Value for {@link #getSpawnY()}
 	 * @param tokens
 	 *            Value for {@link #getTokens()}
 	 */
-	public WorldConfiguration(int width, int height, int spawnX, int spawnY, String[] tokens)
+	WorldConfiguration(int width, int height, int spawnX, int spawnY, String[] tokens)
 	{
 		this.width_ = width;
 		this.height_ = height;

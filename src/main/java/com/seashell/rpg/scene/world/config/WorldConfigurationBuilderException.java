@@ -1,10 +1,12 @@
-package com.seashell.rpg.scene.world;
+package com.seashell.rpg.scene.world.config;
+
+import com.seashell.rpg.scene.world.World;
 
 /**
  * Checked exception for any {@link World} related classes
  */
 @SuppressWarnings("serial")
-public class WorldConfigurationLoaderException extends Exception
+public class WorldConfigurationBuilderException extends Exception
 {
 	/**
 	 * Constructor
@@ -12,7 +14,7 @@ public class WorldConfigurationLoaderException extends Exception
 	 * @param message
 	 *            A message about the exception
 	 */
-	public WorldConfigurationLoaderException(String message)
+	public WorldConfigurationBuilderException(String message)
 	{
 		super(message);
 	}
@@ -23,7 +25,7 @@ public class WorldConfigurationLoaderException extends Exception
 	 * @param cause
 	 *            The cause of the exception
 	 */
-	public WorldConfigurationLoaderException(Throwable cause)
+	public WorldConfigurationBuilderException(Throwable cause)
 	{
 		super(cause);
 	}
@@ -36,7 +38,7 @@ public class WorldConfigurationLoaderException extends Exception
 	 * @param cause
 	 *            The cause of the exception
 	 */
-	public WorldConfigurationLoaderException(String message, Throwable cause)
+	public WorldConfigurationBuilderException(String message, Throwable cause)
 	{
 		super(message, cause);
 	}

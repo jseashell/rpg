@@ -6,14 +6,21 @@ import java.io.IOException;
 import com.seashell.rpg.GameProcess;
 import com.seashell.rpg.entity.dynamic.character.PlayerCharacter;
 import com.seashell.rpg.entity.dynamic.vehicle.Car;
+import com.seashell.rpg.gui.GuiCamera;
 import com.seashell.rpg.scene.AbstractScene;
 import com.seashell.rpg.scene.Scene;
+import com.seashell.rpg.scene.world.config.WorldConfigurationBuilderException;
 
 /**
  * A {@link Scene} representing the game play
  */
 public class WorldScene extends AbstractScene
 {
+	/**
+	 * Camera for the gui showing this scene
+	 */
+	private final GuiCamera camera_;
+
 	/**
 	 * The world for this game play
 	 */
@@ -34,21 +41,23 @@ public class WorldScene extends AbstractScene
 	 *
 	 * @param gameProcess
 	 *            The {@link GameProcess} responsible for this state
-	 * @throws WorldConfigurationLoaderException
+	 * @throws WorldConfigurationBuilderException
 	 *             Failure to load the world
 	 * @throws IOException
 	 *             Failure to load the character assets
 	 */
-	public WorldScene(GameProcess gameProcess) throws WorldConfigurationLoaderException, IOException
+	public WorldScene(GameProcess gameProcess) throws WorldConfigurationBuilderException, IOException
 	{
+		camera_ = gameProcess.getGui().getCamera();
+
 		String worldFilename = gameProcess.getConfiguration().getWorldFilename();
-		world_ = new World(gameProcess.getGui().getCamera(), worldFilename, gameProcess.getConfiguration().getResolutionWidth(), gameProcess.getConfiguration().getResolutionHeight());
+		world_ = new World(gameProcess.getGui().getCamera(), worldFilename, gameProcess.getConfiguration());
 
 		System.out.println("Spawning player at [" + world_.getSpawnX() + "," + world_.getSpawnY() + "].");
 
 		// TODO Make the open world scene smart enough to only spawn entities onto tiles that make sense
-		player_ = new PlayerCharacter(world_, gameProcess.getGui().getCamera(), gameProcess.getKeyManager(), world_.getSpawnX(), world_.getSpawnY(), 64, 64);
-		car_ = new Car(gameProcess.getGui().getCamera(), world_.getHeight(), 1344, 1536, 128, 128);
+		player_ = new PlayerCharacter(world_, camera_, gameProcess.getKeyManager(), world_.getSpawnX(), world_.getSpawnY(), 64, 64);
+		car_ = new Car(camera_, world_.getHeight(), 1344, 1536, 128, 128);
 	}
 
 	@Override
@@ -58,6 +67,8 @@ public class WorldScene extends AbstractScene
 		world_.tick();
 		player_.tick();
 		car_.tick();
+
+		camera_.centerOnEntity(player_);
 	}
 
 	@Override

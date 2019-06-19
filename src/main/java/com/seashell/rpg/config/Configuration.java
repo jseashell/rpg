@@ -241,6 +241,24 @@ public final class Configuration
 		return properties_.getProperty(ConfigurationKey.KEY_BINDING_SPRINT.getKey());
 	}
 
+	/**
+	 * @return The configured x-coordinate of the spawn location
+	 */
+	public int getSpawnX()
+	{
+		String spawnX = properties_.getProperty(ConfigurationKey.SPAWN_X.getKey());
+		return Integer.valueOf(String.valueOf(spawnX));
+	}
+
+	/**
+	 * @return The configured y-coordinate of the spawn location
+	 */
+	public int getSpawnY()
+	{
+		String spawnY = properties_.getProperty(ConfigurationKey.SPAWN_Y.getKey());
+		return Integer.valueOf(String.valueOf(spawnY));
+	}
+
 	@Override
 	public String toString()
 	{

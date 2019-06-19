@@ -403,6 +403,38 @@ public class ConfigurationTest implements UnitTest
 	}
 
 	/**
+	 * Tests that a {@link ConfigurationValueException} is thrown when {@link ConfigurationKey#SPAWN_X} is configured with an invalid value
+	 *
+	 * @throws ConfigurationValueException
+	 *             Expected
+	 */
+	@Test(expected = ConfigurationValueException.class)
+	public void test_invalidSpawnX() throws ConfigurationValueException
+	{
+		ConfigurationKey key = ConfigurationKey.SPAWN_X;
+		String filename = "test_config_invalidSpawnX.properties";
+		String expectedInvalidValue = "j";
+
+		runExpectedInvalidValueExceptionTest(key, filename, expectedInvalidValue);
+	}
+
+	/**
+	 * Tests that a {@link ConfigurationValueException} is thrown when {@link ConfigurationKey#SPAWN_Y} is configured with an invalid value
+	 *
+	 * @throws ConfigurationValueException
+	 *             Expected
+	 */
+	@Test(expected = ConfigurationValueException.class)
+	public void test_invalidSpawnY() throws ConfigurationValueException
+	{
+		ConfigurationKey key = ConfigurationKey.SPAWN_Y;
+		String filename = "test_config_invalidSpawnY.properties";
+		String expectedInvalidValue = "j";
+
+		runExpectedInvalidValueExceptionTest(key, filename, expectedInvalidValue);
+	}
+
+	/**
 	 * Convenience method to run the expected exception test
 	 *
 	 * @param key

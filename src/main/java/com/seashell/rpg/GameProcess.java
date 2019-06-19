@@ -15,8 +15,8 @@ import com.seashell.rpg.config.ConfigurationValueException;
 import com.seashell.rpg.gui.Gui;
 import com.seashell.rpg.gui.KeyManager;
 import com.seashell.rpg.scene.Scene;
-import com.seashell.rpg.scene.world.WorldConfigurationLoaderException;
 import com.seashell.rpg.scene.world.WorldScene;
+import com.seashell.rpg.scene.world.config.WorldConfigurationBuilderException;
 
 /**
  * Main process for the game. Handles the changing and {@link Gui displaying} of different {@link Scene Scenes}
@@ -108,7 +108,7 @@ public class GameProcess implements Runnable
 		{
 			scene_ = new WorldScene(this);
 		}
-		catch(WorldConfigurationLoaderException | IOException e)
+		catch(WorldConfigurationBuilderException | IOException e)
 		{
 			System.err.println("Failed to initialize world scene.");
 			e.printStackTrace();
