@@ -6,6 +6,7 @@ import static org.junit.Assert.fail;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Path;
+import java.util.Properties;
 
 import org.junit.Test;
 
@@ -13,6 +14,42 @@ import com.seashell.rpg.UnitTest;
 
 public class ConfigurationTest implements UnitTest
 {
+	/**
+	 * Tests the that {@link Configuration#toString()} simply prints the underlying {@link Properties} it is wrapping
+	 */
+	@Test
+	public void test_toString()
+	{
+		Properties p = new Properties();
+		p.put("world", "world.txt");
+		p.put("fps", "60");
+		p.put("res_width", "1920");
+		p.put("res_height", "1080");
+		p.put("key_binding_up", "w");
+		p.put("key_binding_down", "s");
+		p.put("key_binding_left", "a");
+		p.put("key_binding_right", "d");
+		p.put("key_binding_sprint", "shift");
+		p.put("spawn_x", "19");
+		p.put("spawn_y", "17");
+
+		String expected = p.toString();
+
+		try
+		{
+			Path path = getTestResourcePath("config/test_config_valid.properties");
+			Configuration c = new Configuration(path);
+
+			String actual = c.toString();
+			assertEquals(expected, actual);
+		}
+		catch(URISyntaxException | IOException | NullPointerException | ConfigurationKeyException | ConfigurationValueException e)
+		{
+			e.printStackTrace();
+			fail(e.getMessage());
+		}
+	}
+
 	/**
 	 * Tests that loading a configuration with a valid path of a valid configuration file does not throw any exceptions
 	 */
@@ -229,6 +266,52 @@ public class ConfigurationTest implements UnitTest
 			Configuration c = new Configuration(path);
 
 			String actual = c.getKeyBindingSprint();
+			assertEquals(expected, actual);
+		}
+		catch(URISyntaxException | IOException | NullPointerException | ConfigurationKeyException | ConfigurationValueException e)
+		{
+			e.printStackTrace();
+			fail(e.getMessage());
+		}
+	}
+
+	/**
+	 * Tests that {@link Configuration#getSpawnX()} returns the expected value from a valid configuration
+	 */
+	@Test
+	public void test_getSpawnX()
+	{
+		try
+		{
+			int expected = 19;
+
+			Path path = getTestResourcePath("config/test_config_valid.properties");
+			Configuration c = new Configuration(path);
+
+			int actual = c.getSpawnX();
+			assertEquals(expected, actual);
+		}
+		catch(URISyntaxException | IOException | NullPointerException | ConfigurationKeyException | ConfigurationValueException e)
+		{
+			e.printStackTrace();
+			fail(e.getMessage());
+		}
+	}
+
+	/**
+	 * Tests that {@link Configuration#getSpawnY()} returns the expected value from a valid configuration
+	 */
+	@Test
+	public void test_getSpawnY()
+	{
+		try
+		{
+			int expected = 17;
+
+			Path path = getTestResourcePath("config/test_config_valid.properties");
+			Configuration c = new Configuration(path);
+
+			int actual = c.getSpawnY();
 			assertEquals(expected, actual);
 		}
 		catch(URISyntaxException | IOException | NullPointerException | ConfigurationKeyException | ConfigurationValueException e)

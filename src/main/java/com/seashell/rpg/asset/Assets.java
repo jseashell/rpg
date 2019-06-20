@@ -34,6 +34,13 @@ public class Assets
 	private static SpriteSheet car_;
 
 	/**
+	 * Constructor prevents instantiation
+	 */
+	private Assets()
+	{
+	}
+
+	/**
 	 * Initializes all game assets. This should only be done at start-up.
 	 *
 	 * @throws IOException
