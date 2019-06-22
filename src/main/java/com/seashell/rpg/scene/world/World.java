@@ -3,8 +3,8 @@ package com.seashell.rpg.scene.world;
 import java.awt.Graphics2D;
 
 import com.seashell.rpg.Render;
-import com.seashell.rpg.config.Configuration;
 import com.seashell.rpg.gui.GuiCamera;
+import com.seashell.rpg.process.GameProcessConfiguration;
 import com.seashell.rpg.scene.world.config.WorldConfiguration;
 import com.seashell.rpg.scene.world.config.WorldConfigurationBuilder;
 import com.seashell.rpg.scene.world.config.WorldConfigurationBuilderException;
@@ -42,11 +42,11 @@ public final class World implements Render
 	 * @param camera
 	 *            The {@link GuiCamera}
 	 * @param filename
-	 *            The filename used to {@link WorldConfigurationBuilder#load(String) load} the world
+	 *            The filename used to {@link WorldConfigurationBuilder#newInstance(String) load} the world
 	 * @throws WorldConfigurationBuilderException
 	 *             Failure to load a world using the given filename
 	 */
-	public World(GuiCamera camera, String filename, Configuration config) throws WorldConfigurationBuilderException
+	public World(GuiCamera camera, String filename, GameProcessConfiguration config) throws WorldConfigurationBuilderException
 	{
 		camera_ = camera;
 

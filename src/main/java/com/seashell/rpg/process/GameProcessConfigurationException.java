@@ -1,13 +1,13 @@
 /**
  *
  */
-package com.seashell.rpg.config;
+package com.seashell.rpg.process;
 
 /**
- * Checked exception to use for generic failures in {@link Configuration}
+ * Checked exception to use for generic failures in {@link GameProcessConfiguration}
  */
 @SuppressWarnings("serial")
-public class ConfigurationException extends Exception
+public class GameProcessConfigurationException extends Exception
 {
 	/**
 	 * Constructor
@@ -15,7 +15,7 @@ public class ConfigurationException extends Exception
 	 * @param message
 	 *            A message about the exception
 	 */
-	public ConfigurationException(String message)
+	public GameProcessConfigurationException(String message)
 	{
 		super(message);
 	}
@@ -26,7 +26,7 @@ public class ConfigurationException extends Exception
 	 * @param cause
 	 *            The cause of the exception
 	 */
-	public ConfigurationException(Throwable cause)
+	public GameProcessConfigurationException(Throwable cause)
 	{
 		super(cause);
 	}
@@ -39,7 +39,7 @@ public class ConfigurationException extends Exception
 	 * @param cause
 	 *            The cause of the exception
 	 */
-	public ConfigurationException(String message, Throwable cause)
+	public GameProcessConfigurationException(String message, Throwable cause)
 	{
 		super(message, cause);
 	}

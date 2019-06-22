@@ -1,13 +1,13 @@
 /**
  *
  */
-package com.seashell.rpg.config;
+package com.seashell.rpg.process;
 
 /**
  * Checked exception to use for invalid keys in the configuration file
  */
 @SuppressWarnings("serial")
-public class ConfigurationKeyException extends Exception
+public class GameProcessConfigurationKeyException extends Exception
 {
 	/**
 	 * Constructor
@@ -15,7 +15,7 @@ public class ConfigurationKeyException extends Exception
 	 * @param message
 	 *            A message about the exception
 	 */
-	public ConfigurationKeyException(String message)
+	public GameProcessConfigurationKeyException(String message)
 	{
 		super(message);
 	}
@@ -26,7 +26,7 @@ public class ConfigurationKeyException extends Exception
 	 * @param cause
 	 *            The cause of the exception
 	 */
-	public ConfigurationKeyException(Throwable cause)
+	public GameProcessConfigurationKeyException(Throwable cause)
 	{
 		super(cause);
 	}
@@ -39,7 +39,7 @@ public class ConfigurationKeyException extends Exception
 	 * @param cause
 	 *            The cause of the exception
 	 */
-	public ConfigurationKeyException(String message, Throwable cause)
+	public GameProcessConfigurationKeyException(String message, Throwable cause)
 	{
 		super(message, cause);
 	}

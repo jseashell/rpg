@@ -23,18 +23,13 @@ public class GuiCamera
 
 	/**
 	 * Constructor
-	 *
-	 * @param xOffset
-	 *            Initial value for {@link #getXOffset()}
-	 * @param yOffset
-	 *            Initial value for {@link #getYOffset()}
 	 */
-	public GuiCamera(int guiResolutionWidth, int guiResolutionHeight, float xOffset, float yOffset)
+	public GuiCamera(int guiResolutionWidth, int guiResolutionHeight)
 	{
 		guiResolutionWidth_ = guiResolutionWidth;
 		guiResolutionHeight_ = guiResolutionHeight;
-		xOffset_ = xOffset;
-		yOffset_ = yOffset;
+		xOffset_ = 0;
+		yOffset_ = 0;
 	}
 
 	/**

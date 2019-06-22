@@ -26,6 +26,7 @@ dependencies {
     // Test suite
     testImplementation group: 'junit', name: 'junit', version: '4.12'
 	testImplementation group: 'org.mockito', name: 'mockito-all', version: '1.10.19'
+	testImplementation group: 'org.jmockit', name: 'jmockit', version: '1.46'
     
 }
 
