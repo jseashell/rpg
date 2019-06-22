@@ -2,11 +2,8 @@ package com.seashell.rpg.gui;
 
 import java.awt.Canvas;
 import java.awt.Dimension;
-import java.util.Objects;
 
 import javax.swing.JFrame;
-
-import com.seashell.rpg.GameProcess;
 
 /**
  * The graphical user interface for the game
@@ -36,20 +33,20 @@ public class Gui
 	/**
 	 * Constructor
 	 *
-	 * @param gameProcess
-	 *            The {@link GameProcess}. Non-null.
+	 * @param resolutionWidth
+	 *            The width to use for the resolution
+	 * @param resolutionHeight
+	 *            The height to use for the resolution
 	 */
-	public Gui(GameProcess gameProcess)
+	public Gui(int resolutionWidth, int resolutionHeight)
 	{
-		Objects.requireNonNull(gameProcess, "The given game process cannot be null.");
-
-		camera_ = new GuiCamera(gameProcess.getConfiguration().getResolutionWidth(), gameProcess.getConfiguration().getResolutionHeight(), 0, 0);
+		camera_ = new GuiCamera(resolutionWidth, resolutionHeight);
 
 		keyManager_ = new KeyManager();
 
-		final Dimension size = new Dimension(gameProcess.getConfiguration().getResolutionWidth(), gameProcess.getConfiguration().getResolutionHeight());
+		final Dimension size = new Dimension(resolutionWidth, resolutionHeight);
 
-		frame_ = new JFrame("RPG");
+		frame_ = new JFrame("RPG"); // TODO Replace this with the name of the game
 		frame_.setSize(size); // must be called before location relative to null
 		frame_.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame_.setResizable(false);
@@ -66,6 +63,11 @@ public class Gui
 		frame_.add(canvas_);
 
 		frame_.pack();
+	}
+
+	private void init()
+	{
+
 	}
 
 	/**

@@ -1,10 +1,12 @@
-package com.seashell.rpg.config;
+package com.seashell.rpg.process;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -15,7 +17,7 @@ import java.util.Properties;
 /**
  * Read-only object representing runtime configuration
  */
-public final class Configuration
+public final class GameProcessConfiguration
 {
 	/**
 	 * Can message used in invalid value scenarios. This should really only be used for unit testing
@@ -36,12 +38,12 @@ public final class Configuration
 	 *             Null path argument
 	 * @throws IOException
 	 *             Failure to load a {@link Properties} object
-	 * @throws ConfigurationKeyException
+	 * @throws GameProcessConfigurationKeyException
 	 *             Invalid keys in the configuration file
-	 * @throws ConfigurationValueException
+	 * @throws GameProcessConfigurationValueException
 	 *             Invalid data types in the configuration file
 	 */
-	public Configuration(Path path) throws NullPointerException, IOException, ConfigurationKeyException, ConfigurationValueException
+	public GameProcessConfiguration(Path path) throws NullPointerException, IOException, GameProcessConfigurationKeyException, GameProcessConfigurationValueException
 	{
 		Objects.requireNonNull(path, "Null path to configuration file.");
 
@@ -57,20 +59,20 @@ public final class Configuration
 	/**
 	 * Validates the loaded {@link #properties_}
 	 *
-	 * @throws ConfigurationKeyException
+	 * @throws GameProcessConfigurationKeyException
 	 *             Invalid configuration
-	 * @throws ConfigurationValueException
+	 * @throws GameProcessConfigurationValueException
 	 *             Invalid configuration
 	 */
-	private void validate() throws ConfigurationKeyException, ConfigurationValueException
+	private void validate() throws GameProcessConfigurationKeyException, GameProcessConfigurationValueException
 	{
 		// TODO Make keys know how to validate themselves
-		final List<ConfigurationKey> keys = Arrays.asList(ConfigurationKey.values());
+		final List<GameProcessConfigurationKey> keys = Arrays.asList(GameProcessConfigurationKey.values());
 
-		Map<ConfigurationKey, Object> invalidValues = new HashMap<>();
+		Map<GameProcessConfigurationKey, Object> invalidValues = new HashMap<>();
 		for(int i = 0; i < keys.size(); i++)
 		{
-			ConfigurationKey key = keys.get(i);
+			GameProcessConfigurationKey key = keys.get(i);
 
 			String property = properties_.getProperty(key.getKey());
 
@@ -84,7 +86,7 @@ public final class Configuration
 
 				if(key.getType() == String.class)
 				{
-					if(key == ConfigurationKey.WORLD)
+					if(key == GameProcessConfigurationKey.WORLD)
 					{
 						if(!property.endsWith(".txt"))
 						{
@@ -145,7 +147,7 @@ public final class Configuration
 		if(invalidValues.size() > 0)
 
 		{
-			throw new ConfigurationValueException(
+			throw new GameProcessConfigurationValueException(
 					INVALID_VALUE_MESSAGE
 							+ Arrays.toString(invalidValues.entrySet()
 									.stream()
@@ -167,11 +169,42 @@ public final class Configuration
 	}
 
 	/**
+	 * Loads a new instance of a game process configuration using the given filename
+	 *
+	 * @param configFilename
+	 *            The filename of the configuration file. Extension must be .properties
+	 * @return The {@link GameProcessConfiguration}
+	 * @throws GameProcessConfigurationException
+	 *             Invalid file extension, path, or properties
+	 */
+	public static GameProcessConfiguration newInstance(String configFilename) throws GameProcessConfigurationException
+	{
+		if(!configFilename.endsWith(".properties"))
+		{
+			throw new GameProcessConfigurationException("Invalid configuration file extension. Configuration files must be .properties files.");
+		}
+
+		try
+		{
+			Path configPath = Paths.get(GameProcess.class.getClassLoader().getResource(configFilename).toURI());
+			return new GameProcessConfiguration(configPath);
+		}
+		catch(URISyntaxException | NullPointerException | IOException e)
+		{
+			throw new GameProcessConfigurationException("Invalid configuration file path.", e);
+		}
+		catch(GameProcessConfigurationKeyException | GameProcessConfigurationValueException e)
+		{
+			throw new GameProcessConfigurationException("Invalid key/value pair in configuration file.", e);
+		}
+	}
+
+	/**
 	 * @return The filename for the world to load
 	 */
 	public String getWorldFilename()
 	{
-		return properties_.getProperty(ConfigurationKey.WORLD.getKey());
+		return properties_.getProperty(GameProcessConfigurationKey.WORLD.getKey());
 	}
 
 	/**
@@ -179,7 +212,7 @@ public final class Configuration
 	 */
 	public int getFps()
 	{
-		String fps = properties_.getProperty(ConfigurationKey.FPS.getKey());
+		String fps = properties_.getProperty(GameProcessConfigurationKey.FPS.getKey());
 		return Integer.valueOf(fps);
 	}
 
@@ -188,7 +221,7 @@ public final class Configuration
 	 */
 	public int getResolutionWidth()
 	{
-		String resWidth = properties_.getProperty(ConfigurationKey.RESOLUTION_WIDTH.getKey());
+		String resWidth = properties_.getProperty(GameProcessConfigurationKey.RESOLUTION_WIDTH.getKey());
 		return Integer.valueOf(String.valueOf(resWidth));
 	}
 
@@ -197,7 +230,7 @@ public final class Configuration
 	 */
 	public int getResolutionHeight()
 	{
-		String resHeight = properties_.getProperty(ConfigurationKey.RESOLUTION_HEIGHT.getKey());
+		String resHeight = properties_.getProperty(GameProcessConfigurationKey.RESOLUTION_HEIGHT.getKey());
 		return Integer.valueOf(String.valueOf(resHeight));
 	}
 
@@ -206,7 +239,7 @@ public final class Configuration
 	 */
 	public String getKeyBindingUp()
 	{
-		return properties_.getProperty(ConfigurationKey.KEY_BINDING_UP.getKey());
+		return properties_.getProperty(GameProcessConfigurationKey.KEY_BINDING_UP.getKey());
 	}
 
 	/**
@@ -214,7 +247,7 @@ public final class Configuration
 	 */
 	public String getKeyBindingDown()
 	{
-		return properties_.getProperty(ConfigurationKey.KEY_BINDING_DOWN.getKey());
+		return properties_.getProperty(GameProcessConfigurationKey.KEY_BINDING_DOWN.getKey());
 	}
 
 	/**
@@ -222,7 +255,7 @@ public final class Configuration
 	 */
 	public String getKeyBindingLeft()
 	{
-		return properties_.getProperty(ConfigurationKey.KEY_BINDING_LEFT.getKey());
+		return properties_.getProperty(GameProcessConfigurationKey.KEY_BINDING_LEFT.getKey());
 	}
 
 	/**
@@ -230,7 +263,7 @@ public final class Configuration
 	 */
 	public String getKeyBindingRight()
 	{
-		return properties_.getProperty(ConfigurationKey.KEY_BINDING_RIGHT.getKey());
+		return properties_.getProperty(GameProcessConfigurationKey.KEY_BINDING_RIGHT.getKey());
 	}
 
 	/**
@@ -238,7 +271,7 @@ public final class Configuration
 	 */
 	public String getKeyBindingSprint()
 	{
-		return properties_.getProperty(ConfigurationKey.KEY_BINDING_SPRINT.getKey());
+		return properties_.getProperty(GameProcessConfigurationKey.KEY_BINDING_SPRINT.getKey());
 	}
 
 	/**
@@ -246,7 +279,7 @@ public final class Configuration
 	 */
 	public int getSpawnX()
 	{
-		String spawnX = properties_.getProperty(ConfigurationKey.SPAWN_X.getKey());
+		String spawnX = properties_.getProperty(GameProcessConfigurationKey.SPAWN_X.getKey());
 		return Integer.valueOf(String.valueOf(spawnX));
 	}
 
@@ -255,7 +288,7 @@ public final class Configuration
 	 */
 	public int getSpawnY()
 	{
-		String spawnY = properties_.getProperty(ConfigurationKey.SPAWN_Y.getKey());
+		String spawnY = properties_.getProperty(GameProcessConfigurationKey.SPAWN_Y.getKey());
 		return Integer.valueOf(String.valueOf(spawnY));
 	}
 

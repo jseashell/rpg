@@ -1,17 +1,11 @@
-package com.seashell.rpg;
+package com.seashell.rpg.process;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
 import java.io.IOException;
-import java.net.URISyntaxException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.util.Objects;
 
 import com.seashell.rpg.asset.Assets;
-import com.seashell.rpg.config.Configuration;
-import com.seashell.rpg.config.ConfigurationException;
-import com.seashell.rpg.config.ConfigurationKeyException;
-import com.seashell.rpg.config.ConfigurationValueException;
 import com.seashell.rpg.gui.Gui;
 import com.seashell.rpg.gui.KeyManager;
 import com.seashell.rpg.scene.Scene;
@@ -23,7 +17,7 @@ import com.seashell.rpg.scene.world.config.WorldConfigurationBuilderException;
  *
  * @see {@link Runnable}
  */
-public class GameProcess implements Runnable
+public final class GameProcess implements Runnable
 {
 	/**
 	 * Thread responsible for running this process
@@ -48,7 +42,7 @@ public class GameProcess implements Runnable
 	/**
 	 * Configuration for the game
 	 */
-	private final Configuration configuration_;
+	private final GameProcessConfiguration configuration_;
 
 	/**
 	 * Configured FPS setting
@@ -63,29 +57,20 @@ public class GameProcess implements Runnable
 	/**
 	 * Constructor
 	 *
-	 * @throws ConfigurationException
+	 * @param configuration
+	 *            The configuration for the game process. Non-null.
+	 * @throws NullPointerException
+	 *             Null configuration argument
+	 * @throws GameProcessConfigurationException
 	 *             Invalid configuration file
 	 * @throws IOException
 	 *             Failure to initialize game assets
 	 */
-	public GameProcess() throws ConfigurationException, IOException
+	public GameProcess(GameProcessConfiguration configuration) throws NullPointerException, GameProcessConfigurationException, IOException
 	{
-		try
-		{
-			Path configPath = Paths.get(GameProcess.class.getClassLoader().getResource("config.properties").toURI());
-			configuration_ = new Configuration(configPath);
-		}
-		catch(URISyntaxException | NullPointerException e)
-		{
-			throw new ConfigurationException("Invalid configuration file path.", e);
-		}
-		catch(ConfigurationKeyException | ConfigurationValueException e)
-		{
-			throw new ConfigurationException("Invalid key/value pair in configuration file.", e);
-		}
+		configuration_ = Objects.requireNonNull(configuration, "Game process configuration cannot be null.");
 
 		desiredFps_ = configuration_.getFps();
-
 		isRunning_ = false;
 
 		try
@@ -98,7 +83,7 @@ public class GameProcess implements Runnable
 			throw e;
 		}
 
-		gui_ = new Gui(this);
+		gui_ = new Gui(configuration_.getResolutionWidth(), configuration_.getResolutionHeight());
 	}
 
 	@Override
@@ -245,8 +230,13 @@ public class GameProcess implements Runnable
 		return gui_;
 	}
 
-	public Configuration getConfiguration()
+	public GameProcessConfiguration getConfiguration()
 	{
 		return configuration_;
+	}
+
+	public boolean isRunning()
+	{
+		return isRunning_;
 	}
 }

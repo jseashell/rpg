@@ -3,10 +3,10 @@ package com.seashell.rpg.scene.world;
 import java.awt.Graphics2D;
 import java.io.IOException;
 
-import com.seashell.rpg.GameProcess;
 import com.seashell.rpg.entity.dynamic.character.PlayerCharacter;
 import com.seashell.rpg.entity.dynamic.vehicle.Car;
 import com.seashell.rpg.gui.GuiCamera;
+import com.seashell.rpg.process.GameProcess;
 import com.seashell.rpg.scene.AbstractScene;
 import com.seashell.rpg.scene.Scene;
 import com.seashell.rpg.scene.world.config.WorldConfigurationBuilderException;

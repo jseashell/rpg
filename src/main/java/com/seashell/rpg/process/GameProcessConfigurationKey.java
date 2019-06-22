@@ -1,9 +1,9 @@
-package com.seashell.rpg.config;
+package com.seashell.rpg.process;
 
 /**
  * Keys for the config.properties resource
  */
-public enum ConfigurationKey
+public enum GameProcessConfigurationKey
 {
 	WORLD("world", String.class),
 
@@ -41,7 +41,7 @@ public enum ConfigurationKey
 	 * @param type
 	 *            Value for {@link #getType()}
 	 */
-	private ConfigurationKey(String key, Class<?> type)
+	private GameProcessConfigurationKey(String key, Class<?> type)
 	{
 		key_ = key;
 		type_ = type;
