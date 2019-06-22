@@ -20,7 +20,7 @@ public class Launcher
 		}
 		catch(Exception e)
 		{
-			// TODO Add logging mechanism
+			// TODO #2 Add logging mechanism
 			System.err.println("Failed to start game process.");
 			e.printStackTrace();
 			System.exit(0);

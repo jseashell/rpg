@@ -43,7 +43,6 @@ public class Car extends AbstractVehicle
 	{
 		if(y_ <= 0)
 		{
-			// TODO Load worldHeight from config
 			y_ = (worldHeight_ * height_) - Tile.SIZE;
 		}
 

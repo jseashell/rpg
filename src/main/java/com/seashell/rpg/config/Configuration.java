@@ -64,7 +64,7 @@ public final class Configuration
 	 */
 	private void validate() throws ConfigurationKeyException, ConfigurationValueException
 	{
-		// TODO Make keys know how to validate themselves
+		// TODO #4 Make keys know how to validate themselves
 		final List<ConfigurationKey> keys = Arrays.asList(ConfigurationKey.values());
 
 		Map<ConfigurationKey, Object> invalidValues = new HashMap<>();
@@ -153,7 +153,7 @@ public final class Configuration
 									.toArray(String[]::new)));
 		}
 
-		// TODO Implement a check for valid keys in the configuration file
+		// TODO #3 Implement a check for valid keys in the configuration file
 		// if(keys.size() > 0)
 		// {
 		// List<String> invalidKeys = new ArrayList<>();
