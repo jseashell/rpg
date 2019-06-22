@@ -11,11 +11,15 @@ import java.util.Properties;
 import org.junit.Test;
 
 import com.seashell.rpg.UnitTest;
+import com.seashell.rpg.process.GameProcessConfiguration;
+import com.seashell.rpg.process.GameProcessConfigurationKey;
+import com.seashell.rpg.process.GameProcessConfigurationKeyException;
+import com.seashell.rpg.process.GameProcessConfigurationValueException;
 
 public class ConfigurationTest implements UnitTest
 {
 	/**
-	 * Tests the that {@link Configuration#toString()} simply prints the underlying {@link Properties} it is wrapping
+	 * Tests the that {@link GameProcessConfiguration#toString()} simply prints the underlying {@link Properties} it is wrapping
 	 */
 	@Test
 	public void test_toString()
@@ -38,12 +42,12 @@ public class ConfigurationTest implements UnitTest
 		try
 		{
 			Path path = getTestResourcePath("config/test_config_valid.properties");
-			Configuration c = new Configuration(path);
+			GameProcessConfiguration c = new GameProcessConfiguration(path);
 
 			String actual = c.toString();
 			assertEquals(expected, actual);
 		}
-		catch(URISyntaxException | IOException | NullPointerException | ConfigurationKeyException | ConfigurationValueException e)
+		catch(URISyntaxException | IOException | NullPointerException | GameProcessConfigurationKeyException | GameProcessConfigurationValueException e)
 		{
 			e.printStackTrace();
 			fail(e.getMessage());
@@ -59,9 +63,9 @@ public class ConfigurationTest implements UnitTest
 		try
 		{
 			Path path = getTestResourcePath("config/test_config_valid.properties");
-			new Configuration(path);
+			new GameProcessConfiguration(path);
 		}
-		catch(URISyntaxException | IOException | NullPointerException | ConfigurationKeyException | ConfigurationValueException e)
+		catch(URISyntaxException | IOException | NullPointerException | GameProcessConfigurationKeyException | GameProcessConfigurationValueException e)
 		{
 			e.printStackTrace();
 			fail(e.getMessage());
@@ -69,7 +73,7 @@ public class ConfigurationTest implements UnitTest
 	}
 
 	/**
-	 * Tests that {@link Configuration#getWorldFilename()} returns the expected value from a valid configuration
+	 * Tests that {@link GameProcessConfiguration#getWorldFilename()} returns the expected value from a valid configuration
 	 */
 	@Test
 	public void test_getWorldFilename()
@@ -79,12 +83,12 @@ public class ConfigurationTest implements UnitTest
 			String expected = "world.txt";
 
 			Path path = getTestResourcePath("config/test_config_valid.properties");
-			Configuration c = new Configuration(path);
+			GameProcessConfiguration c = new GameProcessConfiguration(path);
 
 			String actual = c.getWorldFilename();
 			assertEquals(expected, actual);
 		}
-		catch(URISyntaxException | IOException | NullPointerException | ConfigurationKeyException | ConfigurationValueException e)
+		catch(URISyntaxException | IOException | NullPointerException | GameProcessConfigurationKeyException | GameProcessConfigurationValueException e)
 		{
 			e.printStackTrace();
 			fail(e.getMessage());
@@ -92,7 +96,7 @@ public class ConfigurationTest implements UnitTest
 	}
 
 	/**
-	 * Tests that {@link Configuration#getFps()} returns the expected value from a valid configuration
+	 * Tests that {@link GameProcessConfiguration#getFps()} returns the expected value from a valid configuration
 	 */
 	@Test
 	public void test_getFps()
@@ -102,12 +106,12 @@ public class ConfigurationTest implements UnitTest
 			int expected = 60;
 
 			Path path = getTestResourcePath("config/test_config_valid.properties");
-			Configuration c = new Configuration(path);
+			GameProcessConfiguration c = new GameProcessConfiguration(path);
 
 			int actual = c.getFps();
 			assertEquals(expected, actual);
 		}
-		catch(URISyntaxException | IOException | NullPointerException | ConfigurationKeyException | ConfigurationValueException e)
+		catch(URISyntaxException | IOException | NullPointerException | GameProcessConfigurationKeyException | GameProcessConfigurationValueException e)
 		{
 			e.printStackTrace();
 			fail(e.getMessage());
@@ -115,7 +119,7 @@ public class ConfigurationTest implements UnitTest
 	}
 
 	/**
-	 * Tests that {@link Configuration#getResolutionWidth()} returns the expected value from a valid configuration
+	 * Tests that {@link GameProcessConfiguration#getResolutionWidth()} returns the expected value from a valid configuration
 	 */
 	@Test
 	public void test_getResolutionWidth()
@@ -125,12 +129,12 @@ public class ConfigurationTest implements UnitTest
 			int expected = 1920;
 
 			Path path = getTestResourcePath("config/test_config_valid.properties");
-			Configuration c = new Configuration(path);
+			GameProcessConfiguration c = new GameProcessConfiguration(path);
 
 			int actual = c.getResolutionWidth();
 			assertEquals(expected, actual);
 		}
-		catch(URISyntaxException | IOException | NullPointerException | ConfigurationKeyException | ConfigurationValueException e)
+		catch(URISyntaxException | IOException | NullPointerException | GameProcessConfigurationKeyException | GameProcessConfigurationValueException e)
 		{
 			e.printStackTrace();
 			fail(e.getMessage());
@@ -138,7 +142,7 @@ public class ConfigurationTest implements UnitTest
 	}
 
 	/**
-	 * Tests that {@link Configuration#getResolutionHeight()} returns the expected value from a valid configuration
+	 * Tests that {@link GameProcessConfiguration#getResolutionHeight()} returns the expected value from a valid configuration
 	 */
 	@Test
 	public void test_getResolutionHeight()
@@ -148,12 +152,12 @@ public class ConfigurationTest implements UnitTest
 			int expected = 1080;
 
 			Path path = getTestResourcePath("config/test_config_valid.properties");
-			Configuration c = new Configuration(path);
+			GameProcessConfiguration c = new GameProcessConfiguration(path);
 
 			int actual = c.getResolutionHeight();
 			assertEquals(expected, actual);
 		}
-		catch(URISyntaxException | IOException | NullPointerException | ConfigurationKeyException | ConfigurationValueException e)
+		catch(URISyntaxException | IOException | NullPointerException | GameProcessConfigurationKeyException | GameProcessConfigurationValueException e)
 		{
 			e.printStackTrace();
 			fail(e.getMessage());
@@ -161,7 +165,7 @@ public class ConfigurationTest implements UnitTest
 	}
 
 	/**
-	 * Tests that {@link Configuration#getKeyBindingUp()} returns the expected value from a valid configuration
+	 * Tests that {@link GameProcessConfiguration#getKeyBindingUp()} returns the expected value from a valid configuration
 	 */
 	@Test
 	public void test_getKeyBindingUp()
@@ -171,12 +175,12 @@ public class ConfigurationTest implements UnitTest
 			String expected = "w";
 
 			Path path = getTestResourcePath("config/test_config_valid.properties");
-			Configuration c = new Configuration(path);
+			GameProcessConfiguration c = new GameProcessConfiguration(path);
 
 			String actual = c.getKeyBindingUp();
 			assertEquals(expected, actual);
 		}
-		catch(URISyntaxException | IOException | NullPointerException | ConfigurationKeyException | ConfigurationValueException e)
+		catch(URISyntaxException | IOException | NullPointerException | GameProcessConfigurationKeyException | GameProcessConfigurationValueException e)
 		{
 			e.printStackTrace();
 			fail(e.getMessage());
@@ -184,7 +188,7 @@ public class ConfigurationTest implements UnitTest
 	}
 
 	/**
-	 * Tests that {@link Configuration#getKeyBindingDown()} returns the expected value from a valid configuration
+	 * Tests that {@link GameProcessConfiguration#getKeyBindingDown()} returns the expected value from a valid configuration
 	 */
 	@Test
 	public void test_getKeyBindingDown()
@@ -194,12 +198,12 @@ public class ConfigurationTest implements UnitTest
 			String expected = "s";
 
 			Path path = getTestResourcePath("config/test_config_valid.properties");
-			Configuration c = new Configuration(path);
+			GameProcessConfiguration c = new GameProcessConfiguration(path);
 
 			String actual = c.getKeyBindingDown();
 			assertEquals(expected, actual);
 		}
-		catch(URISyntaxException | IOException | NullPointerException | ConfigurationKeyException | ConfigurationValueException e)
+		catch(URISyntaxException | IOException | NullPointerException | GameProcessConfigurationKeyException | GameProcessConfigurationValueException e)
 		{
 			e.printStackTrace();
 			fail(e.getMessage());
@@ -207,7 +211,7 @@ public class ConfigurationTest implements UnitTest
 	}
 
 	/**
-	 * Tests that {@link Configuration#getKeyBindingLeft()} returns the expected value from a valid configuration
+	 * Tests that {@link GameProcessConfiguration#getKeyBindingLeft()} returns the expected value from a valid configuration
 	 */
 	@Test
 	public void test_getKeyBindingLeft()
@@ -217,12 +221,12 @@ public class ConfigurationTest implements UnitTest
 			String expected = "a";
 
 			Path path = getTestResourcePath("config/test_config_valid.properties");
-			Configuration c = new Configuration(path);
+			GameProcessConfiguration c = new GameProcessConfiguration(path);
 
 			String actual = c.getKeyBindingLeft();
 			assertEquals(expected, actual);
 		}
-		catch(URISyntaxException | IOException | NullPointerException | ConfigurationKeyException | ConfigurationValueException e)
+		catch(URISyntaxException | IOException | NullPointerException | GameProcessConfigurationKeyException | GameProcessConfigurationValueException e)
 		{
 			e.printStackTrace();
 			fail(e.getMessage());
@@ -230,7 +234,7 @@ public class ConfigurationTest implements UnitTest
 	}
 
 	/**
-	 * Tests that {@link Configuration#getKeyBindingRight()} returns the expected value from a valid configuration
+	 * Tests that {@link GameProcessConfiguration#getKeyBindingRight()} returns the expected value from a valid configuration
 	 */
 	@Test
 	public void test_getKeyBindingRight()
@@ -240,12 +244,12 @@ public class ConfigurationTest implements UnitTest
 			String expected = "d";
 
 			Path path = getTestResourcePath("config/test_config_valid.properties");
-			Configuration c = new Configuration(path);
+			GameProcessConfiguration c = new GameProcessConfiguration(path);
 
 			String actual = c.getKeyBindingRight();
 			assertEquals(expected, actual);
 		}
-		catch(URISyntaxException | IOException | NullPointerException | ConfigurationKeyException | ConfigurationValueException e)
+		catch(URISyntaxException | IOException | NullPointerException | GameProcessConfigurationKeyException | GameProcessConfigurationValueException e)
 		{
 			e.printStackTrace();
 			fail(e.getMessage());
@@ -253,7 +257,7 @@ public class ConfigurationTest implements UnitTest
 	}
 
 	/**
-	 * Tests that {@link Configuration#getKeyBindingSprint()} returns the expected value from a valid configuration
+	 * Tests that {@link GameProcessConfiguration#getKeyBindingSprint()} returns the expected value from a valid configuration
 	 */
 	@Test
 	public void test_getKeyBindingSprint()
@@ -263,12 +267,12 @@ public class ConfigurationTest implements UnitTest
 			String expected = "shift";
 
 			Path path = getTestResourcePath("config/test_config_valid.properties");
-			Configuration c = new Configuration(path);
+			GameProcessConfiguration c = new GameProcessConfiguration(path);
 
 			String actual = c.getKeyBindingSprint();
 			assertEquals(expected, actual);
 		}
-		catch(URISyntaxException | IOException | NullPointerException | ConfigurationKeyException | ConfigurationValueException e)
+		catch(URISyntaxException | IOException | NullPointerException | GameProcessConfigurationKeyException | GameProcessConfigurationValueException e)
 		{
 			e.printStackTrace();
 			fail(e.getMessage());
@@ -276,7 +280,7 @@ public class ConfigurationTest implements UnitTest
 	}
 
 	/**
-	 * Tests that {@link Configuration#getSpawnX()} returns the expected value from a valid configuration
+	 * Tests that {@link GameProcessConfiguration#getSpawnX()} returns the expected value from a valid configuration
 	 */
 	@Test
 	public void test_getSpawnX()
@@ -286,12 +290,12 @@ public class ConfigurationTest implements UnitTest
 			int expected = 19;
 
 			Path path = getTestResourcePath("config/test_config_valid.properties");
-			Configuration c = new Configuration(path);
+			GameProcessConfiguration c = new GameProcessConfiguration(path);
 
 			int actual = c.getSpawnX();
 			assertEquals(expected, actual);
 		}
-		catch(URISyntaxException | IOException | NullPointerException | ConfigurationKeyException | ConfigurationValueException e)
+		catch(URISyntaxException | IOException | NullPointerException | GameProcessConfigurationKeyException | GameProcessConfigurationValueException e)
 		{
 			e.printStackTrace();
 			fail(e.getMessage());
@@ -299,7 +303,7 @@ public class ConfigurationTest implements UnitTest
 	}
 
 	/**
-	 * Tests that {@link Configuration#getSpawnY()} returns the expected value from a valid configuration
+	 * Tests that {@link GameProcessConfiguration#getSpawnY()} returns the expected value from a valid configuration
 	 */
 	@Test
 	public void test_getSpawnY()
@@ -309,12 +313,12 @@ public class ConfigurationTest implements UnitTest
 			int expected = 17;
 
 			Path path = getTestResourcePath("config/test_config_valid.properties");
-			Configuration c = new Configuration(path);
+			GameProcessConfiguration c = new GameProcessConfiguration(path);
 
 			int actual = c.getSpawnY();
 			assertEquals(expected, actual);
 		}
-		catch(URISyntaxException | IOException | NullPointerException | ConfigurationKeyException | ConfigurationValueException e)
+		catch(URISyntaxException | IOException | NullPointerException | GameProcessConfigurationKeyException | GameProcessConfigurationValueException e)
 		{
 			e.printStackTrace();
 			fail(e.getMessage());
@@ -332,9 +336,9 @@ public class ConfigurationTest implements UnitTest
 	{
 		try
 		{
-			new Configuration(null);
+			new GameProcessConfiguration(null);
 		}
-		catch(IOException | ConfigurationKeyException | ConfigurationValueException e)
+		catch(IOException | GameProcessConfigurationKeyException | GameProcessConfigurationValueException e)
 		{
 			e.printStackTrace();
 			fail(e.getMessage());
@@ -342,15 +346,15 @@ public class ConfigurationTest implements UnitTest
 	}
 
 	/**
-	 * Tests that a {@link ConfigurationValueException} is thrown when {@link ConfigurationKey#WORLD} is configured with an invalid value
+	 * Tests that a {@link GameProcessConfigurationValueException} is thrown when {@link GameProcessConfigurationKey#WORLD} is configured with an invalid value
 	 *
-	 * @throws ConfigurationValueException
+	 * @throws GameProcessConfigurationValueException
 	 *             Expected
 	 */
-	@Test(expected = ConfigurationValueException.class)
-	public void test_invalidWorld() throws ConfigurationValueException
+	@Test(expected = GameProcessConfigurationValueException.class)
+	public void test_invalidWorld() throws GameProcessConfigurationValueException
 	{
-		ConfigurationKey key = ConfigurationKey.WORLD;
+		GameProcessConfigurationKey key = GameProcessConfigurationKey.WORLD;
 		String filename = "test_config_invalidWorld.properties";
 		String expectedInvalidValue = "name_no_extension";
 
@@ -358,15 +362,15 @@ public class ConfigurationTest implements UnitTest
 	}
 
 	/**
-	 * Tests that a {@link ConfigurationValueException} is thrown when {@link ConfigurationKey#FPS} is configured with an invalid value
+	 * Tests that a {@link GameProcessConfigurationValueException} is thrown when {@link GameProcessConfigurationKey#FPS} is configured with an invalid value
 	 *
-	 * @throws ConfigurationValueException
+	 * @throws GameProcessConfigurationValueException
 	 *             Expected
 	 */
-	@Test(expected = ConfigurationValueException.class)
-	public void test_invalidFps() throws ConfigurationValueException
+	@Test(expected = GameProcessConfigurationValueException.class)
+	public void test_invalidFps() throws GameProcessConfigurationValueException
 	{
-		ConfigurationKey key = ConfigurationKey.FPS;
+		GameProcessConfigurationKey key = GameProcessConfigurationKey.FPS;
 		String filename = "test_config_invalidFps.properties";
 		String expectedInvalidValue = "j";
 
@@ -374,15 +378,15 @@ public class ConfigurationTest implements UnitTest
 	}
 
 	/**
-	 * Tests that a {@link ConfigurationValueException} is thrown when {@link ConfigurationKey#RESOLUTION_WIDTH} is configured with an invalid value
+	 * Tests that a {@link GameProcessConfigurationValueException} is thrown when {@link GameProcessConfigurationKey#RESOLUTION_WIDTH} is configured with an invalid value
 	 *
-	 * @throws ConfigurationValueException
+	 * @throws GameProcessConfigurationValueException
 	 *             Expected
 	 */
-	@Test(expected = ConfigurationValueException.class)
-	public void test_invalidResolutionWidth() throws ConfigurationValueException
+	@Test(expected = GameProcessConfigurationValueException.class)
+	public void test_invalidResolutionWidth() throws GameProcessConfigurationValueException
 	{
-		ConfigurationKey key = ConfigurationKey.RESOLUTION_WIDTH;
+		GameProcessConfigurationKey key = GameProcessConfigurationKey.RESOLUTION_WIDTH;
 		String filename = "test_config_invalidResolutionWidth.properties";
 		String expectedInvalidValue = "j";
 
@@ -390,15 +394,15 @@ public class ConfigurationTest implements UnitTest
 	}
 
 	/**
-	 * Tests that a {@link ConfigurationValueException} is thrown when {@link ConfigurationKey#RESOLUTION_HEIGHT} is configured with an invalid value
+	 * Tests that a {@link GameProcessConfigurationValueException} is thrown when {@link GameProcessConfigurationKey#RESOLUTION_HEIGHT} is configured with an invalid value
 	 *
-	 * @throws ConfigurationValueException
+	 * @throws GameProcessConfigurationValueException
 	 *             Expected
 	 */
-	@Test(expected = ConfigurationValueException.class)
-	public void test_invalidResolutionHeight() throws ConfigurationValueException
+	@Test(expected = GameProcessConfigurationValueException.class)
+	public void test_invalidResolutionHeight() throws GameProcessConfigurationValueException
 	{
-		ConfigurationKey key = ConfigurationKey.RESOLUTION_HEIGHT;
+		GameProcessConfigurationKey key = GameProcessConfigurationKey.RESOLUTION_HEIGHT;
 		String filename = "test_config_invalidResolutionHeight.properties";
 		String expectedInvalidValue = "j";
 
@@ -406,15 +410,15 @@ public class ConfigurationTest implements UnitTest
 	}
 
 	/**
-	 * Tests that a {@link ConfigurationValueException} is thrown when {@link ConfigurationKey#KEY_BINDING_UP} is configured with an invalid value
+	 * Tests that a {@link GameProcessConfigurationValueException} is thrown when {@link GameProcessConfigurationKey#KEY_BINDING_UP} is configured with an invalid value
 	 *
-	 * @throws ConfigurationValueException
+	 * @throws GameProcessConfigurationValueException
 	 *             Expected
 	 */
-	@Test(expected = ConfigurationValueException.class)
-	public void test_invalidKeyBindingUp() throws ConfigurationValueException
+	@Test(expected = GameProcessConfigurationValueException.class)
+	public void test_invalidKeyBindingUp() throws GameProcessConfigurationValueException
 	{
-		ConfigurationKey key = ConfigurationKey.KEY_BINDING_UP;
+		GameProcessConfigurationKey key = GameProcessConfigurationKey.KEY_BINDING_UP;
 		String filename = "test_config_invalidKeyBindingUp.properties";
 		String expectedInvalidValue = "1";
 
@@ -422,15 +426,15 @@ public class ConfigurationTest implements UnitTest
 	}
 
 	/**
-	 * Tests that a {@link ConfigurationValueException} is thrown when {@link ConfigurationKey#KEY_BINDING_DOWN} is configured with an invalid value
+	 * Tests that a {@link GameProcessConfigurationValueException} is thrown when {@link GameProcessConfigurationKey#KEY_BINDING_DOWN} is configured with an invalid value
 	 *
-	 * @throws ConfigurationValueException
+	 * @throws GameProcessConfigurationValueException
 	 *             Expected
 	 */
-	@Test(expected = ConfigurationValueException.class)
-	public void test_invalidKeyBindingDown() throws ConfigurationValueException
+	@Test(expected = GameProcessConfigurationValueException.class)
+	public void test_invalidKeyBindingDown() throws GameProcessConfigurationValueException
 	{
-		ConfigurationKey key = ConfigurationKey.KEY_BINDING_DOWN;
+		GameProcessConfigurationKey key = GameProcessConfigurationKey.KEY_BINDING_DOWN;
 		String filename = "test_config_invalidKeyBindingDown.properties";
 		String expectedInvalidValue = "1";
 
@@ -438,15 +442,15 @@ public class ConfigurationTest implements UnitTest
 	}
 
 	/**
-	 * Tests that a {@link ConfigurationValueException} is thrown when {@link ConfigurationKey#KEY_BINDING_LEFT} is configured with an invalid value
+	 * Tests that a {@link GameProcessConfigurationValueException} is thrown when {@link GameProcessConfigurationKey#KEY_BINDING_LEFT} is configured with an invalid value
 	 *
-	 * @throws ConfigurationValueException
+	 * @throws GameProcessConfigurationValueException
 	 *             Expected
 	 */
-	@Test(expected = ConfigurationValueException.class)
-	public void test_invalidKeyBindingLeft() throws ConfigurationValueException
+	@Test(expected = GameProcessConfigurationValueException.class)
+	public void test_invalidKeyBindingLeft() throws GameProcessConfigurationValueException
 	{
-		ConfigurationKey key = ConfigurationKey.KEY_BINDING_LEFT;
+		GameProcessConfigurationKey key = GameProcessConfigurationKey.KEY_BINDING_LEFT;
 		String filename = "test_config_invalidKeyBindingLeft.properties";
 		String expectedInvalidValue = "1";
 
@@ -454,15 +458,15 @@ public class ConfigurationTest implements UnitTest
 	}
 
 	/**
-	 * Tests that a {@link ConfigurationValueException} is thrown when {@link ConfigurationKey#KEY_BINDING_RIGHT} is configured with an invalid value
+	 * Tests that a {@link GameProcessConfigurationValueException} is thrown when {@link GameProcessConfigurationKey#KEY_BINDING_RIGHT} is configured with an invalid value
 	 *
-	 * @throws ConfigurationValueException
+	 * @throws GameProcessConfigurationValueException
 	 *             Expected
 	 */
-	@Test(expected = ConfigurationValueException.class)
-	public void test_invalidKeyBindingRight() throws ConfigurationValueException
+	@Test(expected = GameProcessConfigurationValueException.class)
+	public void test_invalidKeyBindingRight() throws GameProcessConfigurationValueException
 	{
-		ConfigurationKey key = ConfigurationKey.KEY_BINDING_RIGHT;
+		GameProcessConfigurationKey key = GameProcessConfigurationKey.KEY_BINDING_RIGHT;
 		String filename = "test_config_invalidKeyBindingRight.properties";
 		String expectedInvalidValue = "1";
 
@@ -470,15 +474,15 @@ public class ConfigurationTest implements UnitTest
 	}
 
 	/**
-	 * Tests that a {@link ConfigurationValueException} is thrown when {@link ConfigurationKey#KEY_BINDING_SPRINT} is configured with an invalid value
+	 * Tests that a {@link GameProcessConfigurationValueException} is thrown when {@link GameProcessConfigurationKey#KEY_BINDING_SPRINT} is configured with an invalid value
 	 *
-	 * @throws ConfigurationValueException
+	 * @throws GameProcessConfigurationValueException
 	 *             Expected
 	 */
-	@Test(expected = ConfigurationValueException.class)
-	public void test_invalidKeyBindingSprint() throws ConfigurationValueException
+	@Test(expected = GameProcessConfigurationValueException.class)
+	public void test_invalidKeyBindingSprint() throws GameProcessConfigurationValueException
 	{
-		ConfigurationKey key = ConfigurationKey.KEY_BINDING_SPRINT;
+		GameProcessConfigurationKey key = GameProcessConfigurationKey.KEY_BINDING_SPRINT;
 		String filename = "test_config_invalidKeyBindingSprint.properties";
 		String expectedInvalidValue = "1";
 
@@ -486,15 +490,15 @@ public class ConfigurationTest implements UnitTest
 	}
 
 	/**
-	 * Tests that a {@link ConfigurationValueException} is thrown when {@link ConfigurationKey#SPAWN_X} is configured with an invalid value
+	 * Tests that a {@link GameProcessConfigurationValueException} is thrown when {@link GameProcessConfigurationKey#SPAWN_X} is configured with an invalid value
 	 *
-	 * @throws ConfigurationValueException
+	 * @throws GameProcessConfigurationValueException
 	 *             Expected
 	 */
-	@Test(expected = ConfigurationValueException.class)
-	public void test_invalidSpawnX() throws ConfigurationValueException
+	@Test(expected = GameProcessConfigurationValueException.class)
+	public void test_invalidSpawnX() throws GameProcessConfigurationValueException
 	{
-		ConfigurationKey key = ConfigurationKey.SPAWN_X;
+		GameProcessConfigurationKey key = GameProcessConfigurationKey.SPAWN_X;
 		String filename = "test_config_invalidSpawnX.properties";
 		String expectedInvalidValue = "j";
 
@@ -502,15 +506,15 @@ public class ConfigurationTest implements UnitTest
 	}
 
 	/**
-	 * Tests that a {@link ConfigurationValueException} is thrown when {@link ConfigurationKey#SPAWN_Y} is configured with an invalid value
+	 * Tests that a {@link GameProcessConfigurationValueException} is thrown when {@link GameProcessConfigurationKey#SPAWN_Y} is configured with an invalid value
 	 *
-	 * @throws ConfigurationValueException
+	 * @throws GameProcessConfigurationValueException
 	 *             Expected
 	 */
-	@Test(expected = ConfigurationValueException.class)
-	public void test_invalidSpawnY() throws ConfigurationValueException
+	@Test(expected = GameProcessConfigurationValueException.class)
+	public void test_invalidSpawnY() throws GameProcessConfigurationValueException
 	{
-		ConfigurationKey key = ConfigurationKey.SPAWN_Y;
+		GameProcessConfigurationKey key = GameProcessConfigurationKey.SPAWN_Y;
 		String filename = "test_config_invalidSpawnY.properties";
 		String expectedInvalidValue = "j";
 
@@ -526,14 +530,14 @@ public class ConfigurationTest implements UnitTest
 	 *            The name of the *.properties file to use for this test
 	 * @param expectedInvalidValue
 	 *            The invalid value used in the *.properties file
-	 * @throws ConfigurationValueException
+	 * @throws GameProcessConfigurationValueException
 	 *             Expected
 	 * @throws NullPointerException
 	 *             Unexpected
-	 * @throws ConfigurationKeyException
+	 * @throws GameProcessConfigurationKeyException
 	 *             Unexpected
 	 */
-	private void runExpectedInvalidValueExceptionTest(ConfigurationKey expectedKey, String filename, String expectedInvalidValue) throws ConfigurationValueException
+	private void runExpectedInvalidValueExceptionTest(GameProcessConfigurationKey expectedKey, String filename, String expectedInvalidValue) throws GameProcessConfigurationValueException
 	{
 		Path path;
 
@@ -550,11 +554,11 @@ public class ConfigurationTest implements UnitTest
 
 		try
 		{
-			new Configuration(path);
+			new GameProcessConfiguration(path);
 		}
-		catch(ConfigurationValueException e)
+		catch(GameProcessConfigurationValueException e)
 		{
-			String expectedExceptionMessage = Configuration.INVALID_VALUE_MESSAGE + "[" + expectedKey.getKey() + "=" + expectedInvalidValue + "]";
+			String expectedExceptionMessage = GameProcessConfiguration.INVALID_VALUE_MESSAGE + "[" + expectedKey.getKey() + "=" + expectedInvalidValue + "]";
 			String actualExceptionMessage = e.getMessage();
 			if(expectedExceptionMessage.equals(actualExceptionMessage))
 			{
@@ -567,7 +571,7 @@ public class ConfigurationTest implements UnitTest
 						+ "\" configuration property. But other values were unexpectedly invalid -- " + e.getMessage());
 			}
 		}
-		catch(IOException | NullPointerException | ConfigurationKeyException e)
+		catch(IOException | NullPointerException | GameProcessConfigurationKeyException e)
 		{
 			e.printStackTrace();
 			fail(e.getMessage());

@@ -4,45 +4,46 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import com.seashell.rpg.UnitTest;
+import com.seashell.rpg.process.GameProcessConfigurationException;
 
 /**
- * Test class for {@link ConfigurationException}
+ * Test class for {@link GameProcessConfigurationException}
  */
 public class ConfigurationExceptionTest implements UnitTest
 {
 	/**
 	 * Tests that a {@link ConfigurationException(String)} can be constructed and thrown
 	 *
-	 * @throws ConfigurationException
+	 * @throws GameProcessConfigurationException
 	 *             Expected
 	 */
-	@Test(expected = ConfigurationException.class)
-	public void test_exceptionWithMessageOnly() throws ConfigurationException
+	@Test(expected = GameProcessConfigurationException.class)
+	public void test_exceptionWithMessageOnly() throws GameProcessConfigurationException
 	{
-		throw new ConfigurationException("message");
+		throw new GameProcessConfigurationException("message");
 	}
 
 	/**
 	 * Tests that a {@link ConfigurationException(Throwable)} can be constructed and thrown
 	 *
-	 * @throws ConfigurationException
+	 * @throws GameProcessConfigurationException
 	 *             Expected
 	 */
-	@Test(expected = ConfigurationException.class)
-	public void test_exceptionWithCauseOnly() throws ConfigurationException
+	@Test(expected = GameProcessConfigurationException.class)
+	public void test_exceptionWithCauseOnly() throws GameProcessConfigurationException
 	{
-		throw new ConfigurationException(Mockito.mock(Throwable.class));
+		throw new GameProcessConfigurationException(Mockito.mock(Throwable.class));
 	}
 
 	/**
 	 * Tests that a {@link ConfigurationException(String, Throwable)} can be constructed and thrown
 	 *
-	 * @throws ConfigurationException
+	 * @throws GameProcessConfigurationException
 	 *             Expected
 	 */
-	@Test(expected = ConfigurationException.class)
-	public void test_exceptionWithMessageAndCause() throws ConfigurationException
+	@Test(expected = GameProcessConfigurationException.class)
+	public void test_exceptionWithMessageAndCause() throws GameProcessConfigurationException
 	{
-		throw new ConfigurationException("message", Mockito.mock(Throwable.class));
+		throw new GameProcessConfigurationException("message", Mockito.mock(Throwable.class));
 	}
 }

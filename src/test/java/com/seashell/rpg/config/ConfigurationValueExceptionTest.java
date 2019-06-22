@@ -4,45 +4,46 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import com.seashell.rpg.UnitTest;
+import com.seashell.rpg.process.GameProcessConfigurationValueException;
 
 /**
- * Test class for {@link ConfigurationValueException}
+ * Test class for {@link GameProcessConfigurationValueException}
  */
 public class ConfigurationValueExceptionTest implements UnitTest
 {
 	/**
 	 * Tests that a {@link ConfigurationValueException(String)} can be constructed and thrown
 	 *
-	 * @throws ConfigurationValueException
+	 * @throws GameProcessConfigurationValueException
 	 *             Expected
 	 */
-	@Test(expected = ConfigurationValueException.class)
-	public void test_exceptionWithMessageOnly() throws ConfigurationValueException
+	@Test(expected = GameProcessConfigurationValueException.class)
+	public void test_exceptionWithMessageOnly() throws GameProcessConfigurationValueException
 	{
-		throw new ConfigurationValueException("message");
+		throw new GameProcessConfigurationValueException("message");
 	}
 
 	/**
 	 * Tests that a {@link ConfigurationValueException(Throwable)} can be constructed and thrown
 	 *
-	 * @throws ConfigurationValueException
+	 * @throws GameProcessConfigurationValueException
 	 *             Expected
 	 */
-	@Test(expected = ConfigurationValueException.class)
-	public void test_exceptionWithCauseOnly() throws ConfigurationValueException
+	@Test(expected = GameProcessConfigurationValueException.class)
+	public void test_exceptionWithCauseOnly() throws GameProcessConfigurationValueException
 	{
-		throw new ConfigurationValueException(Mockito.mock(Throwable.class));
+		throw new GameProcessConfigurationValueException(Mockito.mock(Throwable.class));
 	}
 
 	/**
 	 * Tests that a {@link ConfigurationValueException(String, Throwable)} can be constructed and thrown
 	 *
-	 * @throws ConfigurationValueException
+	 * @throws GameProcessConfigurationValueException
 	 *             Expected
 	 */
-	@Test(expected = ConfigurationValueException.class)
-	public void test_exceptionWithMessageAndCause() throws ConfigurationValueException
+	@Test(expected = GameProcessConfigurationValueException.class)
+	public void test_exceptionWithMessageAndCause() throws GameProcessConfigurationValueException
 	{
-		throw new ConfigurationValueException("message", Mockito.mock(Throwable.class));
+		throw new GameProcessConfigurationValueException("message", Mockito.mock(Throwable.class));
 	}
 }

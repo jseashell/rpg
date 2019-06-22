@@ -1,10 +1,10 @@
-package com.seashell.rpg.config;
+package com.seashell.rpg.process;
 
 /**
  * Checked exception to use for invalid data types in the configuration file
  */
 @SuppressWarnings("serial")
-public class ConfigurationValueException extends Exception
+public class GameProcessConfigurationValueException extends Exception
 {
 	/**
 	 * Constructor
@@ -12,7 +12,7 @@ public class ConfigurationValueException extends Exception
 	 * @param message
 	 *            A message about this exception
 	 */
-	public ConfigurationValueException(String message)
+	public GameProcessConfigurationValueException(String message)
 	{
 		super(message);
 	}
@@ -23,7 +23,7 @@ public class ConfigurationValueException extends Exception
 	 * @param cause
 	 *            The cause of this exception
 	 */
-	public ConfigurationValueException(Throwable cause)
+	public GameProcessConfigurationValueException(Throwable cause)
 	{
 		super(cause);
 	}
@@ -36,7 +36,7 @@ public class ConfigurationValueException extends Exception
 	 * @param cause
 	 *            The cause of this exception
 	 */
-	public ConfigurationValueException(String message, Throwable cause)
+	public GameProcessConfigurationValueException(String message, Throwable cause)
 	{
 		super(message, cause);
 	}

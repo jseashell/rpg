@@ -4,45 +4,46 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import com.seashell.rpg.UnitTest;
+import com.seashell.rpg.process.GameProcessConfigurationKeyException;
 
 /**
- * Test class for {@link ConfigurationKeyException}
+ * Test class for {@link GameProcessConfigurationKeyException}
  */
 public class ConfigurationKeyExceptionTest implements UnitTest
 {
 	/**
 	 * Tests that a {@link ConfigurationKeyException(String)} can be constructed and thrown
 	 *
-	 * @throws ConfigurationKeyException
+	 * @throws GameProcessConfigurationKeyException
 	 *             Expected
 	 */
-	@Test(expected = ConfigurationKeyException.class)
-	public void test_exceptionWithMessageOnly() throws ConfigurationKeyException
+	@Test(expected = GameProcessConfigurationKeyException.class)
+	public void test_exceptionWithMessageOnly() throws GameProcessConfigurationKeyException
 	{
-		throw new ConfigurationKeyException("message");
+		throw new GameProcessConfigurationKeyException("message");
 	}
 
 	/**
 	 * Tests that a {@link ConfigurationKeyException(Throwable)} can be constructed and thrown
 	 *
-	 * @throws ConfigurationKeyException
+	 * @throws GameProcessConfigurationKeyException
 	 *             Expected
 	 */
-	@Test(expected = ConfigurationKeyException.class)
-	public void test_exceptionWithCauseOnly() throws ConfigurationKeyException
+	@Test(expected = GameProcessConfigurationKeyException.class)
+	public void test_exceptionWithCauseOnly() throws GameProcessConfigurationKeyException
 	{
-		throw new ConfigurationKeyException(Mockito.mock(Throwable.class));
+		throw new GameProcessConfigurationKeyException(Mockito.mock(Throwable.class));
 	}
 
 	/**
 	 * Tests that a {@link ConfigurationKeyException(String, Throwable)} can be constructed and thrown
 	 *
-	 * @throws ConfigurationKeyException
+	 * @throws GameProcessConfigurationKeyException
 	 *             Expected
 	 */
-	@Test(expected = ConfigurationKeyException.class)
-	public void test_exceptionWithMessageAndCause() throws ConfigurationKeyException
+	@Test(expected = GameProcessConfigurationKeyException.class)
+	public void test_exceptionWithMessageAndCause() throws GameProcessConfigurationKeyException
 	{
-		throw new ConfigurationKeyException("message", Mockito.mock(Throwable.class));
+		throw new GameProcessConfigurationKeyException("message", Mockito.mock(Throwable.class));
 	}
 }

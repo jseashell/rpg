@@ -1,5 +1,8 @@
 package com.seashell.rpg;
 
+import com.seashell.rpg.process.GameProcessConfiguration;
+import com.seashell.rpg.process.GameProcess;
+
 /**
  * Main entry point for the game
  */
@@ -15,7 +18,9 @@ public class Launcher
 	{
 		try
 		{
-			GameProcess gameProcess = new GameProcess();
+			GameProcessConfiguration configuration = GameProcessConfiguration.newInstance("config.properties");
+
+			GameProcess gameProcess = new GameProcess(configuration);
 			gameProcess.start();
 		}
 		catch(Exception e)
@@ -23,7 +28,6 @@ public class Launcher
 			// TODO #2 Add logging mechanism
 			System.err.println("Failed to start game process.");
 			e.printStackTrace();
-			System.exit(0);
 		}
 	}
 }
