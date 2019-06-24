@@ -8,7 +8,7 @@ import com.seashell.rpg.entity.AbstractEntity;
 /**
  * A {@link Entity} that all dynamic entities should extend. A dynamic entity is an entity that lacks any sort of movement component
  */
-// TODO Implement a simple stationary entity
+// TODO #6 Implement a simple stationary entity
 public abstract class AbstractStationaryEntity extends AbstractEntity
 {
 	/**

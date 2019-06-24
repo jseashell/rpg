@@ -55,7 +55,7 @@ public class WorldScene extends AbstractScene
 
 		System.out.println("Spawning player at [" + world_.getSpawnX() + "," + world_.getSpawnY() + "].");
 
-		// TODO Make the open world scene smart enough to only spawn entities onto tiles that make sense
+		// TODO #11 Make the open world scene smart enough to only spawn entities onto tiles that make sense
 		player_ = new PlayerCharacter(world_, camera_, gameProcess.getKeyManager(), world_.getSpawnX(), world_.getSpawnY(), 64, 64);
 		car_ = new Car(camera_, world_.getHeight(), 1344, 1536, 128, 128);
 	}
@@ -74,7 +74,7 @@ public class WorldScene extends AbstractScene
 	@Override
 	public void render(Graphics2D g2d)
 	{
-		// TODO Implement a render order field for objects implementing the Render API
+		// TODO #13 Implement a render order field for objects implementing the Render API
 		world_.render(g2d);
 		player_.render(g2d);
 		car_.render(g2d);

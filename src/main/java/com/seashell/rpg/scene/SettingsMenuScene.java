@@ -5,7 +5,7 @@ import java.awt.Graphics2D;
 /**
  * A {@link Scene} for the settings menu screen
  */
-// TODO Implement a settings menu
+// TODO #17 Implement a settings menu
 public class SettingsMenuScene extends AbstractScene
 {
 	@Override

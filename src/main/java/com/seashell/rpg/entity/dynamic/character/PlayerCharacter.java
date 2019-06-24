@@ -53,7 +53,7 @@ public final class PlayerCharacter extends AbstractCharacter
 
 		world_ = world;
 		keyManager_ = keyManager;
-		hitbox_ = new Rectangle(22, 0, 17, 64); // TODO These coordinates are very specific to the PC texture and should be loaded in a more generic way
+		hitbox_ = new Rectangle(22, 0, 17, 64); // TODO #12 Implement a strategy for defining a hitbox
 	}
 
 	@Override
@@ -65,7 +65,7 @@ public final class PlayerCharacter extends AbstractCharacter
 
 	private void move()
 	{
-		// TODO Keep user from escaping the edges of the map. When this happens, the player gets stuck and cannot move back inside the map, forcing a game restart.
+		// TODO #10 Keep player character from escaping the edges of the map. When this happens, the player gets stuck and cannot move back inside the map, forcing a game restart.
 
 		moveX();
 		moveY();
@@ -166,17 +166,16 @@ public final class PlayerCharacter extends AbstractCharacter
 	/**
 	 * Updates the {@link #xMove_} and {@link #yMove_} variables using the {@link #getKeyManager()}
 	 */
+	// TODO #9 Improve character movement
 	private void readMovementFromKeyManager()
 	{
-		// TODO Make character diagonal movement slightly slower so that it "appears" to match horizontal/vertical movement
-		// Hint implement checks for if(keyManager_.isUp() && keyManager_.isLeft()) etc
 
 		xMove_ = 0;
 		yMove_ = 0;
 
 		if(keyManager_.isSprint())
 		{
-			speed_ = 8.0f;
+			speed_ = 6.0f;
 		}
 		else
 		{

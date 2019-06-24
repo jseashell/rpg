@@ -28,7 +28,7 @@ public class KeyManager implements KeyListener
 
 	public void tick()
 	{
-		// TODO Load key bindings from config.properties. Mapping text representations to KeyEvent seems like it is not an option after a short amount of research
+		// TODO #5 Load key bindings from config.properties. Mapping text representations to KeyEvent seems like it is not an option after a short amount of research
 		isUp_ = keyIndex[KeyEvent.VK_W];
 		isDown_ = keyIndex[KeyEvent.VK_S];
 		isLeft_ = keyIndex[KeyEvent.VK_A];

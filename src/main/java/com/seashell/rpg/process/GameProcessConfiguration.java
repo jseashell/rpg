@@ -109,7 +109,7 @@ public final class GameProcessConfiguration
 							// Expected
 						}
 
-						// TODO Add support for floats and booleans to the game configuration
+						// TODO #7 Add support for floats and booleans to the game configuration
 						// try
 						// {
 						// Float.parseFloat(property);
@@ -125,7 +125,6 @@ public final class GameProcessConfiguration
 					}
 				}
 
-				// TODO Add support for floats and booleans to the game configuration
 				// if(key.getType() == Float.class)
 				// {
 				// @SuppressWarnings("unused")

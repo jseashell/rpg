@@ -149,7 +149,7 @@ public final class WorldConfiguration
 		 */
 		public WorldTileIndex(WorldConfiguration worldConfig)
 		{
-			// TODO This is not maintainable as new tiles get added in. Build the index using annotations/reflection
+			// TODO #14 This is not maintainable as new tiles get added in. Build the index using annotations/reflection
 			tileIndex_ = new HashMap<>();
 			tileIndex_.put(0, new GrassTile(0));
 			tileIndex_.put(1, new WallTile(1));

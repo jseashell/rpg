@@ -5,7 +5,7 @@ import java.awt.Graphics2D;
 /**
  * A {@link Scene} for the main menu screen
  */
-// TODO Implement a main menu
+// TODO #16 Implement a main menu
 public class MainMenuScene extends AbstractScene
 {
 	@Override

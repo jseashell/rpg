@@ -9,7 +9,7 @@ import com.seashell.rpg.gui.GuiCamera;
 /**
  * A {@link AbstractCharacter} that cannot be controlled by a player
  */
-// TODO Implement a simple NPC
+// TODO #8 Implement a simple NPC
 public class NonPlayerCharacter extends AbstractCharacter
 {
 	/**

@@ -131,7 +131,7 @@ public final class GameProcess implements Runnable
 				{
 					String fps = ticks + " fps";
 
-					// TODO Add fps display on screen
+					// TODO #15 Add fps display on screen
 					// g2d.setFont(new Font("Serif", Font.PLAIN, 96));
 					// g2d.drawString(fps, Gui.WIDTH, Gui.HEIGHT + g2d.getFontMetrics().getHeight());
 					System.out.println(fps);
