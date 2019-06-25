@@ -9,6 +9,8 @@ import com.seashell.rpg.asset.Assets;
 import com.seashell.rpg.gui.Gui;
 import com.seashell.rpg.gui.KeyManager;
 import com.seashell.rpg.scene.Scene;
+import com.seashell.rpg.scene.menu.main.MainMenuScene;
+import com.seashell.rpg.scene.menu.settings.SettingsMenuScene;
 import com.seashell.rpg.scene.world.WorldScene;
 import com.seashell.rpg.scene.world.config.WorldConfigurationBuilderException;
 
@@ -54,6 +56,9 @@ public final class GameProcess implements Runnable
 	 */
 	private Scene scene_;
 
+	private GameProcessState previousState_;
+	private GameProcessState state_;
+
 	/**
 	 * Constructor
 	 *
@@ -75,6 +80,7 @@ public final class GameProcess implements Runnable
 
 		try
 		{
+			// Initialize assets
 			Assets.init();
 		}
 		catch(IOException e)
@@ -83,23 +89,16 @@ public final class GameProcess implements Runnable
 			throw e;
 		}
 
+		// Initialize the gui
 		gui_ = new Gui(configuration_.getResolutionWidth(), configuration_.getResolutionHeight());
+
+		// Set the states to main menu
+		state_ = GameProcessState.MAIN_MENU;
 	}
 
 	@Override
 	public void run()
 	{
-		try
-		{
-			scene_ = new WorldScene(this);
-		}
-		catch(WorldConfigurationBuilderException | IOException e)
-		{
-			System.err.println("Failed to initialize world scene.");
-			e.printStackTrace();
-			System.exit(0);
-		}
-
 		double timePerTick = NANO_ / desiredFps_;
 		double delta = 0;
 
@@ -111,6 +110,39 @@ public final class GameProcess implements Runnable
 		// This loop should run for the lifecycle of execution. Once this loop exits, the application should terminate
 		while(isRunning_)
 		{
+			if(previousState_ != state_)
+			{
+				System.out.println("Entering new state: " + state_);
+
+				// Change the scene based on the state
+				switch(state_)
+				{
+				case MAIN_MENU:
+					scene_ = new MainMenuScene(this);
+					break;
+
+				case WORLD:
+					try
+					{
+						scene_ = new WorldScene(this);
+					}
+					catch(WorldConfigurationBuilderException | IOException e)
+					{
+						System.err.println("Failed to initialize world scene.");
+						e.printStackTrace();
+						System.exit(0);
+					}
+					break;
+
+				case SETTINGS_MENU:
+					scene_ = new SettingsMenuScene();
+					break;
+				}
+
+				// Cache the state
+				previousState_ = state_;
+			}
+
 			now = System.nanoTime();
 			delta += (now - lastTime) / timePerTick;
 
@@ -140,6 +172,7 @@ public final class GameProcess implements Runnable
 					fpsDisplayTimer = 0;
 				}
 			}
+
 		}
 
 		stop();
@@ -155,6 +188,11 @@ public final class GameProcess implements Runnable
 		if(scene_ != null)
 		{
 			scene_.tick();
+		}
+
+		if(getKeyManager().isEsc())
+		{
+			state_ = GameProcessState.MAIN_MENU;
 		}
 	}
 
@@ -238,5 +276,11 @@ public final class GameProcess implements Runnable
 	public boolean isRunning()
 	{
 		return isRunning_;
+	}
+
+	// TODO This sucks
+	public void setState(GameProcessState state)
+	{
+		state_ = state;
 	}
 }

@@ -1,12 +1,15 @@
-package com.seashell.rpg.scene;
+package com.seashell.rpg.scene.menu.settings;
 
 import java.awt.Graphics2D;
+
+import com.seashell.rpg.scene.Scene;
+import com.seashell.rpg.scene.menu.AbstractMenuScene;
 
 /**
  * A {@link Scene} for the settings menu screen
  */
 // TODO #17 Implement a settings menu
-public class SettingsMenuScene extends AbstractScene
+public class SettingsMenuScene extends AbstractMenuScene
 {
 	@Override
 	public void tick()

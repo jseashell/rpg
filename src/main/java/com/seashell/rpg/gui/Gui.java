@@ -65,11 +65,6 @@ public class Gui
 		frame_.pack();
 	}
 
-	private void init()
-	{
-
-	}
-
 	/**
 	 * @return The {@link GuiCamera} for the gui
 	 */

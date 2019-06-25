@@ -3,6 +3,8 @@ package com.seashell.rpg.asset;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
+import com.seashell.rpg.Resources;
+
 /**
  * Utility class for accessing game assets
  */
@@ -48,11 +50,11 @@ public class Assets
 	 */
 	public static void init() throws IOException
 	{
-		player_ = new SpriteSheet(TextureLoader.load("texture_player.png"));
-		grass_ = new SpriteSheet(TextureLoader.load("texture_grass.png"));
-		wall_ = new SpriteSheet(TextureLoader.load("texture_wall.png"));
-		road_ = new SpriteSheet(TextureLoader.load("texture_road.png"));
-		car_ = new SpriteSheet(TextureLoader.load("texture_car.png"));
+		player_ = new SpriteSheet(Resources.loadTexture("texture_player.png"));
+		grass_ = new SpriteSheet(Resources.loadTexture("texture_grass.png"));
+		wall_ = new SpriteSheet(Resources.loadTexture("texture_wall.png"));
+		road_ = new SpriteSheet(Resources.loadTexture("texture_road.png"));
+		car_ = new SpriteSheet(Resources.loadTexture("texture_car.png"));
 	}
 
 	/**

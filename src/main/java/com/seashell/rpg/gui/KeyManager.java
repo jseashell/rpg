@@ -14,9 +14,9 @@ public class KeyManager implements KeyListener
 	private boolean[] keyIndex;
 
 	/**
-	 * Flags indicating wether or not the key is pressed
+	 * Flags indicating whether or not the key is pressed
 	 */
-	private boolean isUp_, isDown_, isLeft_, isRight_, isSprint_;
+	private boolean isEsc_, isUp_, isDown_, isLeft_, isRight_, isSprint_;
 
 	/**
 	 * Constructor
@@ -29,11 +29,20 @@ public class KeyManager implements KeyListener
 	public void tick()
 	{
 		// TODO #5 Load key bindings from config.properties. Mapping text representations to KeyEvent seems like it is not an option after a short amount of research
+		isEsc_ = keyIndex[KeyEvent.VK_ESCAPE];
 		isUp_ = keyIndex[KeyEvent.VK_W];
 		isDown_ = keyIndex[KeyEvent.VK_S];
 		isLeft_ = keyIndex[KeyEvent.VK_A];
 		isRight_ = keyIndex[KeyEvent.VK_D];
 		isSprint_ = keyIndex[KeyEvent.VK_SHIFT];
+	}
+
+	/**
+	 * @return Flag indicating if escape is currently active ({@code true})
+	 */
+	public boolean isEsc()
+	{
+		return isEsc_;
 	}
 
 	/**
