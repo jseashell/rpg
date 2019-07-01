@@ -62,7 +62,7 @@ public class MainMenuMouseHandler extends MouseAdapter implements InputHandler
 			// Reset the selected button
 			selectedButton_ = Optional.empty();
 
-			return Optional.ofNullable(selectedButton_.get().getState());
+			return Optional.ofNullable(selectedButton_.get().getDestinationState());
 		}
 
 		return Optional.empty();

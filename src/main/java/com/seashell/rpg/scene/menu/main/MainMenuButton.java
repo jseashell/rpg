@@ -7,19 +7,38 @@ import java.util.Objects;
 import com.seashell.rpg.process.GameProcessState;
 import com.seashell.rpg.scene.menu.AbstractMenuButton;
 
+/**
+ * A button for the main menu
+ */
 public class MainMenuButton extends AbstractMenuButton
 {
-	private final GameProcessState state_;
+	/**
+	 * Value for {@link #getDestinationState()}
+	 */
+	private final GameProcessState destinationState_;
 
-	public MainMenuButton(GameProcessState state, BufferedImage img, Shape shape)
+	/**
+	 * Constructor
+	 *
+	 * @param destinationState
+	 *            Value for {@link #getDestinationState()}
+	 * @param img
+	 *            The image for the button
+	 * @param bounds
+	 *            The bounds for the button
+	 */
+	public MainMenuButton(GameProcessState destinationState, BufferedImage img, Shape bounds)
 	{
-		super(img, shape);
-		state_ = Objects.requireNonNull(state);
+		super(img, bounds);
+		destinationState_ = Objects.requireNonNull(destinationState);
 	}
 
-	public GameProcessState getState()
+	/**
+	 * @return The game process state to go to when this button is clicked
+	 */
+	public GameProcessState getDestinationState()
 	{
-		return state_;
+		return destinationState_;
 	}
 
 }
