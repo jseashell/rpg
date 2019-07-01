@@ -1,7 +1,7 @@
 package com.seashell.rpg.scene;
 
 /**
- * Abstract parent for all {@link Scene} implementations
+ * Abstract parent for all scene implementations
  */
 public abstract class AbstractScene implements Scene
 {

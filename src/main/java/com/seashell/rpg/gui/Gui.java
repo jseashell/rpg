@@ -42,11 +42,12 @@ public class Gui
 	{
 		camera_ = new GuiCamera(resolutionWidth, resolutionHeight);
 
-		keyManager_ = new KeyManager();
+		keyManager_ = new KeyManager(); // TODO Class out KeyManager. Move this specific KeyManager into WorldScene
 
 		final Dimension size = new Dimension(resolutionWidth, resolutionHeight);
 
 		frame_ = new JFrame("RPG"); // TODO Replace this with the name of the game
+
 		frame_.setSize(size); // must be called before location relative to null
 		frame_.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame_.setResizable(false);

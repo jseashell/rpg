@@ -1,4 +1,4 @@
-package com.seashell.rpg.world.tile.road;
+package com.seashell.rpg.scene.world.tile.road;
 
 import static org.junit.Assert.assertEquals;
 
@@ -9,19 +9,19 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import com.seashell.rpg.asset.Assets;
-import com.seashell.rpg.scene.world.tile.road.RoadYellowSolidTile;
+import com.seashell.rpg.scene.world.tile.road.RoadSidewalkLeftTile;
 
 /**
- * Test class {@link RoadYellowSolidTile}
+ * Test class {@link RoadSidewalkLeftTile}
  */
-public class RoadYellowSolidTileTest extends AbstractRoadTileTest
+public class RoadSidewalkLeftTileTest extends AbstractRoadTileTest
 {
 	@Test
 	@Override
 	public void test_getId()
 	{
 		int id = 0;
-		RoadYellowSolidTile r = new RoadYellowSolidTile(id);
+		RoadSidewalkLeftTile r = new RoadSidewalkLeftTile(id);
 
 		int actualId = r.getId();
 
@@ -32,9 +32,9 @@ public class RoadYellowSolidTileTest extends AbstractRoadTileTest
 	@Override
 	public void test_getTexture()
 	{
-		BufferedImage expected = Assets.getRoadYellowSolidVertical();
+		BufferedImage expected = Assets.getRoadSidewalkLeft();
 
-		RoadYellowSolidTile r = new RoadYellowSolidTile(0);
+		RoadSidewalkLeftTile r = new RoadSidewalkLeftTile(0);
 		BufferedImage actual = r.getTexture();
 
 		runTextureTest(expected, actual);
@@ -44,19 +44,19 @@ public class RoadYellowSolidTileTest extends AbstractRoadTileTest
 	@Override
 	public void test_isSolid()
 	{
-		RoadYellowSolidTile r = new RoadYellowSolidTile(0);
+		RoadSidewalkLeftTile r = new RoadSidewalkLeftTile(0);
 
 		boolean expected = false;
 		boolean actual = r.isSolid();
 
-		assertEquals("A RoadYellowSolidTile should not be solid.", expected, actual);
+		assertEquals("A RoadSidewalkLeftTile should not be solid.", expected, actual);
 	}
 
 	@Test
 	@Override
 	public void test_tick()
 	{
-		RoadYellowSolidTile r = new RoadYellowSolidTile(0);
+		RoadSidewalkLeftTile r = new RoadSidewalkLeftTile(0);
 		r.tick();
 	}
 
@@ -66,7 +66,7 @@ public class RoadYellowSolidTileTest extends AbstractRoadTileTest
 	{
 		Graphics2D g2d = Mockito.mock(Graphics2D.class);
 
-		RoadYellowSolidTile r = new RoadYellowSolidTile(0);
+		RoadSidewalkLeftTile r = new RoadSidewalkLeftTile(0);
 		r.render(g2d, 0, 0);
 	}
 
@@ -74,7 +74,7 @@ public class RoadYellowSolidTileTest extends AbstractRoadTileTest
 	@Override
 	public void test_render_nullGraphics2D()
 	{
-		RoadYellowSolidTile r = new RoadYellowSolidTile(0);
+		RoadSidewalkLeftTile r = new RoadSidewalkLeftTile(0);
 		r.render(null, 0, 0);
 	}
 }

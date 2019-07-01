@@ -1,4 +1,4 @@
-package com.seashell.rpg.world.tile.road;
+package com.seashell.rpg.scene.world.tile.road;
 
 import static org.junit.Assert.assertEquals;
 
@@ -9,19 +9,19 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import com.seashell.rpg.asset.Assets;
-import com.seashell.rpg.scene.world.tile.road.RoadSidewalkLeftTile;
+import com.seashell.rpg.scene.world.tile.road.SidewalkBaseTile;
 
 /**
- * Test class {@link RoadSidewalkLeftTile}
+ * Test class {@link SidewalkBaseTile}
  */
-public class RoadSidewalkLeftTileTest extends AbstractRoadTileTest
+public class SidewalkBaseTileTest extends AbstractRoadTileTest
 {
 	@Test
 	@Override
 	public void test_getId()
 	{
 		int id = 0;
-		RoadSidewalkLeftTile r = new RoadSidewalkLeftTile(id);
+		SidewalkBaseTile r = new SidewalkBaseTile(id);
 
 		int actualId = r.getId();
 
@@ -32,9 +32,9 @@ public class RoadSidewalkLeftTileTest extends AbstractRoadTileTest
 	@Override
 	public void test_getTexture()
 	{
-		BufferedImage expected = Assets.getRoadSidewalkLeft();
+		BufferedImage expected = Assets.getSidewalkBase();
 
-		RoadSidewalkLeftTile r = new RoadSidewalkLeftTile(0);
+		SidewalkBaseTile r = new SidewalkBaseTile(0);
 		BufferedImage actual = r.getTexture();
 
 		runTextureTest(expected, actual);
@@ -44,19 +44,19 @@ public class RoadSidewalkLeftTileTest extends AbstractRoadTileTest
 	@Override
 	public void test_isSolid()
 	{
-		RoadSidewalkLeftTile r = new RoadSidewalkLeftTile(0);
+		SidewalkBaseTile r = new SidewalkBaseTile(0);
 
 		boolean expected = false;
 		boolean actual = r.isSolid();
 
-		assertEquals("A RoadSidewalkLeftTile should not be solid.", expected, actual);
+		assertEquals("A SidewalkBaseTile should not be solid.", expected, actual);
 	}
 
 	@Test
 	@Override
 	public void test_tick()
 	{
-		RoadSidewalkLeftTile r = new RoadSidewalkLeftTile(0);
+		SidewalkBaseTile r = new SidewalkBaseTile(0);
 		r.tick();
 	}
 
@@ -66,7 +66,7 @@ public class RoadSidewalkLeftTileTest extends AbstractRoadTileTest
 	{
 		Graphics2D g2d = Mockito.mock(Graphics2D.class);
 
-		RoadSidewalkLeftTile r = new RoadSidewalkLeftTile(0);
+		SidewalkBaseTile r = new SidewalkBaseTile(0);
 		r.render(g2d, 0, 0);
 	}
 
@@ -74,7 +74,7 @@ public class RoadSidewalkLeftTileTest extends AbstractRoadTileTest
 	@Override
 	public void test_render_nullGraphics2D()
 	{
-		RoadSidewalkLeftTile r = new RoadSidewalkLeftTile(0);
+		SidewalkBaseTile r = new SidewalkBaseTile(0);
 		r.render(null, 0, 0);
 	}
 }

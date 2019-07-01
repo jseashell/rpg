@@ -1,4 +1,4 @@
-package com.seashell.rpg.world.tile.structure;
+package com.seashell.rpg.scene.world.tile.structure;
 
 import static org.junit.Assert.assertEquals;
 
@@ -9,8 +9,8 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import com.seashell.rpg.asset.Assets;
+import com.seashell.rpg.scene.world.tile.AbstractTileTest;
 import com.seashell.rpg.scene.world.tile.structure.WallTile;
-import com.seashell.rpg.world.tile.AbstractTileTest;
 
 /**
  * Test class for {@link WallTile}

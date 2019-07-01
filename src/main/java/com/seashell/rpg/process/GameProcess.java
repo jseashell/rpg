@@ -56,7 +56,6 @@ public final class GameProcess implements Runnable
 	 */
 	private Scene scene_;
 
-	private GameProcessState previousState_;
 	private GameProcessState state_;
 
 	/**
@@ -107,10 +106,12 @@ public final class GameProcess implements Runnable
 		int ticks = 0;
 		long fpsDisplayTimer = 0;
 
+		GameProcessState previousState = null; // Used to control logging
+
 		// This loop should run for the lifecycle of execution. Once this loop exits, the application should terminate
 		while(isRunning_)
 		{
-			if(previousState_ != state_)
+			if(state_ != previousState)
 			{
 				System.out.println("Entering new state: " + state_);
 
@@ -137,10 +138,13 @@ public final class GameProcess implements Runnable
 				case SETTINGS_MENU:
 					scene_ = new SettingsMenuScene();
 					break;
+
+				case EXIT:
+					isRunning_ = false;
 				}
 
 				// Cache the state
-				previousState_ = state_;
+				previousState = state_;
 			}
 
 			now = System.nanoTime();
@@ -172,7 +176,6 @@ public final class GameProcess implements Runnable
 					fpsDisplayTimer = 0;
 				}
 			}
-
 		}
 
 		stop();
@@ -282,5 +285,17 @@ public final class GameProcess implements Runnable
 	public void setState(GameProcessState state)
 	{
 		state_ = state;
+	}
+
+	// TODO This sucks
+	public GameProcessState getState()
+	{
+		return state_;
+	}
+
+	// TODO This sucks
+	public Scene getScene()
+	{
+		return scene_;
 	}
 }

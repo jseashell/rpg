@@ -1,4 +1,4 @@
-package com.seashell.rpg.world.tile;
+package com.seashell.rpg.scene.world.tile;
 
 import java.awt.Graphics2D;
 

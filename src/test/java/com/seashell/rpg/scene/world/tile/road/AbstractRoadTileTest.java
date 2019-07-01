@@ -1,6 +1,6 @@
-package com.seashell.rpg.world.tile.road;
+package com.seashell.rpg.scene.world.tile.road;
 
-import com.seashell.rpg.world.tile.AbstractTileTest;
+import com.seashell.rpg.scene.world.tile.AbstractTileTest;
 
 /**
  * Parent for all tile tests specific to road tiles

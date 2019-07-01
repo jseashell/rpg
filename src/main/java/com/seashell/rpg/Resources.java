@@ -18,7 +18,7 @@ public final class Resources
 	}
 
 	/**
-	 * Loads a texture file from {@code src/main/resources/textures/<filename>}
+	 * Loads a image file from {@code src/main/resources/textures/<filename>}
 	 *
 	 * @param filename
 	 *            The name of the texture file to load (with extension)
@@ -32,7 +32,7 @@ public final class Resources
 	}
 
 	/**
-	 * Loads a texture file from {@code src/main/resources/menus/<filename>}
+	 * Loads an image file from {@code src/main/resources/menus/<filename>}
 	 *
 	 * @param filename
 	 *            The name of the menu background file to load (with extension)
@@ -40,7 +40,7 @@ public final class Resources
 	 * @throws IOException
 	 *             Invalid filename
 	 */
-	public static BufferedImage loadMenuBackground(String filename) throws IOException
+	public static BufferedImage loadMenu(String filename) throws IOException
 	{
 		return ImageIO.read(Resources.class.getClassLoader().getResource("menus/" + filename));
 	}
