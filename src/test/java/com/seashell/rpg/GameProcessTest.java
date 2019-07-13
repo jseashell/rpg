@@ -3,7 +3,6 @@ package com.seashell.rpg;
 import static org.junit.Assert.fail;
 
 import java.awt.GraphicsEnvironment;
-import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.ArrayList;
@@ -88,13 +87,12 @@ public class GameProcessTest implements UnitTest
 	/**
 	 * Load tests the loading of a new game by clicking the new game button 10 times
 	 *
-	 * @throws GameProcessConfigurationException
-	 * @throws NullPointerException
-	 * @throws IOException
+	 * @throws Exception
+	 *             Any failures
 	 */
 	// TODO #1 Fix unit tests to run Swing in a headless state
 	@Ignore // @Test
-	public void loadTest_newGame() throws GameProcessConfigurationException, NullPointerException, IOException
+	public void loadTest_newGame() throws Exception
 	{
 		List<Duration> durations = new ArrayList<>();
 
@@ -115,8 +113,11 @@ public class GameProcessTest implements UnitTest
 	 *
 	 * @return Duration that it took to change game scene
 	 * @throws GameProcessConfigurationException
+	 *             See {@link GameProcess#GameProcess(GameProcessConfiguration)}
 	 * @throws NullPointerException
+	 *             See {@link GameProcess#GameProcess(GameProcessConfiguration)}
 	 * @throws IOException
+	 *             See {@link GameProcess#GameProcess(GameProcessConfiguration)}
 	 */
 	private Duration run_newGame() throws GameProcessConfigurationException, NullPointerException, IOException
 	{
@@ -132,11 +133,6 @@ public class GameProcessTest implements UnitTest
 			fail("Game process started in unexpected state for this test.");
 		}
 
-		int x = (1920 / 2) - 150;
-		int y = (1080 / 2) - 175;
-
-		MouseEvent me = new MouseEvent(gameProcess.getGui().getFrame(), MouseEvent.BUTTON1, System.currentTimeMillis(), 0, x, y, 1, false);
-
 		boolean exit = false;
 		while(!exit)
 		{
@@ -144,10 +140,10 @@ public class GameProcessTest implements UnitTest
 			if(s instanceof MainMenuScene)
 			{
 				MainMenuScene mms = (MainMenuScene) s;
-				mms.getMouseHandler().mouseClicked(me);
+				mms.startNewGameWithMouseEvent();
 			}
 
-			GameProcessState expectedEndState = GameProcessState.WORLD;
+			GameProcessState expectedEndState = GameProcessState.NEW_GAME;
 			if(expectedEndState == gameProcess.getState())
 			{
 				exit = true;
@@ -159,6 +155,7 @@ public class GameProcessTest implements UnitTest
 			}
 		}
 
+		gameProcess.stop();
 		return stopwatch.elapsed();
 	}
 }

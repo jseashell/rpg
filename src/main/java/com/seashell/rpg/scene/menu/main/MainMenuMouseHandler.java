@@ -43,9 +43,10 @@ public class MainMenuMouseHandler extends MouseAdapter implements InputHandler
 
 		for(MainMenuButton b : buttons_)
 		{
-			if(b.getShape().contains(me.getPoint()))
+			if(b.getBounds().contains(me.getPoint()))
 			{
 				selectedButton_ = Optional.of(b);
+				break;
 			}
 		}
 	}
@@ -59,9 +60,6 @@ public class MainMenuMouseHandler extends MouseAdapter implements InputHandler
 	{
 		if(selectedButton_.isPresent())
 		{
-			// Reset the selected button
-			selectedButton_ = Optional.empty();
-
 			return Optional.ofNullable(selectedButton_.get().getDestinationState());
 		}
 

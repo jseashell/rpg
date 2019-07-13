@@ -52,7 +52,6 @@ public class Gui
 		frame_.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame_.setResizable(false);
 		frame_.setLocationRelativeTo(null);
-		frame_.setVisible(true);
 		frame_.addKeyListener(keyManager_);
 
 		canvas_ = new Canvas();
@@ -64,6 +63,7 @@ public class Gui
 		frame_.add(canvas_);
 
 		frame_.pack();
+		frame_.setVisible(true);
 	}
 
 	/**

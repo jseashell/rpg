@@ -15,7 +15,7 @@ public abstract class AbstractMenuButton implements MenuButton
 	private final BufferedImage img_;
 
 	/**
-	 * Value for {@link #getShape()}
+	 * Value for {@link #getBounds()}
 	 */
 	private final Shape shape_;
 
@@ -25,7 +25,7 @@ public abstract class AbstractMenuButton implements MenuButton
 	 * @param img
 	 *            Value for {@link #getImage()}
 	 * @param shape
-	 *            Value for {@link #getShape()}
+	 *            Value for {@link #getBounds()}
 	 */
 	public AbstractMenuButton(BufferedImage img, Shape shape)
 	{
@@ -40,7 +40,7 @@ public abstract class AbstractMenuButton implements MenuButton
 	}
 
 	@Override
-	public final Shape getShape()
+	public final Shape getBounds()
 	{
 		return shape_;
 	}

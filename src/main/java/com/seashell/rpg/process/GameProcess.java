@@ -1,9 +1,14 @@
 package com.seashell.rpg.process;
 
 import java.awt.Graphics2D;
+import java.awt.Shape;
+import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferStrategy;
 import java.io.IOException;
 import java.util.Objects;
+
+import javax.swing.JButton;
+import javax.swing.JPanel;
 
 import com.seashell.rpg.asset.Assets;
 import com.seashell.rpg.gui.Gui;
@@ -32,7 +37,7 @@ public final class GameProcess implements Runnable
 	private boolean isRunning_;
 
 	/**
-	 * Display object
+	 * Value for {@link #getGui()}
 	 */
 	private final Gui gui_;
 
@@ -42,7 +47,7 @@ public final class GameProcess implements Runnable
 	private static final int NANO_ = 1_000_000_000;
 
 	/**
-	 * Configuration for the game
+	 * Value for {@link #getConfiguration()}
 	 */
 	private final GameProcessConfiguration configuration_;
 
@@ -56,6 +61,9 @@ public final class GameProcess implements Runnable
 	 */
 	private Scene scene_;
 
+	/**
+	 * The state of this process
+	 */
 	private GameProcessState state_;
 
 	/**
@@ -122,7 +130,7 @@ public final class GameProcess implements Runnable
 					scene_ = new MainMenuScene(this);
 					break;
 
-				case WORLD:
+				case NEW_GAME:
 					try
 					{
 						scene_ = new WorldScene(this);
@@ -226,8 +234,19 @@ public final class GameProcess implements Runnable
 
 		bufferStrategy.show();
 		g2d.dispose();
+
+		// TODO Convert buttons to JButton
+		Shape boundsTest = new Rectangle2D.Double((configuration_.getResolutionWidth() / 2) - 150, (configuration_.getResolutionHeight() / 2) - 175, 300, 150);
+		JPanel p = new JPanel();
+		p.add(new JButton("test"));
+		getGui().getFrame().add(p);
+		getGui().getFrame().validate();
+		getGui().getFrame().setVisible(true);
 	}
 
+	/**
+	 * Starts the game process (only if it is stopped)
+	 */
 	public synchronized void start()
 	{
 		if(isRunning_)
@@ -240,6 +259,9 @@ public final class GameProcess implements Runnable
 		thread_.start();
 	}
 
+	/**
+	 * Stops the game process (only if it is running)
+	 */
 	public synchronized void stop()
 	{
 		if(!isRunning_)
@@ -255,45 +277,54 @@ public final class GameProcess implements Runnable
 		catch(InterruptedException e)
 		{
 			e.printStackTrace();
+			System.exit(0);
 		}
 	}
 
 	/**
-	 * @return The {@link KeyManager} for the entire game
+	 * @return The key manager for the entire game
 	 */
 	public KeyManager getKeyManager()
 	{
 		return gui_.getKeyManager();
 	}
 
+	/**
+	 * @return The gui
+	 */
 	public Gui getGui()
 	{
 		return gui_;
 	}
 
+	/**
+	 * @return The configuration
+	 */
 	public GameProcessConfiguration getConfiguration()
 	{
 		return configuration_;
 	}
 
-	public boolean isRunning()
-	{
-		return isRunning_;
-	}
-
-	// TODO This sucks
-	public void setState(GameProcessState state)
-	{
-		state_ = state;
-	}
-
-	// TODO This sucks
+	/**
+	 * @return The current state of this process
+	 */
 	public GameProcessState getState()
 	{
 		return state_;
 	}
 
-	// TODO This sucks
+	/**
+	 * @param state
+	 *            The state of this process to set
+	 */
+	public void setState(GameProcessState state)
+	{
+		state_ = state;
+	}
+
+	/**
+	 * @return The current scene being shown
+	 */
 	public Scene getScene()
 	{
 		return scene_;

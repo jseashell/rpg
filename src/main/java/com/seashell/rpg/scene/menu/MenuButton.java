@@ -14,7 +14,7 @@ public interface MenuButton
 	BufferedImage getImage();
 
 	/**
-	 * @return The shape for this button
+	 * @return The bounds for this button
 	 */
-	Shape getShape();
+	Shape getBounds();
 }

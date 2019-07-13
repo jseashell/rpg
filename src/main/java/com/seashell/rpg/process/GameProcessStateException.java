@@ -1,7 +1,7 @@
 package com.seashell.rpg.process;
 
 /**
- * Checked exception for
+ * Checked exception for game process state failures
  */
 @SuppressWarnings("serial")
 final class GameProcessStateException extends Exception
