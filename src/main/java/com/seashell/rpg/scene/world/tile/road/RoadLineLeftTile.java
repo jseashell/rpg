@@ -6,7 +6,7 @@ import com.seashell.rpg.tile.Tile;
 /**
  * A {@link Tile} for road with a sidewalk on the left edge
  */
-public class RoadSidewalkLeftTile extends AbstractRoadTile
+public class RoadLineLeftTile extends AbstractRoadTile
 {
 	/**
 	 * Constructor
@@ -14,9 +14,9 @@ public class RoadSidewalkLeftTile extends AbstractRoadTile
 	 * @param id
 	 *            Value for {@link #getId()}
 	 */
-	public RoadSidewalkLeftTile(int id)
+	public RoadLineLeftTile(int id)
 	{
-		super(id, Assets.getRoadSidewalkLeft());
+		super(id, Assets.getRoadLineLeft());
 	}
 
 	@Override

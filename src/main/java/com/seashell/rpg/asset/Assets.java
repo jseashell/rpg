@@ -3,11 +3,20 @@ package com.seashell.rpg.asset;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
+import com.seashell.rpg.tile.Tile;
+
 /**
  * Utility class for accessing game assets
  */
 public class Assets
 {
+	/**
+	 * Sprite sheet for the RPG Urban Pack by kenney
+	 * <p>
+	 * https://www.kenney.nl/assets/rpg-urban-pack
+	 */
+	private static SpriteSheet kenneyRpgUrban_;
+
 	/**
 	 * Sprite sheet for grass assets
 	 */
@@ -48,6 +57,7 @@ public class Assets
 	 */
 	public static void init() throws IOException
 	{
+		kenneyRpgUrban_ = new SpriteSheet(TextureLoader.load("tilemap_packed.png"));
 		player_ = new SpriteSheet(TextureLoader.load("texture_player.png"));
 		grass_ = new SpriteSheet(TextureLoader.load("texture_grass.png"));
 		wall_ = new SpriteSheet(TextureLoader.load("texture_wall.png"));
@@ -55,12 +65,23 @@ public class Assets
 		car_ = new SpriteSheet(TextureLoader.load("texture_car.png"));
 	}
 
+	private static BufferedImage crop(SpriteSheet s, int x, int y)
+	{
+		return s.crop(x, y, Tile.SIZE, Tile.SIZE);
+	}
+
 	/**
 	 * @return A {@link BufferedImage} of the default player character facing upward texture
 	 */
 	public static BufferedImage getPlayerCharacterDown()
 	{
-		return player_.crop(0, 0, 128, 128); // partial
+		int tileSize = 16; // in pixels
+		int x = tileSize * 24;
+		int y = tileSize * 0;
+
+		// TODO return crop(kenneyRpgUrban_, x, y);
+
+		return kenneyRpgUrban_.crop(x, y, tileSize, tileSize);
 	}
 
 	/**
@@ -68,15 +89,27 @@ public class Assets
 	 */
 	public static BufferedImage getGrassBase()
 	{
-		return grass_.crop(0, 0, 128, 128); // whole
+		int tileSize = 16; // in pixels
+		int x = tileSize * 1;
+		int y = tileSize * 1;
+
+		// TODO return crop(kenneyRpgUrban_, x, y);
+
+		return kenneyRpgUrban_.crop(x, y, tileSize, tileSize);
 	}
 
 	/**
 	 * @return A {@link BufferedImage} of a plain wall texture
 	 */
-	public static BufferedImage getWallBase()
+	public static BufferedImage getWallBaseGrey()
 	{
-		return wall_.crop(0, 0, 128, 128); // whole
+		int tileSize = 16; // in pixels
+		int x = tileSize * 9;
+		int y = tileSize * 4;
+
+		// TODO return crop(kenneyRpgUrban_, x, y);
+
+		return kenneyRpgUrban_.crop(x, y, tileSize, tileSize);
 	}
 
 	/**
@@ -84,7 +117,13 @@ public class Assets
 	 */
 	public static BufferedImage getRoadBase()
 	{
-		return road_.crop(0, 0, 256, 256); // partial
+		int tileSize = 16; // in pixels
+		int x = tileSize * 9;
+		int y = tileSize * 16;
+
+		// TODO return crop(kenneyRpgUrban_, x, y);
+
+		return kenneyRpgUrban_.crop(x, y, tileSize, tileSize);
 	}
 
 	/**
@@ -92,23 +131,41 @@ public class Assets
 	 */
 	public static BufferedImage getRoadWhiteHashVertical()
 	{
-		return road_.crop(256, 0, 256, 256); // partial
+		int tileSize = 16; // in pixels
+		int x = tileSize * 3;
+		int y = tileSize * 17;
+
+		// TODO return crop(kenneyRpgUrban_, x, y);
+
+		return kenneyRpgUrban_.crop(x, y, tileSize, tileSize);
 	}
 
 	/**
 	 * @return A {@link BufferedImage} of a road with a sidewalk on the left edge texture
 	 */
-	public static BufferedImage getRoadSidewalkLeft()
+	public static BufferedImage getRoadLineLeft()
 	{
-		return road_.crop(768, 256, 256, 256); // partial
+		int tileSize = 16; // in pixels
+		int x = tileSize * 2;
+		int y = tileSize * 17;
+
+		// TODO return crop(kenneyRpgUrban_, x, y);
+
+		return kenneyRpgUrban_.crop(x, y, tileSize, tileSize);
 	}
 
 	/**
 	 * @return A {@link BufferedImage} of a road with a sidewalk on the right edge texture
 	 */
-	public static BufferedImage getRoadSidewalkRight()
+	public static BufferedImage getRoadLineRight()
 	{
-		return road_.crop(256, 256, 256, 256); // partial
+		int tileSize = 16; // in pixels
+		int x = tileSize * 4;
+		int y = tileSize * 17;
+
+		// TODO return crop(kenneyRpgUrban_, x, y);
+
+		return kenneyRpgUrban_.crop(x, y, tileSize, tileSize);
 	}
 
 	/**
@@ -116,7 +173,35 @@ public class Assets
 	 */
 	public static BufferedImage getSidewalkBase()
 	{
-		return road_.crop(1024, 256, 256, 256); // partial
+		int tileSize = 16; // in pixels
+		int x = tileSize * 9;
+		int y = tileSize * 1;
+
+		// TODO return crop(kenneyRpgUrban_, x, y);
+
+		return kenneyRpgUrban_.crop(x, y, tileSize, tileSize);
+	}
+
+	public static BufferedImage getSidewalkCurbRight()
+	{
+		int tileSize = 16; // in pixels
+		int x = tileSize * 10;
+		int y = tileSize * 1;
+
+		// TODO return crop(kenneyRpgUrban_, x, y);
+
+		return kenneyRpgUrban_.crop(x, y, tileSize, tileSize);
+	}
+
+	public static BufferedImage getSidewalkCurbLeft()
+	{
+		int tileSize = 16; // in pixels
+		int x = tileSize * 8;
+		int y = tileSize * 1;
+
+		// TODO return crop(kenneyRpgUrban_, x, y);
+
+		return kenneyRpgUrban_.crop(x, y, tileSize, tileSize);
 	}
 
 	/**
@@ -132,6 +217,12 @@ public class Assets
 	 */
 	public static BufferedImage getCarUp()
 	{
-		return car_.crop(0, 0, 256, 256); // partial
+		int tileSize = 16; // in pixels
+		int x = tileSize * 20;
+		int y = tileSize * 16;
+
+		// TODO return crop(kenneyRpgUrban_, x, y);
+
+		return kenneyRpgUrban_.crop(x, y, tileSize, tileSize * 2);
 	}
 }

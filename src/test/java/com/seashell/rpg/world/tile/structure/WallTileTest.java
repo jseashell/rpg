@@ -33,7 +33,7 @@ public class WallTileTest extends AbstractTileTest
 	@Override
 	public void test_getTexture()
 	{
-		BufferedImage expected = Assets.getWallBase();
+		BufferedImage expected = Assets.getWallBaseGrey();
 
 		WallTile w = new WallTile(0);
 		BufferedImage actual = w.getTexture();

@@ -9,10 +9,10 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import com.seashell.rpg.asset.Assets;
-import com.seashell.rpg.scene.world.tile.road.RoadSidewalkLeftTile;
+import com.seashell.rpg.scene.world.tile.road.RoadLineLeftTile;
 
 /**
- * Test class {@link RoadSidewalkLeftTile}
+ * Test class {@link RoadLineLeftTile}
  */
 public class RoadSidewalkLeftTileTest extends AbstractRoadTileTest
 {
@@ -21,7 +21,7 @@ public class RoadSidewalkLeftTileTest extends AbstractRoadTileTest
 	public void test_getId()
 	{
 		int id = 0;
-		RoadSidewalkLeftTile r = new RoadSidewalkLeftTile(id);
+		RoadLineLeftTile r = new RoadLineLeftTile(id);
 
 		int actualId = r.getId();
 
@@ -32,9 +32,9 @@ public class RoadSidewalkLeftTileTest extends AbstractRoadTileTest
 	@Override
 	public void test_getTexture()
 	{
-		BufferedImage expected = Assets.getRoadSidewalkLeft();
+		BufferedImage expected = Assets.getRoadLineLeft();
 
-		RoadSidewalkLeftTile r = new RoadSidewalkLeftTile(0);
+		RoadLineLeftTile r = new RoadLineLeftTile(0);
 		BufferedImage actual = r.getTexture();
 
 		runTextureTest(expected, actual);
@@ -44,7 +44,7 @@ public class RoadSidewalkLeftTileTest extends AbstractRoadTileTest
 	@Override
 	public void test_isSolid()
 	{
-		RoadSidewalkLeftTile r = new RoadSidewalkLeftTile(0);
+		RoadLineLeftTile r = new RoadLineLeftTile(0);
 
 		boolean expected = false;
 		boolean actual = r.isSolid();
@@ -56,7 +56,7 @@ public class RoadSidewalkLeftTileTest extends AbstractRoadTileTest
 	@Override
 	public void test_tick()
 	{
-		RoadSidewalkLeftTile r = new RoadSidewalkLeftTile(0);
+		RoadLineLeftTile r = new RoadLineLeftTile(0);
 		r.tick();
 	}
 
@@ -66,7 +66,7 @@ public class RoadSidewalkLeftTileTest extends AbstractRoadTileTest
 	{
 		Graphics2D g2d = Mockito.mock(Graphics2D.class);
 
-		RoadSidewalkLeftTile r = new RoadSidewalkLeftTile(0);
+		RoadLineLeftTile r = new RoadLineLeftTile(0);
 		r.render(g2d, 0, 0);
 	}
 
@@ -74,7 +74,7 @@ public class RoadSidewalkLeftTileTest extends AbstractRoadTileTest
 	@Override
 	public void test_render_nullGraphics2D()
 	{
-		RoadSidewalkLeftTile r = new RoadSidewalkLeftTile(0);
+		RoadLineLeftTile r = new RoadLineLeftTile(0);
 		r.render(null, 0, 0);
 	}
 }

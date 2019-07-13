@@ -17,7 +17,7 @@ public class WallTile extends AbstractWorldTile
 	 */
 	public WallTile(int id)
 	{
-		super(id, Assets.getWallBase());
+		super(id, Assets.getWallBaseGrey());
 	}
 
 	@Override

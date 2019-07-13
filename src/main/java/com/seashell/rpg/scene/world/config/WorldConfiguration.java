@@ -7,11 +7,13 @@ import com.seashell.rpg.scene.world.World;
 import com.seashell.rpg.scene.world.tile.WorldTile;
 import com.seashell.rpg.scene.world.tile.nature.GrassTile;
 import com.seashell.rpg.scene.world.tile.road.RoadBaseTile;
-import com.seashell.rpg.scene.world.tile.road.RoadSidewalkLeftTile;
-import com.seashell.rpg.scene.world.tile.road.RoadSidewalkRightTile;
+import com.seashell.rpg.scene.world.tile.road.RoadLineLeftTile;
+import com.seashell.rpg.scene.world.tile.road.RoadLineRightTile;
 import com.seashell.rpg.scene.world.tile.road.RoadWhiteHashVerticalTile;
 import com.seashell.rpg.scene.world.tile.road.RoadYellowSolidTile;
 import com.seashell.rpg.scene.world.tile.road.SidewalkBaseTile;
+import com.seashell.rpg.scene.world.tile.road.SidewalkCurbLeftTile;
+import com.seashell.rpg.scene.world.tile.road.SidewalkCurbRightTile;
 import com.seashell.rpg.scene.world.tile.structure.WallTile;
 import com.seashell.rpg.tile.Tile;
 
@@ -155,10 +157,12 @@ public final class WorldConfiguration
 			tileIndex_.put(1, new WallTile(1));
 			tileIndex_.put(2, new RoadBaseTile(2));
 			tileIndex_.put(3, new RoadWhiteHashVerticalTile(3));
-			tileIndex_.put(4, new RoadSidewalkLeftTile(4));
-			tileIndex_.put(5, new RoadSidewalkRightTile(5));
+			tileIndex_.put(4, new RoadLineLeftTile(4));
+			tileIndex_.put(5, new RoadLineRightTile(5));
 			tileIndex_.put(6, new SidewalkBaseTile(6));
 			tileIndex_.put(7, new RoadYellowSolidTile(7));
+			tileIndex_.put(8, new SidewalkCurbRightTile(8));
+			tileIndex_.put(9, new SidewalkCurbLeftTile(9));
 
 			idMap_ = new int[width_][height_];
 			for(int y = 0; y < height_; y++)
