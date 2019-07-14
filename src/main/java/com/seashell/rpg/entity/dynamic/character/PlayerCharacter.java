@@ -121,7 +121,8 @@ public final class PlayerCharacter extends AbstractCharacter
 		collidedDown_ = false;
 		collidedLeft_ = false;
 		collidedRight_ = false;
-		animSpeed_ = WALK_SPEED_; // initial set to walking speed
+
+		animSpeed_ = WALK_SPEED_; // Initialize character with walking speed
 
 		BufferedImage[] playerDown = new BufferedImage[3];
 		playerDown[0] = Assets.getPlayerCharacterWalkingDownVariantA();

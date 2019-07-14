@@ -29,7 +29,7 @@ public class KeyManager implements KeyListener
 	KeyManager()
 	{
 		keyIndex = new boolean[256];
-		lastDirectionFaced_ = 0;
+		lastDirectionFaced_ = KeyEvent.VK_S; // Initialize last direction to Down
 	}
 
 	/**
