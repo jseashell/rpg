@@ -2,6 +2,7 @@ package com.seashell.rpg.entity.dynamic.character;
 
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -73,6 +74,26 @@ public final class PlayerCharacter extends AbstractCharacter
 	private int animSpeed_;
 
 	/**
+	 * Flag indicating that the player has collided upward
+	 */
+	private boolean collidedUp_;
+
+	/**
+	 * Flag indicating that the player has collided downward
+	 */
+	private boolean collidedDown_;
+
+	/**
+	 * Flag indicating that the player has collided leftward
+	 */
+	private boolean collidedLeft_;
+
+	/**
+	 * Flag indicating that the player has collided rightward
+	 */
+	private boolean collidedRight_;
+
+	/**
 	 * Constructor
 	 *
 	 * @param camera
@@ -96,6 +117,10 @@ public final class PlayerCharacter extends AbstractCharacter
 				Assets.SIZE * SCALE_,
 				Assets.SIZE * SCALE_);
 
+		collidedUp_ = false;
+		collidedDown_ = false;
+		collidedLeft_ = false;
+		collidedRight_ = false;
 		animSpeed_ = WALK_SPEED_; // initial set to walking speed
 
 		BufferedImage[] playerDown = new BufferedImage[3];
@@ -199,7 +224,22 @@ public final class PlayerCharacter extends AbstractCharacter
 				&& !isCollision(tx.intValue(), hitboxLowerEdge))
 		{
 			// No collision
+			collidedRight_ = false;
+			collidedLeft_ = false;
+
 			x_ += xMove_;
+		}
+		else
+		{
+			// Collision
+			if(xMove_ > 0)
+			{
+				collidedRight_ = true;
+			}
+			else if(xMove_ < 0)
+			{
+				collidedLeft_ = true;
+			}
 		}
 	}
 
@@ -229,7 +269,22 @@ public final class PlayerCharacter extends AbstractCharacter
 				&& !isCollision(hitboxLeftEdge, ty.intValue())
 				&& !isCollision(hitboxRightEdge, ty.intValue()))
 		{
+			// No collision
+			collidedDown_ = false;
+			collidedUp_ = false;
+
 			y_ += yMove_;
+		}
+		else
+		{
+			if(yMove_ > 0)
+			{
+				collidedDown_ = true;
+			}
+			else if(yMove_ < 0)
+			{
+				collidedUp_ = true;
+			}
 		}
 	}
 
@@ -257,7 +312,29 @@ public final class PlayerCharacter extends AbstractCharacter
 	 */
 	private BufferedImage getCurrentAnimationFrame()
 	{
-		// TODO If colliding, stay facing the same direction as the last moving direction
+		if(xMove_ == 0 || collidedLeft_ || collidedRight_) // Check if the PC is stuck moving left/right
+		{
+			if(keyManager_.getLastDirectionFaced() == KeyEvent.VK_A)
+			{
+				return Assets.getPlayerCharacterStandingLeft();
+			}
+			else if(keyManager_.getLastDirectionFaced() == KeyEvent.VK_D)
+			{
+				return Assets.getPlayerCharacterStandingRight();
+			}
+		}
+
+		if(yMove_ == 0 || collidedUp_ || collidedDown_) // Check if the PC is stuck moving up/down
+		{
+			if(keyManager_.getLastDirectionFaced() == KeyEvent.VK_S)
+			{
+				return Assets.getPlayerCharacterStandingDown();
+			}
+			else if(keyManager_.getLastDirectionFaced() == KeyEvent.VK_W)
+			{
+				return Assets.getPlayerCharacterStandingUp();
+			}
+		}
 
 		if(xMove_ < 0)
 		{
@@ -276,7 +353,7 @@ public final class PlayerCharacter extends AbstractCharacter
 			return animDown_.getCurrentFrame();
 		}
 
-		// TODO When not moving, stay facing the same direction as the last moving direction
+		// Default
 		return Assets.getPlayerCharacterStandingDown();
 	}
 
