@@ -16,7 +16,7 @@ import com.seashell.rpg.tile.Tile;
 public final class PlayerCharacter extends AbstractCharacter
 {
 	/**
-	 * Scaling factor for the character's size
+	 * Scaling factor for the character's width and height
 	 */
 	private static final int SCALE_ = 4;
 

@@ -11,6 +11,9 @@ import com.seashell.rpg.tile.Tile;
  */
 public class Car extends AbstractVehicle
 {
+	/**
+	 * Scaling factor for the car's height
+	 */
 	private static final int SCALE_HEIGHT_ = 8;
 
 	/**
@@ -54,11 +57,27 @@ public class Car extends AbstractVehicle
 		worldHeight_ = worldHeight;
 	}
 
+	/**
+	 * Gets the texture for this car based on its given direction of travel
+	 *
+	 * @param direction
+	 *            {@code 0} for up
+	 *            {@code 1} for left
+	 * @return The texture
+	 */
 	private static BufferedImage getTexture(int direction)
 	{
 		return direction == 0 ? Assets.getCarUpRed() : Assets.getCarLeftRed();
 	}
 
+	/**
+	 * Gets the scaling factor for this car's width based on its given direction of travel
+	 *
+	 * @param direction
+	 *            {@code 0} for up
+	 *            {@code 1} for left
+	 * @return Scaling factor for the car's width
+	 */
 	private static int getScaleWidth(int direction)
 	{
 		return direction == 0 ? 4 : 8;
