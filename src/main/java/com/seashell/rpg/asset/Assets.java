@@ -39,12 +39,133 @@ public class Assets
 	}
 
 	/**
-	 * @return A {@link BufferedImage} of the default player character facing upward
+	 * @return A {@link BufferedImage} of the default player character facing upward while standing
 	 */
-	public static BufferedImage getPlayerCharacterDown()
+	public static BufferedImage getPlayerCharacterStandingDown()
 	{
 		int x = SIZE * 24;
 		int y = SIZE * 0;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of the default player character facing up while standing
+	 */
+	public static BufferedImage getPlayerCharacterStandingUp()
+	{
+		int x = SIZE * 25;
+		int y = SIZE * 0;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of the default player character facing left while standing
+	 */
+	public static BufferedImage getPlayerCharacterStandingLeft()
+	{
+		int x = SIZE * 23;
+		int y = SIZE * 0;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of the default player character facing down while standing
+	 */
+	public static BufferedImage getPlayerCharacterStandingRight()
+	{
+		int x = SIZE * 26;
+		int y = SIZE * 0;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of the default player character facing left while walking (variant a)
+	 */
+	public static BufferedImage getPlayerCharacterWalkingLeftVariantA()
+	{
+		int x = SIZE * 23;
+		int y = SIZE * 1;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of the default player character facing left while walking (variant b)
+	 */
+	public static BufferedImage getPlayerCharacterWalkingLeftVariantB()
+	{
+		int x = SIZE * 23;
+		int y = SIZE * 2;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of the default player character facing right while walking (variant a)
+	 */
+	public static BufferedImage getPlayerCharacterWalkingRightVariantA()
+	{
+		int x = SIZE * 26;
+		int y = SIZE * 1;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of the default player character facing right while walking (variant b)
+	 */
+	public static BufferedImage getPlayerCharacterWalkingRightVariantB()
+	{
+		int x = SIZE * 26;
+		int y = SIZE * 2;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of the default player character facing up while walking (variant a)
+	 */
+	public static BufferedImage getPlayerCharacterWalkingUpVariantA()
+	{
+		int x = SIZE * 25;
+		int y = SIZE * 1;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of the default player character facing up while walking (variant b)
+	 */
+	public static BufferedImage getPlayerCharacterWalkingUpVariantB()
+	{
+		int x = SIZE * 25;
+		int y = SIZE * 2;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of the default player character facing down while walking (variant a)
+	 */
+	public static BufferedImage getPlayerCharacterWalkingDownVariantA()
+	{
+		int x = SIZE * 24;
+		int y = SIZE * 1;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of the default player character facing down while walking (variant b)
+	 */
+	public static BufferedImage getPlayerCharacterWalkingDownVariantB()
+	{
+		int x = SIZE * 24;
+		int y = SIZE * 2;
 
 		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
 	}

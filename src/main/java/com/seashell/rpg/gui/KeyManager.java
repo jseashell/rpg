@@ -14,9 +14,14 @@ public class KeyManager implements KeyListener
 	private boolean[] keyIndex;
 
 	/**
-	 * Flags indicating wether or not the key is pressed
+	 * Flags indicating whether or not the key is pressed
 	 */
 	private boolean isUp_, isDown_, isLeft_, isRight_, isSprint_;
+
+	/**
+	 * Integer representing the last direction that was faced. See {@link KeyEvent} constants
+	 */
+	private int lastDirectionFaced_;
 
 	/**
 	 * Constructor
@@ -24,8 +29,12 @@ public class KeyManager implements KeyListener
 	KeyManager()
 	{
 		keyIndex = new boolean[256];
+		lastDirectionFaced_ = KeyEvent.VK_S; // Initialize last direction to Down
 	}
 
+	/**
+	 * Updates this managers internal values
+	 */
 	public void tick()
 	{
 		// TODO #5 Load key bindings from config.properties. Mapping text representations to KeyEvent seems like it is not an option after a short amount of research
@@ -87,12 +96,37 @@ public class KeyManager implements KeyListener
 		}
 
 		keyIndex[e.getKeyCode()] = true;
+		lastDirectionFaced_ = e.getKeyCode();
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e)
 	{
 		keyIndex[e.getKeyCode()] = false;
+
+		// Update the lastKeyPressed
+		if(e.getKeyCode() == KeyEvent.VK_A || e.getKeyCode() == KeyEvent.VK_D)
+		{
+			if(isUp())
+			{
+				lastDirectionFaced_ = KeyEvent.VK_W;
+			}
+			else if(isDown())
+			{
+				lastDirectionFaced_ = KeyEvent.VK_S;
+			}
+		}
+		else if(e.getKeyCode() == KeyEvent.VK_S || e.getKeyCode() == KeyEvent.VK_W)
+		{
+			if(isRight())
+			{
+				lastDirectionFaced_ = KeyEvent.VK_D;
+			}
+			else if(isLeft())
+			{
+				lastDirectionFaced_ = KeyEvent.VK_A;
+			}
+		}
 	}
 
 	@Override
@@ -100,4 +134,11 @@ public class KeyManager implements KeyListener
 	{
 	}
 
+	/**
+	 * @return The last registered direction that the player character was facing
+	 */
+	public int getLastDirectionFaced()
+	{
+		return lastDirectionFaced_;
+	}
 }

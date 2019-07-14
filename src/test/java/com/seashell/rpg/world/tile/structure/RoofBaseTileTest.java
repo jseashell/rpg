@@ -15,16 +15,16 @@ import com.seashell.rpg.world.tile.AbstractTileTest;
 /**
  * Test class for {@link RoofBaseTile}
  */
-public class WallTileTest extends AbstractTileTest
+public class RoofBaseTileTest extends AbstractTileTest
 {
 	@Test
 	@Override
 	public void test_getId()
 	{
 		int id = 0;
-		RoofBaseTile w = new RoofBaseTile(id);
+		RoofBaseTile r = new RoofBaseTile(id);
 
-		int actualId = w.getId();
+		int actualId = r.getId();
 
 		assertEquals(id, actualId);
 	}
@@ -35,8 +35,8 @@ public class WallTileTest extends AbstractTileTest
 	{
 		BufferedImage expected = Assets.getRoofBase();
 
-		RoofBaseTile w = new RoofBaseTile(0);
-		BufferedImage actual = w.getTexture();
+		RoofBaseTile r = new RoofBaseTile(0);
+		BufferedImage actual = r.getTexture();
 
 		runTextureTest(expected, actual);
 	}
@@ -45,10 +45,10 @@ public class WallTileTest extends AbstractTileTest
 	@Override
 	public void test_isSolid()
 	{
-		RoofBaseTile w = new RoofBaseTile(0);
+		RoofBaseTile r = new RoofBaseTile(0);
 
 		boolean expected = true;
-		boolean actual = w.isSolid();
+		boolean actual = r.isSolid();
 
 		assertEquals("A WallTile should be solid.", expected, actual);
 	}
@@ -57,8 +57,8 @@ public class WallTileTest extends AbstractTileTest
 	@Override
 	public void test_tick()
 	{
-		RoofBaseTile w = new RoofBaseTile(0);
-		w.tick();
+		RoofBaseTile r = new RoofBaseTile(0);
+		r.tick();
 	}
 
 	@Test
@@ -67,15 +67,15 @@ public class WallTileTest extends AbstractTileTest
 	{
 		Graphics2D g2d = Mockito.mock(Graphics2D.class);
 
-		RoofBaseTile w = new RoofBaseTile(0);
-		w.render(g2d, 0, 0);
+		RoofBaseTile r = new RoofBaseTile(0);
+		r.render(g2d, 0, 0);
 	}
 
 	@Test(expected = NullPointerException.class)
 	@Override
 	public void test_render_nullGraphics2D()
 	{
-		RoofBaseTile w = new RoofBaseTile(0);
-		w.render(null, 0, 0);
+		RoofBaseTile r = new RoofBaseTile(0);
+		r.render(null, 0, 0);
 	}
 }
