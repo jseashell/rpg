@@ -1,13 +1,13 @@
-package com.seashell.rpg.scene.world.tile.road;
+package com.seashell.rpg.scene.world.tile.sidewalk;
 
 import java.awt.image.BufferedImage;
 
 import com.seashell.rpg.scene.world.tile.AbstractWorldTile;
 
 /**
- * Abstract parent for all road tiles
+ * Abstract parent for all sidewalk tiles
  */
-abstract class AbstractRoadTile extends AbstractWorldTile
+class AbstractSidewalkTile extends AbstractWorldTile
 {
 	/**
 	 * Constructor
@@ -17,7 +17,7 @@ abstract class AbstractRoadTile extends AbstractWorldTile
 	 * @param texture
 	 *            Value for {@link #getTexture()}
 	 */
-	public AbstractRoadTile(int id, BufferedImage texture)
+	AbstractSidewalkTile(int id, BufferedImage texture)
 	{
 		super(id, texture);
 	}
@@ -27,4 +27,5 @@ abstract class AbstractRoadTile extends AbstractWorldTile
 	{
 		return false;
 	}
+
 }

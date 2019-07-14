@@ -18,10 +18,4 @@ public class RoadWhiteHashVerticalTile extends AbstractRoadTile
 	{
 		super(id, Assets.getRoadWhiteHashVertical());
 	}
-
-	@Override
-	public boolean isSolid()
-	{
-		return false;
-	}
 }

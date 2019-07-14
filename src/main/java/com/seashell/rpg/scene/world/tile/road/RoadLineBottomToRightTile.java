@@ -4,9 +4,9 @@ import com.seashell.rpg.asset.Assets;
 import com.seashell.rpg.tile.Tile;
 
 /**
- * A {@link Tile} for road with a line on the right edge
+ * A {@link Tile} for road with a line going from the bottom edge to the right edge
  */
-public class RoadLineRightTile extends AbstractRoadTile
+public class RoadLineBottomToRightTile extends AbstractRoadTile
 {
 	/**
 	 * Constructor
@@ -14,8 +14,8 @@ public class RoadLineRightTile extends AbstractRoadTile
 	 * @param id
 	 *            Value for {@link #getId()}
 	 */
-	public RoadLineRightTile(int id)
+	public RoadLineBottomToRightTile(int id)
 	{
-		super(id, Assets.getRoadLineRight());
+		super(id, Assets.getRoadLineBottomToRight());
 	}
 }

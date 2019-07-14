@@ -3,44 +3,22 @@ package com.seashell.rpg.asset;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-import com.seashell.rpg.tile.Tile;
-
 /**
  * Utility class for accessing game assets
  */
 public class Assets
 {
 	/**
+	 * Size of all assets
+	 */
+	public static final int SIZE = 16;
+
+	/**
 	 * Sprite sheet for the RPG Urban Pack by kenney
 	 * <p>
 	 * https://www.kenney.nl/assets/rpg-urban-pack
 	 */
 	private static SpriteSheet kenneyRpgUrban_;
-
-	/**
-	 * Sprite sheet for grass assets
-	 */
-	private static SpriteSheet grass_;
-
-	/**
-	 * Sprite sheet for player assets
-	 */
-	private static SpriteSheet player_;
-
-	/**
-	 * Sprite sheet for wall assets
-	 */
-	private static SpriteSheet wall_;
-
-	/**
-	 * Sprite sheet for road assets
-	 */
-	private static SpriteSheet road_;
-
-	/**
-	 * Sprite sheet for car assets
-	 */
-	private static SpriteSheet car_;
 
 	/**
 	 * Constructor prevents instantiation
@@ -58,171 +36,280 @@ public class Assets
 	public static void init() throws IOException
 	{
 		kenneyRpgUrban_ = new SpriteSheet(TextureLoader.load("tilemap_packed.png"));
-		player_ = new SpriteSheet(TextureLoader.load("texture_player.png"));
-		grass_ = new SpriteSheet(TextureLoader.load("texture_grass.png"));
-		wall_ = new SpriteSheet(TextureLoader.load("texture_wall.png"));
-		road_ = new SpriteSheet(TextureLoader.load("texture_road.png"));
-		car_ = new SpriteSheet(TextureLoader.load("texture_car.png"));
-	}
-
-	private static BufferedImage crop(SpriteSheet s, int x, int y)
-	{
-		return s.crop(x, y, Tile.SIZE, Tile.SIZE);
 	}
 
 	/**
-	 * @return A {@link BufferedImage} of the default player character facing upward texture
+	 * @return A {@link BufferedImage} of the default player character facing upward
 	 */
 	public static BufferedImage getPlayerCharacterDown()
 	{
-		int tileSize = 16; // in pixels
-		int x = tileSize * 24;
-		int y = tileSize * 0;
+		int x = SIZE * 24;
+		int y = SIZE * 0;
 
-		// TODO return crop(kenneyRpgUrban_, x, y);
-
-		return kenneyRpgUrban_.crop(x, y, tileSize, tileSize);
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
 	}
 
 	/**
-	 * @return A {@link BufferedImage} of a plain grass texture
+	 * @return A {@link BufferedImage} of a plain grass
 	 */
 	public static BufferedImage getGrassBase()
 	{
-		int tileSize = 16; // in pixels
-		int x = tileSize * 1;
-		int y = tileSize * 1;
+		int x = SIZE * 1;
+		int y = SIZE * 1;
 
-		// TODO return crop(kenneyRpgUrban_, x, y);
-
-		return kenneyRpgUrban_.crop(x, y, tileSize, tileSize);
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
 	}
 
 	/**
-	 * @return A {@link BufferedImage} of a plain wall texture
+	 * @return A {@link BufferedImage} of a plain roof
 	 */
-	public static BufferedImage getWallBaseGrey()
+	public static BufferedImage getRoofBase()
 	{
-		int tileSize = 16; // in pixels
-		int x = tileSize * 9;
-		int y = tileSize * 4;
+		int x = SIZE * 9;
+		int y = SIZE * 4;
 
-		// TODO return crop(kenneyRpgUrban_, x, y);
-
-		return kenneyRpgUrban_.crop(x, y, tileSize, tileSize);
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
 	}
 
 	/**
-	 * @return A {@link BufferedImage} of a plain road texture
+	 * @return A {@link BufferedImage} of a plain road
 	 */
 	public static BufferedImage getRoadBase()
 	{
-		int tileSize = 16; // in pixels
-		int x = tileSize * 9;
-		int y = tileSize * 16;
+		int x = SIZE * 9;
+		int y = SIZE * 16;
 
-		// TODO return crop(kenneyRpgUrban_, x, y);
-
-		return kenneyRpgUrban_.crop(x, y, tileSize, tileSize);
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
 	}
 
 	/**
-	 * @return A {@link BufferedImage} of a road with a white vertical hash mark texture
+	 * @return A {@link BufferedImage} of a road with a white vertical hash mark
 	 */
 	public static BufferedImage getRoadWhiteHashVertical()
 	{
-		int tileSize = 16; // in pixels
-		int x = tileSize * 3;
-		int y = tileSize * 17;
+		int x = SIZE * 3;
+		int y = SIZE * 17;
 
-		// TODO return crop(kenneyRpgUrban_, x, y);
-
-		return kenneyRpgUrban_.crop(x, y, tileSize, tileSize);
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
 	}
 
 	/**
-	 * @return A {@link BufferedImage} of a road with a sidewalk on the left edge texture
+	 * @return A {@link BufferedImage} of a road with a white horizontal hash mark
+	 */
+	public static BufferedImage getRoadWhiteHashHorizontal()
+	{
+		int x = SIZE * 1;
+		int y = SIZE * 16;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of a road with a line on the left edge
 	 */
 	public static BufferedImage getRoadLineLeft()
 	{
-		int tileSize = 16; // in pixels
-		int x = tileSize * 2;
-		int y = tileSize * 17;
+		int x = SIZE * 2;
+		int y = SIZE * 17;
 
-		// TODO return crop(kenneyRpgUrban_, x, y);
-
-		return kenneyRpgUrban_.crop(x, y, tileSize, tileSize);
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
 	}
 
 	/**
-	 * @return A {@link BufferedImage} of a road with a sidewalk on the right edge texture
+	 * @return A {@link BufferedImage} of a road with a line on the right edge
 	 */
 	public static BufferedImage getRoadLineRight()
 	{
-		int tileSize = 16; // in pixels
-		int x = tileSize * 4;
-		int y = tileSize * 17;
+		int x = SIZE * 4;
+		int y = SIZE * 17;
 
-		// TODO return crop(kenneyRpgUrban_, x, y);
-
-		return kenneyRpgUrban_.crop(x, y, tileSize, tileSize);
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
 	}
 
 	/**
-	 * @return A {@link BufferedImage} of a plain sidewalk texture
+	 * @return A {@link BufferedImage} of a road with a line on the top edge
+	 */
+	public static BufferedImage getRoadLineTop()
+	{
+		int x = SIZE * 1;
+		int y = SIZE * 15;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of a road with a line on the bottom edge
+	 */
+	public static BufferedImage getRoadLineBottom()
+	{
+		int x = SIZE * 1;
+		int y = SIZE * 17;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of a road with a line going from the top edge to the left edge
+	 */
+	public static BufferedImage getRoadLineTopToLeft()
+	{
+		int x = SIZE * 8;
+		int y = SIZE * 17;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of a road with a line going from the top edge to the right edge
+	 */
+	public static BufferedImage getRoadLineTopToRight()
+	{
+		int x = SIZE * 7;
+		int y = SIZE * 17;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of a road with a line going from the bottom edge to the left edge
+	 */
+	public static BufferedImage getRoadLineBottomToLeft()
+	{
+		int x = SIZE * 8;
+		int y = SIZE * 16;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of a road with a line going from the bottom edge to the right edge
+	 */
+	public static BufferedImage getRoadLineBottomToRight()
+	{
+		int x = SIZE * 7;
+		int y = SIZE * 16;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of a plain sidewalk
 	 */
 	public static BufferedImage getSidewalkBase()
 	{
-		int tileSize = 16; // in pixels
-		int x = tileSize * 9;
-		int y = tileSize * 1;
+		int x = SIZE * 9;
+		int y = SIZE * 1;
 
-		// TODO return crop(kenneyRpgUrban_, x, y);
-
-		return kenneyRpgUrban_.crop(x, y, tileSize, tileSize);
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
 	}
 
+	/**
+	 * @return A {@link BufferedImage} of a sidewalk with a curb on the right edge
+	 */
 	public static BufferedImage getSidewalkCurbRight()
 	{
-		int tileSize = 16; // in pixels
-		int x = tileSize * 10;
-		int y = tileSize * 1;
+		int x = SIZE * 10;
+		int y = SIZE * 1;
 
-		// TODO return crop(kenneyRpgUrban_, x, y);
-
-		return kenneyRpgUrban_.crop(x, y, tileSize, tileSize);
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
 	}
 
+	/**
+	 * @return A {@link BufferedImage} of a sidewalk with a curb on the left edge
+	 */
 	public static BufferedImage getSidewalkCurbLeft()
 	{
-		int tileSize = 16; // in pixels
-		int x = tileSize * 8;
-		int y = tileSize * 1;
+		int x = SIZE * 8;
+		int y = SIZE * 1;
 
-		// TODO return crop(kenneyRpgUrban_, x, y);
-
-		return kenneyRpgUrban_.crop(x, y, tileSize, tileSize);
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
 	}
 
 	/**
-	 * @return A {@link BufferedImage} of a road with a yellow vertical hash mark texture
+	 * @return A {@link BufferedImage} of a sidewalk with a curb on the top edge
 	 */
-	public static BufferedImage getRoadYellowSolidVertical()
+	public static BufferedImage getSidewalkCurbTop()
 	{
-		return road_.crop(768, 0, 256, 256); // partial
+		int x = SIZE * 9;
+		int y = SIZE * 0;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
 	}
 
 	/**
-	 * @return A {@link BufferedImage} of a car facing upward texture
+	 * @return A {@link BufferedImage} of a sidewalk with a curb on the bottom edge
 	 */
-	public static BufferedImage getCarUp()
+	public static BufferedImage getSidewalkCurbBottom()
 	{
-		int tileSize = 16; // in pixels
-		int x = tileSize * 20;
-		int y = tileSize * 16;
+		int x = SIZE * 9;
+		int y = SIZE * 2;
 
-		// TODO return crop(kenneyRpgUrban_, x, y);
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
 
-		return kenneyRpgUrban_.crop(x, y, tileSize, tileSize * 2);
+	/**
+	 * @return A {@link BufferedImage} of a sidewalk with a curb going from the top edge to the right edge
+	 */
+	public static BufferedImage getSidewalkCurbTopToRight()
+	{
+		int x = SIZE * 8;
+		int y = SIZE * 2;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of a sidewalk with a curb going from the top edge to the left edge
+	 */
+	public static BufferedImage getSidewalkCurbTopToLeft()
+	{
+		int x = SIZE * 10;
+		int y = SIZE * 2;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of a sidewalk with a curb going from the bottom edge to the right edge
+	 */
+	public static BufferedImage getSidewalkCurbBottomToRight()
+	{
+		int x = SIZE * 8;
+		int y = SIZE * 0;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of a sidewalk with a curb going from the bottom edge to the left edge
+	 */
+	public static BufferedImage getSidewalkCurbBottomToLeft()
+	{
+		int x = SIZE * 10;
+		int y = SIZE * 0;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of a car facing upward
+	 */
+	public static BufferedImage getCarUpRed()
+	{
+		int x = SIZE * 20;
+		int y = SIZE * 16;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE * 2);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of a car facing left
+	 */
+	public static BufferedImage getCarLeftRed()
+	{
+		int x = SIZE * 15;
+		int y = SIZE * 16;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE * 2, SIZE * 2);
 	}
 }

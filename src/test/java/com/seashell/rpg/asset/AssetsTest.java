@@ -49,12 +49,12 @@ public class AssetsTest
 	}
 
 	/**
-	 * Tests that {@link Assets#getWallBaseGrey()} does not return null
+	 * Tests that {@link Assets#getRoofBase()} does not return null
 	 */
 	@Test
 	public void test_getWallBase_nonNull()
 	{
-		assertNotNull(Assets.getWallBaseGrey());
+		assertNotNull(Assets.getRoofBase());
 	}
 
 	/**
@@ -103,20 +103,11 @@ public class AssetsTest
 	}
 
 	/**
-	 * Tests that {@link Assets#getRoadYellowSolidVertical()} does not return null
-	 */
-	@Test
-	public void test_getRoadYellowSolidVertical_nonNull()
-	{
-		assertNotNull(Assets.getRoadYellowSolidVertical());
-	}
-
-	/**
-	 * Tests that {@link Assets#getCarUp()} does not return null
+	 * Tests that {@link Assets#getCarUpRed()} does not return null
 	 */
 	@Test
 	public void test_getCarUp_nonNull()
 	{
-		assertNotNull(Assets.getCarUp());
+		assertNotNull(Assets.getCarUpRed());
 	}
 }

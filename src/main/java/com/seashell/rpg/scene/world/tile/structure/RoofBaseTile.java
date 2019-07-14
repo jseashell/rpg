@@ -1,13 +1,13 @@
-package com.seashell.rpg.scene.world.tile.nature;
+package com.seashell.rpg.scene.world.tile.structure;
 
 import com.seashell.rpg.asset.Assets;
 import com.seashell.rpg.scene.world.tile.AbstractWorldTile;
 import com.seashell.rpg.tile.Tile;
 
 /**
- * A {@link Tile} for plain grass
+ * A {@link Tile} for a plain roof
  */
-public class GrassTile extends AbstractWorldTile
+public class RoofBaseTile extends AbstractWorldTile
 {
 	/**
 	 * Constructor
@@ -15,14 +15,14 @@ public class GrassTile extends AbstractWorldTile
 	 * @param id
 	 *            Value for {@link #getId()}
 	 */
-	public GrassTile(int id)
+	public RoofBaseTile(int id)
 	{
-		super(id, Assets.getGrassBase());
+		super(id, Assets.getRoofBase());
 	}
 
 	@Override
 	public boolean isSolid()
 	{
-		return false;
+		return true;
 	}
 }

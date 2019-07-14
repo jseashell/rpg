@@ -1,6 +1,5 @@
 package com.seashell.rpg.entity.dynamic.character;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.io.IOException;
@@ -16,6 +15,11 @@ import com.seashell.rpg.tile.Tile;
  */
 public final class PlayerCharacter extends AbstractCharacter
 {
+	/**
+	 * Scaling factor for the character's size
+	 */
+	private static final int SCALE_ = 4;
+
 	/**
 	 * Value for {@link #getKeyManager()}
 	 */
@@ -47,13 +51,17 @@ public final class PlayerCharacter extends AbstractCharacter
 	 * @param height
 	 *            Value for {@link #getHeight()}
 	 */
-	public PlayerCharacter(World world, GuiCamera camera, KeyManager keyManager, float x, float y, int width, int height) throws IOException
+	public PlayerCharacter(World world, GuiCamera camera, KeyManager keyManager, float x, float y) throws IOException
 	{
-		super(camera, Assets.getPlayerCharacterDown(), x * width, y * height, width, height);
+		super(camera, Assets.getPlayerCharacterDown(),
+				x * 2 * Assets.SIZE * SCALE_ + (Assets.SIZE / 2 * SCALE_),
+				y * 2 * Assets.SIZE * SCALE_ + (Assets.SIZE / 2),
+				Assets.SIZE * SCALE_,
+				Assets.SIZE * SCALE_);
 
 		world_ = world;
 		keyManager_ = keyManager;
-		hitbox_ = new Rectangle(22, 0, 17, 64); // TODO #12 Implement a strategy for defining a hitbox
+		hitbox_ = new Rectangle(3 * SCALE_, 2 * SCALE_, 10 * SCALE_, 14 * SCALE_); // TODO #12 Implement a strategy for defining a hitbox
 	}
 
 	@Override
@@ -141,12 +149,13 @@ public final class PlayerCharacter extends AbstractCharacter
 				height_,
 				null);
 
-		// Draw the hitbox on top of the player
-		g2d.setColor(Color.RED);
-		g2d.drawRect((int) (x_ + hitbox_.x - camera_.getXOffset()),
-				(int) (y_ + hitbox_.y - camera_.getYOffset()),
-				hitbox_.width,
-				hitbox_.height);
+		// // DEBUG
+		// // Draw the hitbox on top of the player
+		// g2d.setColor(Color.RED);
+		// g2d.drawRect((int) (x_ + hitbox_.x - camera_.getXOffset()),
+		// (int) (y_ + hitbox_.y - camera_.getYOffset()),
+		// hitbox_.width,
+		// hitbox_.height);
 	}
 
 	/**

@@ -4,7 +4,7 @@ import com.seashell.rpg.asset.Assets;
 import com.seashell.rpg.tile.Tile;
 
 /**
- * A {@link Tile} for road with a sidewalk on the left edge
+ * A {@link Tile} for road with a line on the left edge
  */
 public class RoadLineLeftTile extends AbstractRoadTile
 {
@@ -17,11 +17,5 @@ public class RoadLineLeftTile extends AbstractRoadTile
 	public RoadLineLeftTile(int id)
 	{
 		super(id, Assets.getRoadLineLeft());
-	}
-
-	@Override
-	public boolean isSolid()
-	{
-		return false;
 	}
 }

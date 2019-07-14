@@ -9,11 +9,11 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import com.seashell.rpg.asset.Assets;
-import com.seashell.rpg.scene.world.tile.nature.GrassTile;
+import com.seashell.rpg.scene.world.tile.nature.GrassBaseTile;
 import com.seashell.rpg.world.tile.AbstractTileTest;
 
 /**
- * Test class for {@link GrassTile}
+ * Test class for {@link GrassBaseTile}
  */
 public class GrassTileTest extends AbstractTileTest
 {
@@ -22,7 +22,7 @@ public class GrassTileTest extends AbstractTileTest
 	public void test_getId()
 	{
 		int id = 0;
-		GrassTile g = new GrassTile(id);
+		GrassBaseTile g = new GrassBaseTile(id);
 
 		int actualId = g.getId();
 
@@ -35,7 +35,7 @@ public class GrassTileTest extends AbstractTileTest
 	{
 		BufferedImage expected = Assets.getGrassBase();
 
-		GrassTile g = new GrassTile(0);
+		GrassBaseTile g = new GrassBaseTile(0);
 		BufferedImage actual = g.getTexture();
 
 		runTextureTest(expected, actual);
@@ -45,7 +45,7 @@ public class GrassTileTest extends AbstractTileTest
 	@Override
 	public void test_isSolid()
 	{
-		GrassTile g = new GrassTile(0);
+		GrassBaseTile g = new GrassBaseTile(0);
 
 		boolean expected = false;
 		boolean actual = g.isSolid();
@@ -57,7 +57,7 @@ public class GrassTileTest extends AbstractTileTest
 	@Override
 	public void test_tick()
 	{
-		GrassTile g = new GrassTile(0);
+		GrassBaseTile g = new GrassBaseTile(0);
 		g.tick();
 	}
 
@@ -67,7 +67,7 @@ public class GrassTileTest extends AbstractTileTest
 	{
 		Graphics2D g2d = Mockito.mock(Graphics2D.class);
 
-		GrassTile g = new GrassTile(0);
+		GrassBaseTile g = new GrassBaseTile(0);
 		g.render(g2d, 0, 0);
 	}
 
@@ -75,7 +75,7 @@ public class GrassTileTest extends AbstractTileTest
 	@Override
 	public void test_render_nullGraphics2D()
 	{
-		GrassTile g = new GrassTile(0);
+		GrassBaseTile g = new GrassBaseTile(0);
 		g.render(null, 0, 0);
 	}
 }

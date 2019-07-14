@@ -1,8 +1,12 @@
-package com.seashell.rpg.scene.world.tile.road;
+package com.seashell.rpg.scene.world.tile.sidewalk;
 
 import com.seashell.rpg.asset.Assets;
+import com.seashell.rpg.tile.Tile;
 
-public class SidewalkBaseTile extends AbstractRoadTile
+/**
+ * A {@link Tile} for plain sidewalk
+ */
+public class SidewalkBaseTile extends AbstractSidewalkTile
 {
 	/**
 	 * Constructor
@@ -13,11 +17,5 @@ public class SidewalkBaseTile extends AbstractRoadTile
 	public SidewalkBaseTile(int id)
 	{
 		super(id, Assets.getSidewalkBase());
-	}
-
-	@Override
-	public boolean isSolid()
-	{
-		return false;
 	}
 }

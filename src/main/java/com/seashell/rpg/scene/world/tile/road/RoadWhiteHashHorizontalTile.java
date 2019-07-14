@@ -4,9 +4,9 @@ import com.seashell.rpg.asset.Assets;
 import com.seashell.rpg.tile.Tile;
 
 /**
- * A {@link Tile} for road with a line on the right edge
+ * A {@link Tile} for road with a horizontal white hash mark
  */
-public class RoadLineRightTile extends AbstractRoadTile
+public class RoadWhiteHashHorizontalTile extends AbstractRoadTile
 {
 	/**
 	 * Constructor
@@ -14,8 +14,8 @@ public class RoadLineRightTile extends AbstractRoadTile
 	 * @param id
 	 *            Value for {@link #getId()}
 	 */
-	public RoadLineRightTile(int id)
+	public RoadWhiteHashHorizontalTile(int id)
 	{
-		super(id, Assets.getRoadLineRight());
+		super(id, Assets.getRoadWhiteHashHorizontal());
 	}
 }
