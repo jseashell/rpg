@@ -32,7 +32,7 @@ public class SpriteSheetTest
 	}
 
 	/**
-	 * Tests that {@link Assets#getPlayerCharacterDown()} does not return null
+	 * Tests that {@link Assets#getPlayerCharacterStandingDown()} does not return null
 	 */
 	@Test
 	public void test_crop()

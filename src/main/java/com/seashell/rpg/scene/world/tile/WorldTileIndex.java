@@ -24,6 +24,7 @@ import com.seashell.rpg.scene.world.tile.sidewalk.SidewalkCurbRightTile;
 import com.seashell.rpg.scene.world.tile.sidewalk.SidewalkCurbTopTile;
 import com.seashell.rpg.scene.world.tile.sidewalk.SidewalkCurbTopToLeftTile;
 import com.seashell.rpg.scene.world.tile.sidewalk.SidewalkCurbTopToRightTile;
+import com.seashell.rpg.scene.world.tile.structure.RoofBaseTile;
 import com.seashell.rpg.tile.Tile;
 
 /**
@@ -72,6 +73,8 @@ public class WorldTileIndex
 		tileIndex_.put(46, new SidewalkCurbTopTile(46));
 		tileIndex_.put(47, new SidewalkCurbTopToLeftTile(47));
 		tileIndex_.put(48, new SidewalkCurbTopToRightTile(48));
+
+		tileIndex_.put(100, new RoofBaseTile(100));
 
 		idMap_ = new int[width][height];
 		for(int y = 0; y < height; y++)

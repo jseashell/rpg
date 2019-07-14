@@ -31,12 +31,12 @@ public class AssetsTest
 	}
 
 	/**
-	 * Tests that {@link Assets#getPlayerCharacterDown()} does not return null
+	 * Tests that {@link Assets#getPlayerCharacterStandingDown()} does not return null
 	 */
 	@Test
 	public void test_getPlayerCharacterDown_nonNull()
 	{
-		assertNotNull(Assets.getPlayerCharacterDown());
+		assertNotNull(Assets.getPlayerCharacterStandingDown());
 	}
 
 	/**
