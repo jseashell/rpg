@@ -35,7 +35,7 @@ public class Assets
 	 */
 	public static void init() throws IOException
 	{
-		kenneyRpgUrban_ = new SpriteSheet(TextureLoader.load("tilemap_packed.png"));
+		kenneyRpgUrban_ = new SpriteSheet(TextureLoader.load("kenney_urban_rpg_tilemap_packed.png"));
 	}
 
 	/**
