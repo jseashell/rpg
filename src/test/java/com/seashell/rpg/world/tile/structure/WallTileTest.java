@@ -9,11 +9,11 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import com.seashell.rpg.asset.Assets;
-import com.seashell.rpg.scene.world.tile.structure.WallTile;
+import com.seashell.rpg.scene.world.tile.structure.RoofBaseTile;
 import com.seashell.rpg.world.tile.AbstractTileTest;
 
 /**
- * Test class for {@link WallTile}
+ * Test class for {@link RoofBaseTile}
  */
 public class WallTileTest extends AbstractTileTest
 {
@@ -22,7 +22,7 @@ public class WallTileTest extends AbstractTileTest
 	public void test_getId()
 	{
 		int id = 0;
-		WallTile w = new WallTile(id);
+		RoofBaseTile w = new RoofBaseTile(id);
 
 		int actualId = w.getId();
 
@@ -33,9 +33,9 @@ public class WallTileTest extends AbstractTileTest
 	@Override
 	public void test_getTexture()
 	{
-		BufferedImage expected = Assets.getWallBase();
+		BufferedImage expected = Assets.getRoofBase();
 
-		WallTile w = new WallTile(0);
+		RoofBaseTile w = new RoofBaseTile(0);
 		BufferedImage actual = w.getTexture();
 
 		runTextureTest(expected, actual);
@@ -45,7 +45,7 @@ public class WallTileTest extends AbstractTileTest
 	@Override
 	public void test_isSolid()
 	{
-		WallTile w = new WallTile(0);
+		RoofBaseTile w = new RoofBaseTile(0);
 
 		boolean expected = true;
 		boolean actual = w.isSolid();
@@ -57,7 +57,7 @@ public class WallTileTest extends AbstractTileTest
 	@Override
 	public void test_tick()
 	{
-		WallTile w = new WallTile(0);
+		RoofBaseTile w = new RoofBaseTile(0);
 		w.tick();
 	}
 
@@ -67,7 +67,7 @@ public class WallTileTest extends AbstractTileTest
 	{
 		Graphics2D g2d = Mockito.mock(Graphics2D.class);
 
-		WallTile w = new WallTile(0);
+		RoofBaseTile w = new RoofBaseTile(0);
 		w.render(g2d, 0, 0);
 	}
 
@@ -75,7 +75,7 @@ public class WallTileTest extends AbstractTileTest
 	@Override
 	public void test_render_nullGraphics2D()
 	{
-		WallTile w = new WallTile(0);
+		RoofBaseTile w = new RoofBaseTile(0);
 		w.render(null, 0, 0);
 	}
 }

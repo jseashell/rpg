@@ -7,6 +7,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.google.common.io.Files;
 import com.seashell.rpg.scene.world.World;
 
@@ -135,17 +137,20 @@ public class WorldConfigurationBuilder
 
 		if(lines.size() > 0)
 		{
-			width_ = lines.get(0).replace(" ", "").length();
+			// Count the number of commas in the first line, then add 1. The resulting value is the width (in number of tiles) of the world
+			width_ = StringUtils.countMatches(lines.get(0), ",") + 1;
+
+			// Count the number of entries in the read #lines list. The resulting value is the height (in number of tiles) of the world
 			height_ = lines.size();
 
 			final StringBuilder sb = new StringBuilder();
 			for(String line : lines)
 			{
 				sb.append(line);
-				sb.append("\n");
+				sb.append(",");
 			}
 
-			tokens_ = sb.toString().split("\\s+");
+			tokens_ = StringUtils.split(sb.toString(), ",");
 		}
 		else
 		{

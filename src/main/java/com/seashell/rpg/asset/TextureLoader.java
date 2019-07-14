@@ -18,7 +18,7 @@ public class TextureLoader
 	}
 
 	/**
-	 * Loads the given texture into an image. The texture file must live in {@code ../resources/textures/}
+	 * Loads the given texture into an image. The texture file must live in {@code ../resources/asset/texture/}
 	 *
 	 * @param filename
 	 *            The name of the texture file to load (with extension)
@@ -28,6 +28,6 @@ public class TextureLoader
 	 */
 	public static BufferedImage load(String filename) throws IOException
 	{
-		return ImageIO.read(TextureLoader.class.getClassLoader().getResource("textures/" + filename));
+		return ImageIO.read(TextureLoader.class.getClassLoader().getResource("asset/texture/" + filename));
 	}
 }

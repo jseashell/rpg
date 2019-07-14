@@ -72,7 +72,7 @@ public final class World implements Render
 	{
 		// Only render the tiles that are in display
 		int xStart = (int) Math.max(0, camera_.getXOffset()) / Tile.SIZE;
-		int xEnd = (int) Math.min(config_.getWidth(), (camera_.getXOffset() + guiResolutionWidth_) / Tile.SIZE + 1); //
+		int xEnd = (int) Math.min(config_.getWidth(), (camera_.getXOffset() + guiResolutionWidth_) / Tile.SIZE + 1);
 		int yStart = (int) Math.max(0, camera_.getYOffset()) / Tile.SIZE;
 		int yEnd = (int) Math.min(config_.getHeight(), (camera_.getYOffset() + guiResolutionHeight_) / Tile.SIZE + 1);
 

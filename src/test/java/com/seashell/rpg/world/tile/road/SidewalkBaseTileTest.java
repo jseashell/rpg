@@ -9,7 +9,7 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import com.seashell.rpg.asset.Assets;
-import com.seashell.rpg.scene.world.tile.road.SidewalkBaseTile;
+import com.seashell.rpg.scene.world.tile.sidewalk.SidewalkBaseTile;
 
 /**
  * Test class {@link SidewalkBaseTile}
