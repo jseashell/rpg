@@ -1,4 +1,4 @@
-package com.seashell.rpg.world.tile.road;
+package com.seashell.rpg.world.tile.sidewalk;
 
 import static org.junit.Assert.assertEquals;
 
@@ -10,6 +10,7 @@ import org.mockito.Mockito;
 
 import com.seashell.rpg.asset.Assets;
 import com.seashell.rpg.scene.world.tile.sidewalk.SidewalkBaseTile;
+import com.seashell.rpg.world.tile.road.AbstractRoadTileTest;
 
 /**
  * Test class {@link SidewalkBaseTile}

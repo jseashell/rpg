@@ -35,7 +35,7 @@ public class Car extends AbstractVehicle
 	 * Constructor
 	 *
 	 * @param camera
-	 *            The {@link GuiCamera}
+	 *            The camera controlling the scene showing this entity
 	 * @param worldHeight
 	 *            The height of the world represented as number of Tiles
 	 * @param texture
@@ -97,7 +97,6 @@ public class Car extends AbstractVehicle
 		}
 		else
 		{
-
 			if(x_ <= 0)
 			{
 				x_ = (worldWidth_ * width_) - Tile.SIZE;

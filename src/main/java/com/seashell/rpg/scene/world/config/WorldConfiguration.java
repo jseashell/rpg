@@ -13,14 +13,17 @@ public final class WorldConfiguration
 	 * Value for {@link #getWidth()}
 	 */
 	private final int width_;
+
 	/**
 	 * Value for {@link #getHeight()}
 	 */
 	private final int height_;
+
 	/**
 	 * Value for {@link #getSpawnX()}
 	 */
 	private final int spawnX_;
+
 	/**
 	 * Value for {@link #getSpawnY()}
 	 */

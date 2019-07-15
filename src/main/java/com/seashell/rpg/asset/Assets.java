@@ -182,12 +182,89 @@ public class Assets
 	}
 
 	/**
-	 * @return A {@link BufferedImage} of a plain roof
+	 * @return A {@link BufferedImage} of a plain grey roof
 	 */
-	public static BufferedImage getRoofBase()
+	public static BufferedImage getRoofGreyBase()
 	{
 		int x = SIZE * 9;
 		int y = SIZE * 4;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of a plain brown roof
+	 */
+	public static BufferedImage getRoofBrownBase()
+	{
+		int x = SIZE * 1;
+		int y = SIZE * 4;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of a brown roof with an edge going from bottom to right
+	 */
+	public static BufferedImage getRoofBrownBottomToRightEdge()
+	{
+		int x = SIZE * 0;
+		int y = SIZE * 3;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of a brown roof with an edge going from bottom to right
+	 */
+	public static BufferedImage getRoofBrownBottomToLeftEdge()
+	{
+		int x = SIZE * 2;
+		int y = SIZE * 3;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of a brown roof with an edge going from bottom to right
+	 */
+	public static BufferedImage getRoofBrownTopToLeftEdge()
+	{
+		int x = SIZE * 2;
+		int y = SIZE * 5;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of a brown roof with an edge going from bottom to right
+	 */
+	public static BufferedImage getRoofBrownTopToRightEdge()
+	{
+		int x = SIZE * 0;
+		int y = SIZE * 5;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of a brown roof with an edge going from bottom to right
+	 */
+	public static BufferedImage getRoofBrownWithTopEdge()
+	{
+		int x = SIZE * 1;
+		int y = SIZE * 3;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of a brown roof with an edge going from bottom to right
+	 */
+	public static BufferedImage getRoofBrownWithBottomEdge()
+	{
+		int x = SIZE * 1;
+		int y = SIZE * 5;
 
 		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
 	}
@@ -413,7 +490,7 @@ public class Assets
 	}
 
 	/**
-	 * @return A {@link BufferedImage} of a car facing upward
+	 * @return A {@link BufferedImage} of a red car facing upward
 	 */
 	public static BufferedImage getCarUpRed()
 	{
@@ -424,7 +501,7 @@ public class Assets
 	}
 
 	/**
-	 * @return A {@link BufferedImage} of a car facing left
+	 * @return A {@link BufferedImage} of a red car facing left
 	 */
 	public static BufferedImage getCarLeftRed()
 	{
@@ -432,5 +509,126 @@ public class Assets
 		int y = SIZE * 16;
 
 		return kenneyRpgUrban_.crop(x, y, SIZE * 2, SIZE * 2);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of a plain orange wall (variant a)
+	 */
+	public static BufferedImage getWallOrangeBaseVariantA()
+	{
+		int x = SIZE * 18;
+		int y = SIZE * 6;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of a orange wall with a left edge (variant a)
+	 */
+	public static BufferedImage getWallOrangeWithLeftEdgeVariantA()
+	{
+		int x = SIZE * 17;
+		int y = SIZE * 6;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of a orange wall with a right edge (variant a)
+	 */
+	public static BufferedImage getWallOrangeWithRightEdgeVariantA()
+	{
+		int x = SIZE * 19;
+		int y = SIZE * 6;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of a orange wall with a bottom edge (variant a)
+	 */
+	public static BufferedImage getWallOrangeWithBottomEdgeVariantA()
+	{
+		int x = SIZE * 18;
+		int y = SIZE * 7;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of a orange wall with an edge going from bottom to left (variant a)
+	 */
+	public static BufferedImage getWallOrangeWithBottomToLeftEdgeVariantA()
+	{
+		int x = SIZE * 17;
+		int y = SIZE * 7;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of a orange wall with an edge going from bottom to right (variant a)
+	 */
+	public static BufferedImage getWallOrangeWithBottomToRightEdgeVariantA()
+	{
+		int x = SIZE * 19;
+		int y = SIZE * 7;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of a orange wall with a bottom edge (variant a)
+	 */
+	public static BufferedImage getWallOrangeWithTopEdgeVariantA()
+	{
+		int x = SIZE * 18;
+		int y = SIZE * 4;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of a orange wall with a top edge (variant a)
+	 */
+	public static BufferedImage getWallOrangeWithTopToLeftEdgeVariantA()
+	{
+		int x = SIZE * 17;
+		int y = SIZE * 4;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of a orange wall with an edge going from top to right (variant a)
+	 */
+	public static BufferedImage getWallOrangeWithTopToRightEdgeVariantA()
+	{
+		int x = SIZE * 19;
+		int y = SIZE * 4;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of a door
+	 */
+	public static BufferedImage getDoor()
+	{
+		int x = SIZE * 7;
+		int y = SIZE * 15;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of a window
+	 */
+	public static BufferedImage getWindow()
+	{
+		int x = SIZE * 12;
+		int y = SIZE * 16;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
 	}
 }

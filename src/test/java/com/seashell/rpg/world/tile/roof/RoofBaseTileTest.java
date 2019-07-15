@@ -1,4 +1,4 @@
-package com.seashell.rpg.world.tile.structure;
+package com.seashell.rpg.world.tile.roof;
 
 import static org.junit.Assert.assertEquals;
 
@@ -9,11 +9,11 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import com.seashell.rpg.asset.Assets;
-import com.seashell.rpg.scene.world.tile.structure.RoofBaseTile;
+import com.seashell.rpg.scene.world.tile.roof.RoofBaseGreyTile;
 import com.seashell.rpg.world.tile.AbstractTileTest;
 
 /**
- * Test class for {@link RoofBaseTile}
+ * Test class for {@link RoofBaseGreyTile}
  */
 public class RoofBaseTileTest extends AbstractTileTest
 {
@@ -22,7 +22,7 @@ public class RoofBaseTileTest extends AbstractTileTest
 	public void test_getId()
 	{
 		int id = 0;
-		RoofBaseTile r = new RoofBaseTile(id);
+		RoofBaseGreyTile r = new RoofBaseGreyTile(id);
 
 		int actualId = r.getId();
 
@@ -33,9 +33,9 @@ public class RoofBaseTileTest extends AbstractTileTest
 	@Override
 	public void test_getTexture()
 	{
-		BufferedImage expected = Assets.getRoofBase();
+		BufferedImage expected = Assets.getRoofGreyBase();
 
-		RoofBaseTile r = new RoofBaseTile(0);
+		RoofBaseGreyTile r = new RoofBaseGreyTile(0);
 		BufferedImage actual = r.getTexture();
 
 		runTextureTest(expected, actual);
@@ -45,7 +45,7 @@ public class RoofBaseTileTest extends AbstractTileTest
 	@Override
 	public void test_isSolid()
 	{
-		RoofBaseTile r = new RoofBaseTile(0);
+		RoofBaseGreyTile r = new RoofBaseGreyTile(0);
 
 		boolean expected = true;
 		boolean actual = r.isSolid();
@@ -57,7 +57,7 @@ public class RoofBaseTileTest extends AbstractTileTest
 	@Override
 	public void test_tick()
 	{
-		RoofBaseTile r = new RoofBaseTile(0);
+		RoofBaseGreyTile r = new RoofBaseGreyTile(0);
 		r.tick();
 	}
 
@@ -67,7 +67,7 @@ public class RoofBaseTileTest extends AbstractTileTest
 	{
 		Graphics2D g2d = Mockito.mock(Graphics2D.class);
 
-		RoofBaseTile r = new RoofBaseTile(0);
+		RoofBaseGreyTile r = new RoofBaseGreyTile(0);
 		r.render(g2d, 0, 0);
 	}
 
@@ -75,7 +75,7 @@ public class RoofBaseTileTest extends AbstractTileTest
 	@Override
 	public void test_render_nullGraphics2D()
 	{
-		RoofBaseTile r = new RoofBaseTile(0);
+		RoofBaseGreyTile r = new RoofBaseGreyTile(0);
 		r.render(null, 0, 0);
 	}
 }

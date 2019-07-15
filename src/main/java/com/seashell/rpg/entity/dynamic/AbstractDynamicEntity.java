@@ -12,11 +12,6 @@ import com.seashell.rpg.gui.GuiCamera;
 public abstract class AbstractDynamicEntity extends AbstractEntity
 {
 	/**
-	 * The camera
-	 */
-	protected final GuiCamera camera_;
-
-	/**
 	 * A constant amount for entity speed
 	 */
 	protected float speed_;
@@ -34,6 +29,8 @@ public abstract class AbstractDynamicEntity extends AbstractEntity
 	/**
 	 * Constructor
 	 *
+	 * @param camera
+	 *            The camera controlling the scene showing this entity
 	 * @param texture
 	 *            Value for {@link #getTexture()}
 	 * @param speed
@@ -49,11 +46,8 @@ public abstract class AbstractDynamicEntity extends AbstractEntity
 	 */
 	protected AbstractDynamicEntity(GuiCamera camera, BufferedImage texture, float speed, float x, float y, int width, int height)
 	{
-		super(texture, x, y, width, height);
-
-		camera_ = camera;
+		super(camera, texture, x, y, width, height);
 		speed_ = speed;
-
 		xMove_ = x;
 		yMove_ = y;
 	}

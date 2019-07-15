@@ -49,12 +49,12 @@ public class AssetsTest
 	}
 
 	/**
-	 * Tests that {@link Assets#getRoofBase()} does not return null
+	 * Tests that {@link Assets#getRoofGreyBase()} does not return null
 	 */
 	@Test
 	public void test_getWallBase_nonNull()
 	{
-		assertNotNull(Assets.getRoofBase());
+		assertNotNull(Assets.getRoofGreyBase());
 	}
 
 	/**

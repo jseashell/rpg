@@ -15,6 +15,14 @@ import com.seashell.rpg.scene.world.tile.road.RoadLineTopToLeftTile;
 import com.seashell.rpg.scene.world.tile.road.RoadLineTopToRightTile;
 import com.seashell.rpg.scene.world.tile.road.RoadWhiteHashHorizontalTile;
 import com.seashell.rpg.scene.world.tile.road.RoadWhiteHashVerticalTile;
+import com.seashell.rpg.scene.world.tile.roof.RoofBaseBrownBottomToLeftEdgeTile;
+import com.seashell.rpg.scene.world.tile.roof.RoofBaseBrownBottomToRightEdgeTile;
+import com.seashell.rpg.scene.world.tile.roof.RoofBaseBrownTile;
+import com.seashell.rpg.scene.world.tile.roof.RoofBaseBrownTopToLeftEdgeTile;
+import com.seashell.rpg.scene.world.tile.roof.RoofBaseBrownTopToRightEdgeTile;
+import com.seashell.rpg.scene.world.tile.roof.RoofBaseBrownWithBottomEdgeTile;
+import com.seashell.rpg.scene.world.tile.roof.RoofBaseBrownWithTopEdgeTile;
+import com.seashell.rpg.scene.world.tile.roof.RoofBaseGreyTile;
 import com.seashell.rpg.scene.world.tile.sidewalk.SidewalkBaseTile;
 import com.seashell.rpg.scene.world.tile.sidewalk.SidewalkCurbBottomTile;
 import com.seashell.rpg.scene.world.tile.sidewalk.SidewalkCurbBottomToLeftTile;
@@ -24,7 +32,15 @@ import com.seashell.rpg.scene.world.tile.sidewalk.SidewalkCurbRightTile;
 import com.seashell.rpg.scene.world.tile.sidewalk.SidewalkCurbTopTile;
 import com.seashell.rpg.scene.world.tile.sidewalk.SidewalkCurbTopToLeftTile;
 import com.seashell.rpg.scene.world.tile.sidewalk.SidewalkCurbTopToRightTile;
-import com.seashell.rpg.scene.world.tile.structure.RoofBaseTile;
+import com.seashell.rpg.scene.world.tile.wall.WallOrangeBaseVariantATile;
+import com.seashell.rpg.scene.world.tile.wall.WallOrangeWithBottomEdgeVariantATile;
+import com.seashell.rpg.scene.world.tile.wall.WallOrangeWithBottomToLeftEdgeVariantATile;
+import com.seashell.rpg.scene.world.tile.wall.WallOrangeWithBottomToRightEdgeVariantATile;
+import com.seashell.rpg.scene.world.tile.wall.WallOrangeWithLeftEdgeVariantATile;
+import com.seashell.rpg.scene.world.tile.wall.WallOrangeWithRightEdgeVariantATile;
+import com.seashell.rpg.scene.world.tile.wall.WallOrangeWithTopEdgeVariantATile;
+import com.seashell.rpg.scene.world.tile.wall.WallOrangeWithTopToLeftEdgeVariantATile;
+import com.seashell.rpg.scene.world.tile.wall.WallOrangeWithTopToRightEdgeVariantATile;
 import com.seashell.rpg.tile.Tile;
 
 /**
@@ -74,7 +90,24 @@ public class WorldTileIndex
 		tileIndex_.put(47, new SidewalkCurbTopToLeftTile(47));
 		tileIndex_.put(48, new SidewalkCurbTopToRightTile(48));
 
-		tileIndex_.put(100, new RoofBaseTile(100));
+		tileIndex_.put(100, new RoofBaseGreyTile(100));
+		tileIndex_.put(120, new RoofBaseBrownTile(120));
+		tileIndex_.put(121, new RoofBaseBrownBottomToRightEdgeTile(121));
+		tileIndex_.put(122, new RoofBaseBrownBottomToLeftEdgeTile(122));
+		tileIndex_.put(123, new RoofBaseBrownWithTopEdgeTile(123));
+		tileIndex_.put(124, new RoofBaseBrownWithBottomEdgeTile(124));
+		tileIndex_.put(125, new RoofBaseBrownTopToLeftEdgeTile(125));
+		tileIndex_.put(126, new RoofBaseBrownTopToRightEdgeTile(126));
+
+		tileIndex_.put(200, new WallOrangeBaseVariantATile(200));
+		tileIndex_.put(201, new WallOrangeWithLeftEdgeVariantATile(201));
+		tileIndex_.put(202, new WallOrangeWithRightEdgeVariantATile(202));
+		tileIndex_.put(203, new WallOrangeWithBottomEdgeVariantATile(203));
+		tileIndex_.put(204, new WallOrangeWithBottomToLeftEdgeVariantATile(204));
+		tileIndex_.put(205, new WallOrangeWithBottomToRightEdgeVariantATile(205));
+		tileIndex_.put(206, new WallOrangeWithTopEdgeVariantATile(206));
+		tileIndex_.put(207, new WallOrangeWithTopToLeftEdgeVariantATile(207));
+		tileIndex_.put(208, new WallOrangeWithTopToRightEdgeVariantATile(208));
 
 		idMap_ = new int[width][height];
 		for(int y = 0; y < height; y++)

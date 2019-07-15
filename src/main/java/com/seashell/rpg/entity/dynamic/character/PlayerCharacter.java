@@ -97,7 +97,7 @@ public final class PlayerCharacter extends AbstractCharacter
 	 * Constructor
 	 *
 	 * @param camera
-	 *            The camera for the game
+	 *            The camera controlling the scene showing this entity
 	 * @param keyManager
 	 *            Value for {@link #getKeyManager()}
 	 * @param x

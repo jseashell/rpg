@@ -2,11 +2,18 @@ package com.seashell.rpg.entity;
 
 import java.awt.image.BufferedImage;
 
+import com.seashell.rpg.gui.GuiCamera;
+
 /**
  * Abstract parent for all {@link Entity} implementations
  */
 public abstract class AbstractEntity implements Entity
 {
+	/**
+	 * The camera controlling the scene showing this entity
+	 */
+	protected final GuiCamera camera_;
+
 	/**
 	 * Value for {@link #getTexture()}
 	 */
@@ -35,6 +42,8 @@ public abstract class AbstractEntity implements Entity
 	/**
 	 * Constructor
 	 *
+	 * @param camera
+	 *            The camera controlling the scene showing this entity
 	 * @param texture
 	 *            Value for {@link #getTexture()}
 	 * @param x
@@ -46,8 +55,9 @@ public abstract class AbstractEntity implements Entity
 	 * @param height
 	 *            Value for {@link #getHeight()}
 	 */
-	protected AbstractEntity(BufferedImage texture, float x, float y, int width, int height)
+	protected AbstractEntity(GuiCamera camera, BufferedImage texture, float x, float y, int width, int height)
 	{
+		camera_ = camera;
 		texture_ = texture;
 		x_ = x;
 		y_ = y;
@@ -65,17 +75,6 @@ public abstract class AbstractEntity implements Entity
 	public final float getX()
 	{
 		return x_;
-	}
-
-	/**
-	 * Set the return for {@link #getX()}. Only available to extensions of this class
-	 *
-	 * @param x
-	 *            The x to set
-	 */
-	protected final void setX(float x)
-	{
-		x_ = x;
 	}
 
 	@Override
