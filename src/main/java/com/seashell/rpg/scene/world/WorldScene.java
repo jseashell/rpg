@@ -8,6 +8,7 @@ import com.seashell.rpg.entity.dynamic.character.PlayerCharacter;
 import com.seashell.rpg.entity.dynamic.vehicle.CarRed;
 import com.seashell.rpg.entity.dynamic.vehicle.CarTaxi;
 import com.seashell.rpg.entity.stationary.Door;
+import com.seashell.rpg.entity.stationary.StoplightDown;
 import com.seashell.rpg.entity.stationary.Window;
 import com.seashell.rpg.gui.GuiCamera;
 import com.seashell.rpg.process.GameProcess;
@@ -102,6 +103,11 @@ public class WorldScene extends AbstractScene
 	private final Window windowH_;
 
 	/**
+	 * A stoplight entity facing down
+	 */
+	private final StoplightDown stoplightDown_;
+
+	/**
 	 * Constructor
 	 *
 	 * @param gameProcess
@@ -129,6 +135,8 @@ public class WorldScene extends AbstractScene
 		windowF_ = new Window(camera_, (12 * Tile.SIZE) + (Assets.SIZE * 1), (6 * Tile.SIZE) + (Assets.SIZE * 2));
 		windowG_ = new Window(camera_, (10 * Tile.SIZE) + (Assets.SIZE * 3), (7 * Tile.SIZE) + (Assets.SIZE * 1));
 		windowH_ = new Window(camera_, (12 * Tile.SIZE) + (Assets.SIZE * 1), (7 * Tile.SIZE) + (Assets.SIZE * 1));
+
+		stoplightDown_ = new StoplightDown(camera_, (8 * Tile.SIZE) - (Assets.SIZE * 2), (9 * Tile.SIZE) + (Assets.SIZE * 3));
 
 		player_ = new PlayerCharacter(world_, camera_, gameProcess.getKeyManager(), world_.getSpawnX(), world_.getSpawnY());
 
@@ -158,6 +166,8 @@ public class WorldScene extends AbstractScene
 		carC_.tick();
 		carD_.tick();
 
+		stoplightDown_.tick();
+
 		player_.tick();
 		camera_.centerOnEntity(player_);
 	}
@@ -183,5 +193,7 @@ public class WorldScene extends AbstractScene
 		carB_.render(g2d);
 		carC_.render(g2d);
 		carD_.render(g2d);
+
+		stoplightDown_.render(g2d);
 	}
 }

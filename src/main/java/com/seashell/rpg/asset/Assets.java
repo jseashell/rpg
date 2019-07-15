@@ -401,7 +401,6 @@ public class Assets
 		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
 	}
 
-
 	/**
 	 * @return A {@link BufferedImage} of a road with a line on the bottom edge
 	 */
@@ -717,6 +716,17 @@ public class Assets
 	{
 		int x = SIZE * 12;
 		int y = SIZE * 16;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of a stoplight facing downward
+	 */
+	public static BufferedImage getStoplightDown()
+	{
+		int x = SIZE * 4;
+		int y = SIZE * 15;
 
 		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
 	}
