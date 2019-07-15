@@ -281,6 +281,17 @@ public class Assets
 	}
 
 	/**
+	 * @return A {@link BufferedImage} of a plain road
+	 */
+	public static BufferedImage getRoadBaseWithVerticalCrossWalk()
+	{
+		int x = SIZE * 0;
+		int y = SIZE * 16;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
 	 * @return A {@link BufferedImage} of a road with a white vertical hash mark
 	 */
 	public static BufferedImage getRoadWhiteHashVertical()
@@ -331,6 +342,28 @@ public class Assets
 	{
 		int x = SIZE * 1;
 		int y = SIZE * 15;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of a road with a line on the top edge
+	 */
+	public static BufferedImage getRoadLineTopWithCrossWalk()
+	{
+		int x = SIZE * 0;
+		int y = SIZE * 15;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of a road with a line on the top edge
+	 */
+	public static BufferedImage getRoadLineBottomWithCrossWalk()
+	{
+		int x = SIZE * 0;
+		int y = SIZE * 17;
 
 		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
 	}
