@@ -5,7 +5,8 @@ import java.io.IOException;
 
 import com.seashell.rpg.asset.Assets;
 import com.seashell.rpg.entity.dynamic.character.PlayerCharacter;
-import com.seashell.rpg.entity.dynamic.vehicle.Car;
+import com.seashell.rpg.entity.dynamic.vehicle.CarRed;
+import com.seashell.rpg.entity.dynamic.vehicle.CarTaxi;
 import com.seashell.rpg.entity.stationary.Door;
 import com.seashell.rpg.entity.stationary.Window;
 import com.seashell.rpg.gui.GuiCamera;
@@ -38,22 +39,22 @@ public class WorldScene extends AbstractScene
 	/**
 	 * A car entity
 	 */
-	private final Car carA_;
+	private final CarRed carA_;
 
 	/**
 	 * A car entity
 	 */
-	private final Car carB_;
+	private final CarTaxi carB_;
 
 	/**
 	 * A car entity
 	 */
-	private final Car carC_;
+	private final CarRed carC_;
 
 	/**
 	 * A car entity
 	 */
-	private final Car carD_;
+	private final CarTaxi carD_;
 
 	/**
 	 * A door entity
@@ -131,10 +132,10 @@ public class WorldScene extends AbstractScene
 
 		player_ = new PlayerCharacter(world_, camera_, gameProcess.getKeyManager(), world_.getSpawnX(), world_.getSpawnY());
 
-		carA_ = new Car(0, camera_, world_.getWidth(), world_.getHeight(), 7 * Assets.SIZE * 8, 15 * Assets.SIZE * 8);
-		carB_ = new Car(0, camera_, world_.getWidth(), world_.getHeight(), 7 * Assets.SIZE * 8, 9 * Assets.SIZE * 8);
-		carC_ = new Car(1, camera_, world_.getWidth(), world_.getHeight(), 3 * Assets.SIZE * 8, 10 * Assets.SIZE * 8);
-		carD_ = new Car(1, camera_, world_.getWidth(), world_.getHeight(), 8 * Assets.SIZE * 8, 10 * Assets.SIZE * 8);
+		carA_ = new CarRed(0, camera_, world_.getWidth(), world_.getHeight(), 7 * Assets.SIZE * 8, 15 * Assets.SIZE * 8);
+		carB_ = new CarTaxi(0, camera_, world_.getWidth(), world_.getHeight(), 7 * Assets.SIZE * 8, 9 * Assets.SIZE * 8);
+		carC_ = new CarRed(1, camera_, world_.getWidth(), world_.getHeight(), 3 * Assets.SIZE * 8, 10 * Assets.SIZE * 8);
+		carD_ = new CarTaxi(1, camera_, world_.getWidth(), world_.getHeight(), 8 * Assets.SIZE * 8, 10 * Assets.SIZE * 8);
 	}
 
 	@Override

@@ -383,11 +383,11 @@ public final class PlayerCharacter extends AbstractCharacter
 
 		if(keyManager_.isSprint())
 		{
-			speed_ = 6.0f;
+			speed_ = 4.0f;
 		}
 		else
 		{
-			speed_ = 3.0f;
+			speed_ = 2.0f;
 		}
 
 		if(keyManager_.isUp())

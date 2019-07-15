@@ -9,7 +9,7 @@ import com.seashell.rpg.tile.Tile;
 /**
  * A car entity
  */
-public class Car extends AbstractVehicle
+public class CarRed extends AbstractVehicle
 {
 	/**
 	 * Scaling factor for the car's height
@@ -49,9 +49,9 @@ public class Car extends AbstractVehicle
 	 * @param height
 	 *            Value for {@link #getHeight()}
 	 */
-	public Car(int direction, GuiCamera camera, int worldWidth, int worldHeight, float x, float y)
+	public CarRed(int direction, GuiCamera camera, int worldWidth, int worldHeight, float x, float y)
 	{
-		super(camera, getTexture(direction), 10.0f, x, y, Assets.SIZE * getScaleWidth(direction), Assets.SIZE * SCALE_HEIGHT_);
+		super(camera, getTexture(direction), 7.0f, x, y, Assets.SIZE * getScaleWidth(direction), Assets.SIZE * SCALE_HEIGHT_);
 		direction_ = direction;
 		worldWidth_ = worldWidth;
 		worldHeight_ = worldHeight;
@@ -67,7 +67,16 @@ public class Car extends AbstractVehicle
 	 */
 	private static BufferedImage getTexture(int direction)
 	{
-		return direction == 0 ? Assets.getCarUpRed() : Assets.getCarLeftRed();
+		switch(direction)
+		{
+		case 0:
+			return Assets.getCarUpRed();
+		case 1:
+			return Assets.getCarLeftRed();
+		case 2:
+		}
+
+		return null;
 	}
 
 	/**
