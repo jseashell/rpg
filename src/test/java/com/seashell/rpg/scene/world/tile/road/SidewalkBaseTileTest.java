@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import com.seashell.rpg.asset.Assets;
+import com.seashell.rpg.resource.R;
 import com.seashell.rpg.scene.world.tile.sidewalk.SidewalkBaseTile;
 
 /**
@@ -32,7 +32,7 @@ public class SidewalkBaseTileTest extends AbstractRoadTileTest
 	@Override
 	public void test_getTexture()
 	{
-		BufferedImage expected = Assets.getSidewalkBase();
+		BufferedImage expected = R.getSidewalkBase();
 
 		SidewalkBaseTile r = new SidewalkBaseTile(0);
 		BufferedImage actual = r.getTexture();

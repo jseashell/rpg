@@ -6,10 +6,10 @@ import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-import com.seashell.rpg.asset.Assets;
 import com.seashell.rpg.entity.dynamic.Animation;
 import com.seashell.rpg.gui.GuiCamera;
 import com.seashell.rpg.gui.KeyManager;
+import com.seashell.rpg.resource.R;
 import com.seashell.rpg.scene.world.World;
 import com.seashell.rpg.tile.Tile;
 
@@ -111,11 +111,11 @@ public final class PlayerCharacter extends AbstractCharacter
 	 */
 	public PlayerCharacter(World world, GuiCamera camera, KeyManager keyManager, float x, float y) throws IOException
 	{
-		super(camera, Assets.getPlayerCharacterStandingDown(),
-				x * 2 * Assets.SIZE * SCALE_ + (Assets.SIZE / 2 * SCALE_),
-				y * 2 * Assets.SIZE * SCALE_ + (Assets.SIZE / 2),
-				Assets.SIZE * SCALE_,
-				Assets.SIZE * SCALE_);
+		super(camera, R.getPlayerCharacterStandingDown(),
+				x * 2 * R.SIZE * SCALE_ + (R.SIZE / 2 * SCALE_),
+				y * 2 * R.SIZE * SCALE_ + (R.SIZE / 2),
+				R.SIZE * SCALE_,
+				R.SIZE * SCALE_);
 
 		collidedUp_ = false;
 		collidedDown_ = false;
@@ -125,27 +125,27 @@ public final class PlayerCharacter extends AbstractCharacter
 		animSpeed_ = WALK_SPEED_; // Initialize character with walking speed
 
 		BufferedImage[] playerDown = new BufferedImage[3];
-		playerDown[0] = Assets.getPlayerCharacterWalkingDownVariantA();
-		playerDown[1] = Assets.getPlayerCharacterWalkingDownVariantB();
-		playerDown[2] = Assets.getPlayerCharacterStandingDown();
+		playerDown[0] = R.getPlayerCharacterWalkingDownVariantA();
+		playerDown[1] = R.getPlayerCharacterWalkingDownVariantB();
+		playerDown[2] = R.getPlayerCharacterStandingDown();
 		animDown_ = new Animation(animSpeed_, playerDown);
 
 		BufferedImage[] playerLeft = new BufferedImage[3];
-		playerLeft[0] = Assets.getPlayerCharacterWalkingLeftVariantA();
-		playerLeft[1] = Assets.getPlayerCharacterWalkingLeftVariantB();
-		playerLeft[2] = Assets.getPlayerCharacterStandingLeft();
+		playerLeft[0] = R.getPlayerCharacterWalkingLeftVariantA();
+		playerLeft[1] = R.getPlayerCharacterWalkingLeftVariantB();
+		playerLeft[2] = R.getPlayerCharacterStandingLeft();
 		animLeft_ = new Animation(animSpeed_, playerLeft);
 
 		BufferedImage[] playerRight = new BufferedImage[3];
-		playerRight[0] = Assets.getPlayerCharacterWalkingRightVariantA();
-		playerRight[1] = Assets.getPlayerCharacterWalkingRightVariantB();
-		playerRight[2] = Assets.getPlayerCharacterStandingRight();
+		playerRight[0] = R.getPlayerCharacterWalkingRightVariantA();
+		playerRight[1] = R.getPlayerCharacterWalkingRightVariantB();
+		playerRight[2] = R.getPlayerCharacterStandingRight();
 		animRight_ = new Animation(animSpeed_, playerRight);
 
 		BufferedImage[] playerUp = new BufferedImage[3];
-		playerUp[0] = Assets.getPlayerCharacterWalkingUpVariantA();
-		playerUp[1] = Assets.getPlayerCharacterWalkingUpVariantB();
-		playerUp[2] = Assets.getPlayerCharacterStandingUp();
+		playerUp[0] = R.getPlayerCharacterWalkingUpVariantA();
+		playerUp[1] = R.getPlayerCharacterWalkingUpVariantB();
+		playerUp[2] = R.getPlayerCharacterStandingUp();
 		animUp_ = new Animation(animSpeed_, playerUp);
 
 		world_ = world;
@@ -317,11 +317,11 @@ public final class PlayerCharacter extends AbstractCharacter
 		{
 			if(keyManager_.getLastDirectionFaced() == KeyEvent.VK_A)
 			{
-				return Assets.getPlayerCharacterStandingLeft();
+				return R.getPlayerCharacterStandingLeft();
 			}
 			else if(keyManager_.getLastDirectionFaced() == KeyEvent.VK_D)
 			{
-				return Assets.getPlayerCharacterStandingRight();
+				return R.getPlayerCharacterStandingRight();
 			}
 		}
 
@@ -329,11 +329,11 @@ public final class PlayerCharacter extends AbstractCharacter
 		{
 			if(keyManager_.getLastDirectionFaced() == KeyEvent.VK_S)
 			{
-				return Assets.getPlayerCharacterStandingDown();
+				return R.getPlayerCharacterStandingDown();
 			}
 			else if(keyManager_.getLastDirectionFaced() == KeyEvent.VK_W)
 			{
-				return Assets.getPlayerCharacterStandingUp();
+				return R.getPlayerCharacterStandingUp();
 			}
 		}
 
@@ -355,7 +355,7 @@ public final class PlayerCharacter extends AbstractCharacter
 		}
 
 		// Default
-		return Assets.getPlayerCharacterStandingDown();
+		return R.getPlayerCharacterStandingDown();
 	}
 
 	/**

@@ -17,6 +17,8 @@ public class MainMenuButton extends AbstractMenuButton
 	 */
 	private final GameProcessState destinationState_;
 
+	private final String buttonText_;
+
 	/**
 	 * Constructor
 	 *
@@ -27,10 +29,32 @@ public class MainMenuButton extends AbstractMenuButton
 	 * @param bounds
 	 *            The bounds for the button
 	 */
-	public MainMenuButton(GameProcessState destinationState, BufferedImage img, Shape bounds)
+	public MainMenuButton(GameProcessState destinationState, BufferedImage raisedImg, BufferedImage clickedImg, Shape bounds)
 	{
-		super(img, bounds);
+		super(raisedImg, clickedImg, bounds);
 		destinationState_ = Objects.requireNonNull(destinationState);
+
+		switch(destinationState_)
+		{
+		case MAIN_MENU:
+			buttonText_ = "Main Menu";
+			break;
+
+		case NEW_GAME:
+			buttonText_ = "New Game";
+			break;
+
+		case SETTINGS_MENU:
+			buttonText_ = "Setting";
+			break;
+
+		case EXIT:
+			buttonText_ = "Exit";
+			break;
+
+		default:
+			throw new AssertionError("Unhandled destination state");
+		}
 	}
 
 	/**
@@ -41,4 +65,8 @@ public class MainMenuButton extends AbstractMenuButton
 		return destinationState_;
 	}
 
+	public String getButtonText()
+	{
+		return buttonText_;
+	}
 }

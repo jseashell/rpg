@@ -1,12 +1,14 @@
-package com.seashell.rpg.asset;
+package com.seashell.rpg.resource;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
+import com.seashell.rpg.SpriteSheet;
+
 /**
- * Utility class for accessing game assets
+ * Utility class for accessing game resources
  */
-public class Assets
+public class R
 {
 	/**
 	 * Size of all assets
@@ -21,9 +23,19 @@ public class Assets
 	private static SpriteSheet kenneyRpgUrban_;
 
 	/**
+	 * Value for {@link #getMenuBtnSolidYellowRaised()}
+	 */
+	private static BufferedImage menuBtnSolidYellowRaised_;
+
+	/**
+	 * Value for {@link #getMenuBtnSolidYellowClicked()}
+	 */
+	private static BufferedImage menuBtnSolidYellowClicked_;
+
+	/**
 	 * Constructor prevents instantiation
 	 */
-	private Assets()
+	private R()
 	{
 	}
 
@@ -35,7 +47,9 @@ public class Assets
 	 */
 	public static void init() throws IOException
 	{
-		kenneyRpgUrban_ = new SpriteSheet(TextureLoader.load("kenney_urban_rpg_tilemap_packed.png"));
+		kenneyRpgUrban_ = new SpriteSheet(ResourceLoader.loadTexture("kenney_urban_rpg_tilemap_packed.png"));
+		menuBtnSolidYellowRaised_ = ResourceLoader.loadMenu("yellow/solid_raised_wide.png");
+		menuBtnSolidYellowClicked_ = ResourceLoader.loadMenu("yellow/solid_clicked_wide.png");
 	}
 
 	/**
@@ -729,5 +743,21 @@ public class Assets
 		int y = SIZE * 15;
 
 		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
+	 * @return Image for a solid yellow menu button that is clicked
+	 */
+	public static BufferedImage getMenuBtnSolidYellowClicked()
+	{
+		return menuBtnSolidYellowClicked_;
+	}
+
+	/**
+	 * @return Image for a solid yellow menu button that is raised
+	 */
+	public static BufferedImage getMenuBtnSolidYellowRaised()
+	{
+		return menuBtnSolidYellowRaised_;
 	}
 }

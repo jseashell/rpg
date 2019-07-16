@@ -1,4 +1,4 @@
-package com.seashell.rpg.asset;
+package com.seashell.rpg;
 
 import java.awt.image.BufferedImage;
 

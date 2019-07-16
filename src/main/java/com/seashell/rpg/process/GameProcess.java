@@ -1,18 +1,13 @@
 package com.seashell.rpg.process;
 
 import java.awt.Graphics2D;
-import java.awt.Shape;
-import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferStrategy;
 import java.io.IOException;
 import java.util.Objects;
 
-import javax.swing.JButton;
-import javax.swing.JPanel;
-
-import com.seashell.rpg.asset.Assets;
 import com.seashell.rpg.gui.Gui;
 import com.seashell.rpg.gui.KeyManager;
+import com.seashell.rpg.resource.R;
 import com.seashell.rpg.scene.Scene;
 import com.seashell.rpg.scene.menu.main.MainMenuScene;
 import com.seashell.rpg.scene.menu.settings.SettingsMenuScene;
@@ -88,7 +83,7 @@ public final class GameProcess implements Runnable
 		try
 		{
 			// Initialize assets
-			Assets.init();
+			R.init();
 		}
 		catch(IOException e)
 		{
@@ -148,7 +143,8 @@ public final class GameProcess implements Runnable
 					break;
 
 				case EXIT:
-					isRunning_ = false;
+					// TODO Fix
+					// isRunning_ = false;
 				}
 
 				// Cache the state
@@ -234,14 +230,6 @@ public final class GameProcess implements Runnable
 
 		bufferStrategy.show();
 		g2d.dispose();
-
-		// TODO Convert buttons to JButton
-		Shape boundsTest = new Rectangle2D.Double((configuration_.getResolutionWidth() / 2) - 150, (configuration_.getResolutionHeight() / 2) - 175, 300, 150);
-		JPanel p = new JPanel();
-		p.add(new JButton("test"));
-		getGui().getFrame().add(p);
-		getGui().getFrame().validate();
-		getGui().getFrame().setVisible(true);
 	}
 
 	/**

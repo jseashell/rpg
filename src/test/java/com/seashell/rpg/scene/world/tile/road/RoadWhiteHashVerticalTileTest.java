@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import com.seashell.rpg.asset.Assets;
+import com.seashell.rpg.resource.R;
 import com.seashell.rpg.scene.world.tile.road.RoadWhiteHashVerticalTile;
 
 /**
@@ -32,7 +32,7 @@ public class RoadWhiteHashVerticalTileTest extends AbstractRoadTileTest
 	@Override
 	public void test_getTexture()
 	{
-		BufferedImage expected = Assets.getRoadWhiteHashVertical();
+		BufferedImage expected = R.getRoadWhiteHashVertical();
 
 		RoadWhiteHashVerticalTile r = new RoadWhiteHashVerticalTile(0);
 		BufferedImage actual = r.getTexture();

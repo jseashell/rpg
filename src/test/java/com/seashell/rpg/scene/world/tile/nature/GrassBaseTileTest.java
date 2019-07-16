@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import com.seashell.rpg.asset.Assets;
+import com.seashell.rpg.resource.R;
 import com.seashell.rpg.scene.world.tile.AbstractTileTest;
 
 /**
@@ -32,7 +32,7 @@ public class GrassBaseTileTest extends AbstractTileTest
 	@Override
 	public void test_getTexture()
 	{
-		BufferedImage expected = Assets.getGrassBase();
+		BufferedImage expected = R.getGrassBase();
 
 		GrassBaseTile g = new GrassBaseTile(0);
 		BufferedImage actual = g.getTexture();

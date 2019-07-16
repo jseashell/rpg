@@ -7,7 +7,7 @@ import java.io.IOException;
 
 import org.junit.BeforeClass;
 
-import com.seashell.rpg.asset.Assets;
+import com.seashell.rpg.resource.R;
 
 /**
  * Parent for all tile tests to extend
@@ -19,12 +19,12 @@ public abstract class AbstractTileTest implements TileTest
 	 * Setup for all tile tests
 	 *
 	 * @throws IOException
-	 *             Failure to load {@link Assets}
+	 *             Failure to load {@link R}
 	 */
 	@BeforeClass
 	public static void setup() throws IOException
 	{
-		Assets.init();
+		R.init();
 	}
 
 	/**

@@ -1,6 +1,6 @@
 package com.seashell.rpg.scene.world.tile.nature;
 
-import com.seashell.rpg.asset.Assets;
+import com.seashell.rpg.resource.R;
 import com.seashell.rpg.scene.world.tile.AbstractWorldTile;
 import com.seashell.rpg.tile.Tile;
 
@@ -17,7 +17,7 @@ public class GrassBaseTile extends AbstractWorldTile
 	 */
 	public GrassBaseTile(int id)
 	{
-		super(id, Assets.getGrassBase());
+		super(id, R.getGrassBase());
 	}
 
 	@Override

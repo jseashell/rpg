@@ -1,4 +1,4 @@
-package com.seashell.rpg;
+package com.seashell.rpg.resource;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -8,17 +8,17 @@ import javax.imageio.ImageIO;
 /**
  * Utility class to load resources
  */
-public final class Resources
+final class ResourceLoader
 {
 	/**
 	 * Constructor prevents instantiation
 	 */
-	private Resources()
+	private ResourceLoader()
 	{
 	}
 
 	/**
-	 * Loads a image file from {@code src/main/resources/textures/<filename>}
+	 * Loads a image file from {@code src/main/resources/asset/texture/<filename>}
 	 *
 	 * @param filename
 	 *            The name of the texture file to load (with extension)
@@ -26,13 +26,13 @@ public final class Resources
 	 * @throws IOException
 	 *             Invalid filename
 	 */
-	public static BufferedImage loadTexture(String filename) throws IOException
+	static BufferedImage loadTexture(String filename) throws IOException
 	{
-		return ImageIO.read(Resources.class.getClassLoader().getResource("textures/" + filename));
+		return ImageIO.read(ResourceLoader.class.getClassLoader().getResource("asset/texture/" + filename));
 	}
 
 	/**
-	 * Loads an image file from {@code src/main/resources/menus/<filename>}
+	 * Loads an image file from {@code src/main/resources/asset/menu/<filename>}
 	 *
 	 * @param filename
 	 *            The name of the menu background file to load (with extension)
@@ -40,8 +40,8 @@ public final class Resources
 	 * @throws IOException
 	 *             Invalid filename
 	 */
-	public static BufferedImage loadMenu(String filename) throws IOException
+	static BufferedImage loadMenu(String filename) throws IOException
 	{
-		return ImageIO.read(Resources.class.getClassLoader().getResource("menus/" + filename));
+		return ImageIO.read(ResourceLoader.class.getClassLoader().getResource("asset/menu/" + filename));
 	}
 }

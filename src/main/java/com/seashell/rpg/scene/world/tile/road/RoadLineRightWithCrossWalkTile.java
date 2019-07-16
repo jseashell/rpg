@@ -1,6 +1,6 @@
 package com.seashell.rpg.scene.world.tile.road;
 
-import com.seashell.rpg.asset.Assets;
+import com.seashell.rpg.resource.R;
 import com.seashell.rpg.tile.Tile;
 
 /**
@@ -16,6 +16,6 @@ public class RoadLineRightWithCrossWalkTile extends AbstractRoadTile
 	 */
 	public RoadLineRightWithCrossWalkTile(int id)
 	{
-		super(id, Assets.getRoadLineRightWithCrossWalk());
+		super(id, R.getRoadLineRightWithCrossWalk());
 	}
 }

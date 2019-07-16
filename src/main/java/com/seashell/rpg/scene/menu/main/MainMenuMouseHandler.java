@@ -2,6 +2,7 @@ package com.seashell.rpg.scene.menu.main;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,7 +13,7 @@ import com.seashell.rpg.scene.InputHandler;
 /**
  * Handles mouse events for the main menu
  */
-public class MainMenuMouseHandler extends MouseAdapter implements InputHandler
+public class MainMenuMouseHandler extends MouseAdapter implements InputHandler, MouseMotionListener
 {
 	/**
 	 * The buttons to be observed by this handler
@@ -39,14 +40,41 @@ public class MainMenuMouseHandler extends MouseAdapter implements InputHandler
 	@Override
 	public void mouseClicked(MouseEvent me)
 	{
-		super.mouseClicked(me);
+		super.mouseReleased(me);
 
 		for(MainMenuButton b : buttons_)
 		{
 			if(b.getBounds().contains(me.getPoint()))
 			{
 				selectedButton_ = Optional.of(b);
+				b.setIsHover(true);
+				b.setIsClick(true);
 				break;
+			}
+			else
+			{
+				b.setIsHover(false);
+				b.setIsClick(false);
+			}
+		}
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent me)
+	{
+		super.mouseMoved(me);
+
+		for(MainMenuButton b : buttons_)
+		{
+			if(b.getBounds().contains(me.getPoint()))
+			{
+				b.setIsHover(true);
+				b.setIsClick(false);
+			}
+			else
+			{
+				b.setIsHover(false);
+				b.setIsClick(false);
 			}
 		}
 	}

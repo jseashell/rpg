@@ -10,33 +10,72 @@ import java.util.Objects;
 public abstract class AbstractMenuButton implements MenuButton
 {
 	/**
-	 * Value for {@link #getImage()}
+	 * Value for {@link #getRaisedImage()}
 	 */
-	private final BufferedImage img_;
+	private BufferedImage raisedImg_;
+	/**
+	 * Value for {@link #getClickedImage()}
+	 */
+	private BufferedImage clickedImg_;
 
 	/**
 	 * Value for {@link #getBounds()}
 	 */
 	private final Shape shape_;
 
+	private boolean isHover_;
+
+	private boolean isClick_;
+
 	/**
 	 * Constructor
 	 *
-	 * @param img
-	 *            Value for {@link #getImage()}
+	 * @param raisedImg
+	 *            Value for {@link #getRaisedImage()}
 	 * @param shape
 	 *            Value for {@link #getBounds()}
 	 */
-	public AbstractMenuButton(BufferedImage img, Shape shape)
+	public AbstractMenuButton(BufferedImage raisedImg, BufferedImage clickedImg, Shape shape)
 	{
-		img_ = Objects.requireNonNull(img);
+		raisedImg_ = Objects.requireNonNull(raisedImg);
+		clickedImg_ = Objects.requireNonNull(clickedImg);
 		shape_ = Objects.requireNonNull(shape);
+		isHover_ = false;
+		isClick_ = false;
 	}
 
 	@Override
-	public final BufferedImage getImage()
+	public final BufferedImage getRaisedImage()
 	{
-		return img_;
+		return raisedImg_;
+	}
+
+	@Override
+	public final BufferedImage getClickedImage()
+	{
+		return clickedImg_;
+	}
+
+	public boolean isHover()
+	{
+		return isHover_;
+	}
+
+	public void setIsHover(boolean isHover)
+	{
+		isHover_ = isHover;
+	}
+
+	public boolean isClick()
+	{
+		return isClick_;
+
+	}
+
+	public void setIsClick(boolean b)
+	{
+		isClick_ = b;
+
 	}
 
 	@Override

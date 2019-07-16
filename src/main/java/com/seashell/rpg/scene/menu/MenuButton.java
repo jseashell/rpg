@@ -11,7 +11,9 @@ public interface MenuButton
 	/**
 	 * @return The image for this button
 	 */
-	BufferedImage getImage();
+	BufferedImage getRaisedImage();
+
+	BufferedImage getClickedImage();
 
 	/**
 	 * @return The bounds for this button

@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import com.seashell.rpg.asset.Assets;
+import com.seashell.rpg.resource.R;
 import com.seashell.rpg.scene.world.tile.road.RoadBaseTile;
 
 /**
@@ -32,7 +32,7 @@ public class RoadBaseTileTest extends AbstractRoadTileTest
 	@Override
 	public void test_getTexture()
 	{
-		BufferedImage expected = Assets.getRoadBase();
+		BufferedImage expected = R.getRoadBase();
 
 		RoadBaseTile r = new RoadBaseTile(0);
 		BufferedImage actual = r.getTexture();

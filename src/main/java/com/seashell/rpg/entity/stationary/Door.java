@@ -1,7 +1,7 @@
 package com.seashell.rpg.entity.stationary;
 
-import com.seashell.rpg.asset.Assets;
 import com.seashell.rpg.gui.GuiCamera;
+import com.seashell.rpg.resource.R;
 
 /**
  * A stationary door entity
@@ -25,8 +25,8 @@ public class Door extends AbstractStationaryEntity
 	 */
 	public Door(GuiCamera camera, float x, float y)
 	{
-		super(camera, Assets.getDoor(), x, y,
-				Assets.SIZE * SCALE_,
-				Assets.SIZE * SCALE_);
+		super(camera, R.getDoor(), x, y,
+				R.SIZE * SCALE_,
+				R.SIZE * SCALE_);
 	}
 }

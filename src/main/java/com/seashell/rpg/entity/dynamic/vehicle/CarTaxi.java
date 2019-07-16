@@ -2,8 +2,8 @@ package com.seashell.rpg.entity.dynamic.vehicle;
 
 import java.awt.image.BufferedImage;
 
-import com.seashell.rpg.asset.Assets;
 import com.seashell.rpg.gui.GuiCamera;
+import com.seashell.rpg.resource.R;
 import com.seashell.rpg.tile.Tile;
 
 /**
@@ -51,7 +51,7 @@ public class CarTaxi extends AbstractVehicle
 	 */
 	public CarTaxi(int direction, GuiCamera camera, int worldWidth, int worldHeight, float x, float y)
 	{
-		super(camera, getTexture(direction), 7.0f, x, y, Assets.SIZE * getScaleWidth(direction), Assets.SIZE * SCALE_HEIGHT_);
+		super(camera, getTexture(direction), 7.0f, x, y, R.SIZE * getScaleWidth(direction), R.SIZE * SCALE_HEIGHT_);
 		direction_ = direction;
 		worldWidth_ = worldWidth;
 		worldHeight_ = worldHeight;
@@ -70,9 +70,9 @@ public class CarTaxi extends AbstractVehicle
 		switch(direction)
 		{
 		case 0:
-			return Assets.getCarUpTaxi();
+			return R.getCarUpTaxi();
 		case 1:
-			return Assets.getCarLeftTaxi();
+			return R.getCarLeftTaxi();
 		case 2:
 		}
 

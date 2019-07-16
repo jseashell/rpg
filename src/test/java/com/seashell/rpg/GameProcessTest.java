@@ -13,11 +13,11 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import com.google.common.base.Stopwatch;
-import com.seashell.rpg.asset.Assets;
 import com.seashell.rpg.process.GameProcess;
 import com.seashell.rpg.process.GameProcessConfiguration;
 import com.seashell.rpg.process.GameProcessConfigurationException;
 import com.seashell.rpg.process.GameProcessState;
+import com.seashell.rpg.resource.R;
 import com.seashell.rpg.scene.Scene;
 import com.seashell.rpg.scene.menu.main.MainMenuScene;
 
@@ -34,7 +34,7 @@ public class GameProcessTest implements UnitTest
 	{
 		try
 		{
-			Assets.init();
+			R.init();
 		}
 		catch(IOException e)
 		{

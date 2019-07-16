@@ -2,7 +2,7 @@ package com.seashell.rpg.doc;
 
 import java.io.IOException;
 
-import com.seashell.rpg.asset.Assets;
+import com.seashell.rpg.resource.R;
 
 /**
  * Utility to generate documentation for tiles
@@ -19,7 +19,7 @@ public final class TileDocumentationGenerator
 	{
 		try
 		{
-			Assets.init();
+			R.init();
 		}
 		catch(IOException e)
 		{
