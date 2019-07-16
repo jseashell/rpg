@@ -21,4 +21,10 @@ abstract class AbstractRoadTile extends AbstractWorldTile
 	{
 		super(id, texture);
 	}
+
+	@Override
+	public final boolean isSolid()
+	{
+		return false;
+	}
 }

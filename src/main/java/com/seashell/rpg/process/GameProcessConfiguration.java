@@ -91,7 +91,6 @@ public final class GameProcessConfiguration
 						if(!property.endsWith(".txt"))
 						{
 							invalidValues.put(key, property);
-
 						}
 					}
 					else

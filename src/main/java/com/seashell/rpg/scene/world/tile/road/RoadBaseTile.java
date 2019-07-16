@@ -18,10 +18,4 @@ public class RoadBaseTile extends AbstractRoadTile
 	{
 		super(id, Assets.getRoadBase());
 	}
-
-	@Override
-	public boolean isSolid()
-	{
-		return false;
-	}
 }

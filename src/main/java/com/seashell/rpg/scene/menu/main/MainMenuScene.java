@@ -78,7 +78,7 @@ public class MainMenuScene extends AbstractMenuScene
 			final MainMenuButton btnExit = new MainMenuButton(GameProcessState.EXIT, imgExit, boundsExit);
 
 			final List<MainMenuButton> buttons = new ArrayList<>();
-			// buttons.add(btnNewGame);
+			buttons.add(btnNewGame);
 			buttons.add(btnOptions);
 			buttons.add(btnExit);
 			buttons_ = buttons;
