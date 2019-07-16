@@ -5,14 +5,20 @@ import java.util.Map;
 
 import com.seashell.rpg.scene.world.tile.nature.GrassBaseTile;
 import com.seashell.rpg.scene.world.tile.road.RoadBaseTile;
+import com.seashell.rpg.scene.world.tile.road.RoadBaseWithHorizontalCrossWalkTile;
+import com.seashell.rpg.scene.world.tile.road.RoadBaseWithVerticalCrossWalkTile;
 import com.seashell.rpg.scene.world.tile.road.RoadLineBottomTile;
 import com.seashell.rpg.scene.world.tile.road.RoadLineBottomToLeftTile;
 import com.seashell.rpg.scene.world.tile.road.RoadLineBottomToRightTile;
+import com.seashell.rpg.scene.world.tile.road.RoadLineBottomWithCrossWalkTile;
 import com.seashell.rpg.scene.world.tile.road.RoadLineLeftTile;
+import com.seashell.rpg.scene.world.tile.road.RoadLineLeftWithCrossWalkTile;
 import com.seashell.rpg.scene.world.tile.road.RoadLineRightTile;
+import com.seashell.rpg.scene.world.tile.road.RoadLineRightWithCrossWalkTile;
 import com.seashell.rpg.scene.world.tile.road.RoadLineTopTile;
 import com.seashell.rpg.scene.world.tile.road.RoadLineTopToLeftTile;
 import com.seashell.rpg.scene.world.tile.road.RoadLineTopToRightTile;
+import com.seashell.rpg.scene.world.tile.road.RoadLineTopWithCrossWalkTile;
 import com.seashell.rpg.scene.world.tile.road.RoadWhiteHashHorizontalTile;
 import com.seashell.rpg.scene.world.tile.road.RoadWhiteHashVerticalTile;
 import com.seashell.rpg.scene.world.tile.roof.RoofBaseBrownBottomToLeftEdgeTile;
@@ -77,6 +83,12 @@ public class WorldTileIndex
 		tileIndex_.put(8, new RoadLineTopToRightTile(8));
 		tileIndex_.put(9, new RoadWhiteHashHorizontalTile(9));
 		tileIndex_.put(10, new RoadWhiteHashVerticalTile(10));
+		tileIndex_.put(11, new RoadLineTopWithCrossWalkTile(11));
+		tileIndex_.put(12, new RoadLineBottomWithCrossWalkTile(12));
+		tileIndex_.put(13, new RoadBaseWithVerticalCrossWalkTile(13));
+		tileIndex_.put(14, new RoadLineLeftWithCrossWalkTile(14));
+		tileIndex_.put(15, new RoadLineRightWithCrossWalkTile(15));
+		tileIndex_.put(16, new RoadBaseWithHorizontalCrossWalkTile(16));
 
 		tileIndex_.put(20, new GrassBaseTile(20));
 

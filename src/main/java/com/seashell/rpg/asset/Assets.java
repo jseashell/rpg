@@ -281,6 +281,28 @@ public class Assets
 	}
 
 	/**
+	 * @return A {@link BufferedImage} of a plain road
+	 */
+	public static BufferedImage getRoadBaseWithVerticalCrossWalk()
+	{
+		int x = SIZE * 0;
+		int y = SIZE * 16;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of a plain road
+	 */
+	public static BufferedImage getRoadBaseWithHorizontalCrossWalk()
+	{
+		int x = SIZE * 3;
+		int y = SIZE * 16;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
 	 * @return A {@link BufferedImage} of a road with a white vertical hash mark
 	 */
 	public static BufferedImage getRoadWhiteHashVertical()
@@ -331,6 +353,50 @@ public class Assets
 	{
 		int x = SIZE * 1;
 		int y = SIZE * 15;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of a road with a line on the top edge
+	 */
+	public static BufferedImage getRoadLineTopWithCrossWalk()
+	{
+		int x = SIZE * 0;
+		int y = SIZE * 15;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of a road with a line on the top edge
+	 */
+	public static BufferedImage getRoadLineBottomWithCrossWalk()
+	{
+		int x = SIZE * 0;
+		int y = SIZE * 17;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of a road with a line on the top edge
+	 */
+	public static BufferedImage getRoadLineLeftWithCrossWalk()
+	{
+		int x = SIZE * 2;
+		int y = SIZE * 16;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of a road with a line on the top edge
+	 */
+	public static BufferedImage getRoadLineRightWithCrossWalk()
+	{
+		int x = SIZE * 4;
+		int y = SIZE * 16;
 
 		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
 	}
@@ -512,6 +578,28 @@ public class Assets
 	}
 
 	/**
+	 * @return A {@link BufferedImage} of a red car facing upward
+	 */
+	public static BufferedImage getCarUpTaxi()
+	{
+		int x = SIZE * 20;
+		int y = SIZE * 14;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE * 2);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of a red car facing left
+	 */
+	public static BufferedImage getCarLeftTaxi()
+	{
+		int x = SIZE * 15;
+		int y = SIZE * 14;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE * 2, SIZE * 2);
+	}
+
+	/**
 	 * @return A {@link BufferedImage} of a plain orange wall (variant a)
 	 */
 	public static BufferedImage getWallOrangeBaseVariantA()
@@ -628,6 +716,17 @@ public class Assets
 	{
 		int x = SIZE * 12;
 		int y = SIZE * 16;
+
+		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
+	}
+
+	/**
+	 * @return A {@link BufferedImage} of a stoplight facing downward
+	 */
+	public static BufferedImage getStoplightDown()
+	{
+		int x = SIZE * 4;
+		int y = SIZE * 15;
 
 		return kenneyRpgUrban_.crop(x, y, SIZE, SIZE);
 	}
