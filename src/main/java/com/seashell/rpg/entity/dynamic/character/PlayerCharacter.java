@@ -21,12 +21,12 @@ public final class PlayerCharacter extends AbstractCharacter
 	/**
 	 * Speed for the walking animation
 	 */
-	private static final int WALK_SPEED_ = 150;
+	private static final int WALK_SPEED_ = 125;
 
 	/**
 	 * Speed for the sprinting animation
 	 */
-	private static final int SPRINT_SPEED_ = 75;
+	private static final int SPRINT_SPEED_ = 50;
 
 	/**
 	 * Scaling factor for the character's width and height
@@ -383,11 +383,11 @@ public final class PlayerCharacter extends AbstractCharacter
 
 		if(keyManager_.isSprint())
 		{
-			speed_ = 4.0f;
+			speed_ = 5.0f;
 		}
 		else
 		{
-			speed_ = 2.0f;
+			speed_ = 3.0f;
 		}
 
 		if(keyManager_.isUp())

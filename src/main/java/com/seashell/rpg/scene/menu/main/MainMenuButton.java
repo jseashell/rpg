@@ -17,6 +17,9 @@ public class MainMenuButton extends AbstractMenuButton
 	 */
 	private final GameProcessState destinationState_;
 
+	/**
+	 * The text to use for the given button. Programmatically determined by the {@link #destinationState_} provided at construction
+	 */
 	private final String buttonText_;
 
 	/**
@@ -26,12 +29,12 @@ public class MainMenuButton extends AbstractMenuButton
 	 *            Value for {@link #getDestinationState()}
 	 * @param img
 	 *            The image for the button
-	 * @param bounds
+	 * @param shape
 	 *            The bounds for the button
 	 */
-	public MainMenuButton(GameProcessState destinationState, BufferedImage raisedImg, BufferedImage clickedImg, Shape bounds)
+	public MainMenuButton(GameProcessState destinationState, Shape shape, BufferedImage idleImage, BufferedImage activeImage)
 	{
-		super(raisedImg, clickedImg, bounds);
+		super(shape, idleImage, activeImage);
 		destinationState_ = Objects.requireNonNull(destinationState);
 
 		switch(destinationState_)
@@ -65,7 +68,10 @@ public class MainMenuButton extends AbstractMenuButton
 		return destinationState_;
 	}
 
-	public String getButtonText()
+	/**
+	 * @return The text to display on this button
+	 */
+	public String getText()
 	{
 		return buttonText_;
 	}

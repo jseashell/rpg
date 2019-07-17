@@ -37,6 +37,9 @@ public class MainMenuMouseHandler extends MouseAdapter implements InputHandler, 
 		selectedButton_ = Optional.empty();
 	}
 
+	/**
+	 * Handles a click event for the main menu buttons
+	 */
 	@Override
 	public void mouseClicked(MouseEvent me)
 	{
@@ -44,21 +47,24 @@ public class MainMenuMouseHandler extends MouseAdapter implements InputHandler, 
 
 		for(MainMenuButton b : buttons_)
 		{
-			if(b.getBounds().contains(me.getPoint()))
+			if(b.getShape().contains(me.getPoint()))
 			{
 				selectedButton_ = Optional.of(b);
-				b.setIsHover(true);
+				b.setIsHovered(true);
 				b.setIsClick(true);
 				break;
 			}
 			else
 			{
-				b.setIsHover(false);
+				b.setIsHovered(false);
 				b.setIsClick(false);
 			}
 		}
 	}
 
+	/**
+	 * Handles a hover event for the main menu buttons
+	 */
 	@Override
 	public void mouseMoved(MouseEvent me)
 	{
@@ -66,25 +72,23 @@ public class MainMenuMouseHandler extends MouseAdapter implements InputHandler, 
 
 		for(MainMenuButton b : buttons_)
 		{
-			if(b.getBounds().contains(me.getPoint()))
+			if(b.getShape().contains(me.getPoint()))
 			{
-				b.setIsHover(true);
+				b.setIsHovered(true);
 				b.setIsClick(false);
 			}
 			else
 			{
-				b.setIsHover(false);
+				b.setIsHovered(false);
 				b.setIsClick(false);
 			}
 		}
 	}
 
 	/**
-	 * Gets the selected button and resets the cached selected button
-	 *
-	 * @return The selected button
+	 * @return The state to go to based on the most recently selected button
 	 */
-	public Optional<GameProcessState> getSelectedButtonAndReset()
+	public Optional<GameProcessState> getDestinationState()
 	{
 		if(selectedButton_.isPresent())
 		{

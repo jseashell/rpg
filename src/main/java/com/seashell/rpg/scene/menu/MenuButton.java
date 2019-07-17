@@ -8,15 +8,29 @@ import java.awt.image.BufferedImage;
  */
 public interface MenuButton
 {
-	/**
-	 * @return The image for this button
-	 */
-	BufferedImage getRaisedImage();
-
-	BufferedImage getClickedImage();
 
 	/**
 	 * @return The bounds for this button
 	 */
-	Shape getBounds();
+	Shape getShape();
+
+	/**
+	 * @return The image to use when this button is in the idle (non-clicked) state
+	 */
+	BufferedImage getIdleImage();
+
+	/**
+	 * @return The image to use when this button is in the active (clicked) state
+	 */
+	BufferedImage getActiveImage();
+
+	/**
+	 * @return {@code true} if this button is being hovered over
+	 */
+	boolean isHovered();
+
+	/**
+	 * @return {@code true} if this button is clicked
+	 */
+	boolean isClicked();
 }

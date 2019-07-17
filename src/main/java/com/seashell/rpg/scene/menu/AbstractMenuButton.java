@@ -10,77 +10,94 @@ import java.util.Objects;
 public abstract class AbstractMenuButton implements MenuButton
 {
 	/**
-	 * Value for {@link #getRaisedImage()}
+	 * Value for {@link #getIdleImage()}
 	 */
-	private BufferedImage raisedImg_;
+	private BufferedImage idleImage_;
 	/**
-	 * Value for {@link #getClickedImage()}
+	 * Value for {@link #getActiveImage()}
 	 */
-	private BufferedImage clickedImg_;
+	private BufferedImage activeImage_;
 
 	/**
-	 * Value for {@link #getBounds()}
+	 * Value for {@link #getShape()}
 	 */
 	private final Shape shape_;
 
-	private boolean isHover_;
+	/**
+	 * Value for {@link #isHovered()}
+	 */
+	private boolean isHovered_;
 
-	private boolean isClick_;
+	/**
+	 * Value for {@link #isClicked()}
+	 */
+	private boolean isClicked_;
 
 	/**
 	 * Constructor
 	 *
-	 * @param raisedImg
-	 *            Value for {@link #getRaisedImage()}
 	 * @param shape
-	 *            Value for {@link #getBounds()}
+	 *            Value for {@link #getShape()}
+	 * @param idleImage
+	 *            Value for {@link #getIdleImage()}
+	 * @param activeImage
+	 *            Value for {@link #getIdleImage()}
 	 */
-	public AbstractMenuButton(BufferedImage raisedImg, BufferedImage clickedImg, Shape shape)
+	public AbstractMenuButton(Shape shape, BufferedImage idleImage, BufferedImage activeImage)
 	{
-		raisedImg_ = Objects.requireNonNull(raisedImg);
-		clickedImg_ = Objects.requireNonNull(clickedImg);
 		shape_ = Objects.requireNonNull(shape);
-		isHover_ = false;
-		isClick_ = false;
+		idleImage_ = Objects.requireNonNull(idleImage);
+		activeImage_ = Objects.requireNonNull(activeImage);
+		isHovered_ = false;
+		isClicked_ = false;
 	}
 
 	@Override
-	public final BufferedImage getRaisedImage()
-	{
-		return raisedImg_;
-	}
-
-	@Override
-	public final BufferedImage getClickedImage()
-	{
-		return clickedImg_;
-	}
-
-	public boolean isHover()
-	{
-		return isHover_;
-	}
-
-	public void setIsHover(boolean isHover)
-	{
-		isHover_ = isHover;
-	}
-
-	public boolean isClick()
-	{
-		return isClick_;
-
-	}
-
-	public void setIsClick(boolean b)
-	{
-		isClick_ = b;
-
-	}
-
-	@Override
-	public final Shape getBounds()
+	public final Shape getShape()
 	{
 		return shape_;
+	}
+
+	@Override
+	public final BufferedImage getIdleImage()
+	{
+		return idleImage_;
+	}
+
+	@Override
+	public final BufferedImage getActiveImage()
+	{
+		return activeImage_;
+	}
+
+	@Override
+	public boolean isHovered()
+	{
+		return isHovered_;
+	}
+
+	/**
+	 * @param isHovered
+	 *            {@code true} if this button is being hovered over
+	 */
+	public void setIsHovered(boolean isHovered)
+	{
+		isHovered_ = isHovered;
+	}
+
+	@Override
+	public boolean isClicked()
+	{
+		return isClicked_;
+
+	}
+
+	/**
+	 * @param isClicked
+	 *            {@code true} if this button is clicked
+	 */
+	public void setIsClick(boolean isClicked)
+	{
+		isClicked_ = isClicked;
 	}
 }

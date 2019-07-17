@@ -26,6 +26,6 @@ public abstract class AbstractCharacter extends AbstractDynamicEntity
 	 */
 	public AbstractCharacter(GuiCamera camera, BufferedImage texture, float x, float y, int width, int height)
 	{
-		super(camera, texture, 2.0f, x, y, width, height);
+		super(camera, texture, 3.0f, x, y, width, height);
 	}
 }
