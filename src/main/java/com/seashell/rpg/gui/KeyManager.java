@@ -105,7 +105,14 @@ public class KeyManager implements KeyListener
 		}
 
 		keyIndex[e.getKeyCode()] = true;
-		lastDirectionFaced_ = e.getKeyCode();
+
+		if(e.getKeyCode() == KeyEvent.VK_A
+				|| e.getKeyCode() == KeyEvent.VK_D
+				|| e.getKeyCode() == KeyEvent.VK_S
+				|| e.getKeyCode() == KeyEvent.VK_W)
+		{
+			lastDirectionFaced_ = e.getKeyCode();
+		}
 	}
 
 	@Override

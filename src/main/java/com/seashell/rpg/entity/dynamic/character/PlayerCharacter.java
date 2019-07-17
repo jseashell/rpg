@@ -355,6 +355,24 @@ public final class PlayerCharacter extends AbstractCharacter
 		}
 
 		// Default
+		if(keyManager_.getLastDirectionFaced() == KeyEvent.VK_A)
+		{
+			return R.getPlayerCharacterStandingLeft();
+		}
+		else if(keyManager_.getLastDirectionFaced() == KeyEvent.VK_D)
+		{
+			return R.getPlayerCharacterStandingRight();
+		}
+		else if(keyManager_.getLastDirectionFaced() == KeyEvent.VK_S)
+		{
+			return R.getPlayerCharacterStandingDown();
+		}
+		else if(keyManager_.getLastDirectionFaced() == KeyEvent.VK_W)
+		{
+			return R.getPlayerCharacterStandingUp();
+		}
+
+		// Fallback
 		return R.getPlayerCharacterStandingDown();
 	}
 
