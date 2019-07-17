@@ -37,6 +37,7 @@ public class MainMenuButton extends AbstractMenuButton
 		super(shape, idleImage, activeImage);
 		destinationState_ = Objects.requireNonNull(destinationState);
 
+		// TODO Move these names to a better resting place
 		switch(destinationState_)
 		{
 		case MAIN_MENU:
@@ -48,7 +49,7 @@ public class MainMenuButton extends AbstractMenuButton
 			break;
 
 		case SETTINGS_MENU:
-			buttonText_ = "Setting";
+			buttonText_ = "Settings";
 			break;
 
 		case QUIT:
