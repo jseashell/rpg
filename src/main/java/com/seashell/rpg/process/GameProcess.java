@@ -2,6 +2,7 @@ package com.seashell.rpg.process;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Objects;
 
@@ -62,6 +63,17 @@ public final class GameProcess implements Runnable
 	private GameProcessState state_;
 
 	/**
+	 * Flag indicating whether or not a screenshot should be taken after the scene is rendered. This should really only be used for creating the background of the main menu scene using the last
+	 * snapshot of the world scene from the latest save game.
+	 */
+	private boolean shouldScreenshot_;
+
+	/**
+	 * Image to use for the background of the main menu
+	 */
+	private BufferedImage mainMenuBackground_;
+
+	/**
 	 * Constructor
 	 *
 	 * @param configuration
@@ -76,7 +88,7 @@ public final class GameProcess implements Runnable
 	public GameProcess(GameProcessConfiguration configuration) throws NullPointerException, GameProcessConfigurationException, IOException
 	{
 		configuration_ = Objects.requireNonNull(configuration, "Game process configuration cannot be null.");
-
+		shouldScreenshot_ = false;
 		desiredFps_ = configuration_.getFps();
 		isRunning_ = false;
 
@@ -101,6 +113,19 @@ public final class GameProcess implements Runnable
 	@Override
 	public void run()
 	{
+		// TODO do this better
+		WorldScene worldScene = null;
+		try
+		{
+			worldScene = new WorldScene(this);
+		}
+		catch(WorldConfigurationBuilderException | IOException e)
+		{
+			System.err.println("Failed to initialize world scene.");
+			e.printStackTrace();
+			System.exit(0);
+		}
+
 		double timePerTick = NANO_ / desiredFps_;
 		double delta = 0;
 
@@ -122,20 +147,12 @@ public final class GameProcess implements Runnable
 				switch(state_)
 				{
 				case MAIN_MENU:
-					scene_ = new MainMenuScene(this);
+					scene_ = new MainMenuScene(this, mainMenuBackground_);
 					break;
 
 				case NEW_GAME:
-					try
-					{
-						scene_ = new WorldScene(this);
-					}
-					catch(WorldConfigurationBuilderException | IOException e)
-					{
-						System.err.println("Failed to initialize world scene.");
-						e.printStackTrace();
-						System.exit(0);
-					}
+					worldScene.resume();
+					scene_ = worldScene;
 					break;
 
 				case SETTINGS_MENU:
@@ -199,6 +216,12 @@ public final class GameProcess implements Runnable
 
 		if(getKeyManager().isEsc())
 		{
+			if(state_ == GameProcessState.NEW_GAME)
+			{
+				((WorldScene) scene_).pause();
+				shouldScreenshot_ = true;
+			}
+
 			state_ = GameProcessState.MAIN_MENU;
 		}
 	}
@@ -229,7 +252,50 @@ public final class GameProcess implements Runnable
 		}
 
 		bufferStrategy.show();
+
+		// TODO do this better
+		if(shouldScreenshot_)
+		{
+			screenshot();
+		}
+
 		g2d.dispose();
+	}
+
+	/**
+	 * Takes a screenshot of the current canvas
+	 */
+	private void screenshot()
+	{
+		BufferedImage image = new BufferedImage(gui_.getCanvas().getWidth(), gui_.getCanvas().getHeight(), BufferedImage.TYPE_INT_ARGB);
+
+		Graphics2D screenshotGraphics = (Graphics2D) image.getGraphics();
+
+		scene_.render(screenshotGraphics);
+
+		screenshotGraphics.dispose();
+
+		mainMenuBackground_ = image;
+
+		// try
+		// {
+		// ImageIO.write(image, "png",
+		// Paths.get(System.getProperty("user.dir"))
+		// .resolve("src")
+		// .resolve("main")
+		// .resolve("resources")
+		// .resolve("asset")
+		// .resolve("menu")
+		// .resolve("background")
+		// .resolve("screenshot.png").toFile());
+		// }
+		// catch(IOException e)
+		// {
+		// System.err.println("Failed to save screenshot");
+		// e.printStackTrace();
+		// }
+
+		shouldScreenshot_ = false;
 	}
 
 	/**

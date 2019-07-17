@@ -44,7 +44,7 @@ public class MainMenuButton extends AbstractMenuButton
 			break;
 
 		case NEW_GAME:
-			buttonText_ = "New Game";
+			buttonText_ = "Play";
 			break;
 
 		case SETTINGS_MENU:

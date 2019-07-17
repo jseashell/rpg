@@ -11,6 +11,7 @@ import com.seashell.rpg.entity.stationary.StoplightDown;
 import com.seashell.rpg.entity.stationary.Window;
 import com.seashell.rpg.gui.GuiCamera;
 import com.seashell.rpg.process.GameProcess;
+import com.seashell.rpg.process.GameProcessConfiguration;
 import com.seashell.rpg.resource.R;
 import com.seashell.rpg.scene.AbstractScene;
 import com.seashell.rpg.scene.Scene;
@@ -22,6 +23,11 @@ import com.seashell.rpg.tile.Tile;
  */
 public class WorldScene extends AbstractScene
 {
+	/**
+	 * Game process configuration
+	 */
+	private final GameProcessConfiguration config_;
+
 	/**
 	 * Camera for the gui showing this scene
 	 */
@@ -117,6 +123,8 @@ public class WorldScene extends AbstractScene
 	 */
 	private final StoplightDown stoplightDown_;
 
+	private boolean isPaused_;
+
 	/**
 	 * Constructor
 	 *
@@ -129,6 +137,8 @@ public class WorldScene extends AbstractScene
 	 */
 	public WorldScene(GameProcess gameProcess) throws WorldConfigurationBuilderException, IOException
 	{
+		isPaused_ = false;
+		config_ = gameProcess.getConfiguration();
 		camera_ = gameProcess.getGui().getCamera();
 
 		String worldFilename = gameProcess.getConfiguration().getWorldFilename();
@@ -163,32 +173,35 @@ public class WorldScene extends AbstractScene
 	@Override
 	public void tick()
 	{
-		// TODO Implement a tick order field for objects implementing the Render API. Note: tick order might not be necessary though.
-		world_.tick();
+		if(!isPaused_)
+		{
+			// TODO Implement a tick order field for objects implementing the Render API. Note: tick order might not be necessary though.
+			world_.tick();
 
-		doorA_.tick();
-		windowA_.tick();
-		windowB_.tick();
-		windowC_.tick();
+			doorA_.tick();
+			windowA_.tick();
+			windowB_.tick();
+			windowC_.tick();
 
-		doorB_.tick();
-		windowD_.tick();
-		windowE_.tick();
+			doorB_.tick();
+			windowD_.tick();
+			windowE_.tick();
 
-		doorC_.tick();
-		windowF_.tick();
-		windowG_.tick();
-		windowH_.tick();
+			doorC_.tick();
+			windowF_.tick();
+			windowG_.tick();
+			windowH_.tick();
 
-		carA_.tick();
-		carB_.tick();
-		carC_.tick();
-		carD_.tick();
+			carA_.tick();
+			carB_.tick();
+			carC_.tick();
+			carD_.tick();
 
-		stoplightDown_.tick();
+			stoplightDown_.tick();
 
-		player_.tick();
-		camera_.centerOnEntity(player_);
+			player_.tick();
+			camera_.centerOnEntity(player_);
+		}
 	}
 
 	@Override
@@ -219,5 +232,15 @@ public class WorldScene extends AbstractScene
 		carD_.render(g2d);
 
 		stoplightDown_.render(g2d);
+	}
+
+	public void pause()
+	{
+		isPaused_ = true;
+	}
+
+	public void resume()
+	{
+		isPaused_ = false;
 	}
 }
