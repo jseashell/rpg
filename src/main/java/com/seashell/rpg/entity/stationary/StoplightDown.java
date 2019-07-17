@@ -1,7 +1,7 @@
 package com.seashell.rpg.entity.stationary;
 
-import com.seashell.rpg.asset.Assets;
 import com.seashell.rpg.gui.GuiCamera;
+import com.seashell.rpg.resource.R;
 
 /**
  * A stationary stoplight entity facing downard
@@ -25,8 +25,8 @@ public class StoplightDown extends AbstractStationaryEntity
 	 */
 	public StoplightDown(GuiCamera camera, float x, float y)
 	{
-		super(camera, Assets.getStoplightDown(), x, y,
-				Assets.SIZE * SCALE_,
-				Assets.SIZE * SCALE_);
+		super(camera, R.getStoplightDown(), x, y,
+				R.SIZE * SCALE_,
+				R.SIZE * SCALE_);
 	}
 }

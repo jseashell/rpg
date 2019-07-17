@@ -1,6 +1,6 @@
 package com.seashell.rpg.scene.world.tile.wall;
 
-import com.seashell.rpg.asset.Assets;
+import com.seashell.rpg.resource.R;
 import com.seashell.rpg.tile.Tile;
 
 /**
@@ -16,6 +16,6 @@ public class WallOrangeWithTopEdgeVariantATile extends AbstractWallTile
 	 */
 	public WallOrangeWithTopEdgeVariantATile(int id)
 	{
-		super(id, Assets.getWallOrangeWithTopEdgeVariantA());
+		super(id, R.getWallOrangeWithTopEdgeVariantA());
 	}
 }

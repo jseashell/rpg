@@ -5,18 +5,37 @@ import static org.junit.Assert.fail;
 import java.awt.GraphicsEnvironment;
 import java.io.IOException;
 
+import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
 import com.seashell.rpg.process.GameProcess;
 import com.seashell.rpg.process.GameProcessConfiguration;
 import com.seashell.rpg.process.GameProcessConfigurationException;
+import com.seashell.rpg.resource.R;
 
 /**
  * Test class for the {@link GameProcess}
  */
 public class GameProcessTest implements UnitTest
 {
+	/**
+	 * Initializes the assets
+	 */
+	@BeforeClass
+	public static void setup()
+	{
+		try
+		{
+			R.init();
+		}
+		catch(IOException e)
+		{
+			e.printStackTrace();
+			fail(e.getMessage());
+		}
+	}
+
 	/**
 	 * Tests that a {@link NullPointerException} occurs when a {@link GameProcess#GameProcess(String) new GameProcess(String)} is given {@code null}
 	 */

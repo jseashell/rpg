@@ -8,8 +8,10 @@ import java.io.IOException;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.seashell.rpg.resource.R;
+
 /**
- * Test class for {@link Assets}
+ * Test class for {@link R}
  */
 public class AssetsTest
 {
@@ -21,7 +23,7 @@ public class AssetsTest
 	{
 		try
 		{
-			Assets.init();
+			R.init();
 		}
 		catch(IOException e)
 		{
@@ -31,83 +33,83 @@ public class AssetsTest
 	}
 
 	/**
-	 * Tests that {@link Assets#getPlayerCharacterStandingDown()} does not return null
+	 * Tests that {@link R#getPlayerCharacterStandingDown()} does not return null
 	 */
 	@Test
 	public void test_getPlayerCharacterDown_nonNull()
 	{
-		assertNotNull(Assets.getPlayerCharacterStandingDown());
+		assertNotNull(R.getPlayerCharacterStandingDown());
 	}
 
 	/**
-	 * Tests that {@link Assets#getGrassBase()} does not return null
+	 * Tests that {@link R#getGrassBase()} does not return null
 	 */
 	@Test
 	public void test_getGrassBase_nonNull()
 	{
-		assertNotNull(Assets.getGrassBase());
+		assertNotNull(R.getGrassBase());
 	}
 
 	/**
-	 * Tests that {@link Assets#getRoofGreyBase()} does not return null
+	 * Tests that {@link R#getRoofGreyBase()} does not return null
 	 */
 	@Test
 	public void test_getWallBase_nonNull()
 	{
-		assertNotNull(Assets.getRoofGreyBase());
+		assertNotNull(R.getRoofGreyBase());
 	}
 
 	/**
-	 * Tests that {@link Assets#getRoadBase()} does not return null
+	 * Tests that {@link R#getRoadBase()} does not return null
 	 */
 	@Test
 	public void test_getRoadBase_nonNull()
 	{
-		assertNotNull(Assets.getRoadBase());
+		assertNotNull(R.getRoadBase());
 	}
 
 	/**
-	 * Tests that {@link Assets#getRoadWhiteHashVertical()} does not return null
+	 * Tests that {@link R#getRoadWhiteHashVertical()} does not return null
 	 */
 	@Test
 	public void test_getRoadWhiteHashVertical_nonNull()
 	{
-		assertNotNull(Assets.getRoadWhiteHashVertical());
+		assertNotNull(R.getRoadWhiteHashVertical());
 	}
 
 	/**
-	 * Tests that {@link Assets#getRoadLineLeft()} does not return null
+	 * Tests that {@link R#getRoadLineLeft()} does not return null
 	 */
 	@Test
 	public void test_getRoadSidewalkLeft_nonNull()
 	{
-		assertNotNull(Assets.getRoadLineLeft());
+		assertNotNull(R.getRoadLineLeft());
 	}
 
 	/**
-	 * Tests that {@link Assets#getRoadLineRight()} does not return null
+	 * Tests that {@link R#getRoadLineRight()} does not return null
 	 */
 	@Test
 	public void test_getRoadSidewalkRight_nonNull()
 	{
-		assertNotNull(Assets.getRoadLineRight());
+		assertNotNull(R.getRoadLineRight());
 	}
 
 	/**
-	 * Tests that {@link Assets#getSidewalkBase()} does not return null
+	 * Tests that {@link R#getSidewalkBase()} does not return null
 	 */
 	@Test
 	public void test_getSidewalkBase_nonNull()
 	{
-		assertNotNull(Assets.getSidewalkBase());
+		assertNotNull(R.getSidewalkBase());
 	}
 
 	/**
-	 * Tests that {@link Assets#getCarUpRed()} does not return null
+	 * Tests that {@link R#getCarUpRed()} does not return null
 	 */
 	@Test
 	public void test_getCarUp_nonNull()
 	{
-		assertNotNull(Assets.getCarUpRed());
+		assertNotNull(R.getCarUpRed());
 	}
 }

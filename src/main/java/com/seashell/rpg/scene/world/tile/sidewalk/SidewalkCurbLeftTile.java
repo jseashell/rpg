@@ -1,6 +1,6 @@
 package com.seashell.rpg.scene.world.tile.sidewalk;
 
-import com.seashell.rpg.asset.Assets;
+import com.seashell.rpg.resource.R;
 import com.seashell.rpg.tile.Tile;
 
 /**
@@ -16,6 +16,6 @@ public class SidewalkCurbLeftTile extends AbstractSidewalkTile
 	 */
 	public SidewalkCurbLeftTile(int id)
 	{
-		super(id, Assets.getSidewalkCurbLeft());
+		super(id, R.getSidewalkCurbLeft());
 	}
 }

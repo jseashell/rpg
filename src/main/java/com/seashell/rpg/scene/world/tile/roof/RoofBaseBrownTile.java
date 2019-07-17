@@ -1,6 +1,6 @@
 package com.seashell.rpg.scene.world.tile.roof;
 
-import com.seashell.rpg.asset.Assets;
+import com.seashell.rpg.resource.R;
 import com.seashell.rpg.tile.Tile;
 
 /**
@@ -16,6 +16,6 @@ public class RoofBaseBrownTile extends AbstractRoofTile
 	 */
 	public RoofBaseBrownTile(int id)
 	{
-		super(id, Assets.getRoofBrownBase());
+		super(id, R.getRoofBrownBase());
 	}
 }

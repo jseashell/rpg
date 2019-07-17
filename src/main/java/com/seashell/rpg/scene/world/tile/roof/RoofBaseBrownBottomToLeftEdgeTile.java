@@ -1,6 +1,6 @@
 package com.seashell.rpg.scene.world.tile.roof;
 
-import com.seashell.rpg.asset.Assets;
+import com.seashell.rpg.resource.R;
 import com.seashell.rpg.tile.Tile;
 
 /**
@@ -16,6 +16,6 @@ public class RoofBaseBrownBottomToLeftEdgeTile extends AbstractRoofTile
 	 */
 	public RoofBaseBrownBottomToLeftEdgeTile(int id)
 	{
-		super(id, Assets.getRoofBrownBottomToLeftEdge());
+		super(id, R.getRoofBrownBottomToLeftEdge());
 	}
 }

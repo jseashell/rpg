@@ -9,6 +9,9 @@ import java.io.IOException;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.seashell.rpg.SpriteSheet;
+import com.seashell.rpg.resource.R;
+
 /**
  * Test class for {@link SpriteSheet}
  */
@@ -22,7 +25,7 @@ public class SpriteSheetTest
 	{
 		try
 		{
-			Assets.init();
+			R.init();
 		}
 		catch(IOException e)
 		{
@@ -32,7 +35,7 @@ public class SpriteSheetTest
 	}
 
 	/**
-	 * Tests that {@link Assets#getPlayerCharacterStandingDown()} does not return null
+	 * Tests that {@link R#getPlayerCharacterStandingDown()} does not return null
 	 */
 	@Test
 	public void test_crop()

@@ -1,6 +1,6 @@
 package com.seashell.rpg.scene.world.tile.road;
 
-import com.seashell.rpg.asset.Assets;
+import com.seashell.rpg.resource.R;
 import com.seashell.rpg.tile.Tile;
 
 /**
@@ -16,6 +16,6 @@ public class RoadLineBottomToRightTile extends AbstractRoadTile
 	 */
 	public RoadLineBottomToRightTile(int id)
 	{
-		super(id, Assets.getRoadLineBottomToRight());
+		super(id, R.getRoadLineBottomToRight());
 	}
 }
