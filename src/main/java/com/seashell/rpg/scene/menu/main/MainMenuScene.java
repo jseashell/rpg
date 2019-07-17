@@ -81,9 +81,9 @@ public class MainMenuScene extends AbstractMenuScene
 		final Shape shapeOptions = new Rectangle2D.Double((resWidth_ / 2) - (BTN_WIDTH_ / 2), (resHeight_ / 2), BTN_WIDTH_, BTN_HEIGHT_);
 		final Shape shapeExit = new Rectangle2D.Double((resWidth_ / 2) - (BTN_WIDTH_ / 2), (resHeight_ / 2) + BTN_HEIGHT_ + 10, BTN_WIDTH_, BTN_HEIGHT_);
 
-		final MainMenuButton btnPlay = new MainMenuButton(GameProcessState.NEW_GAME, shapePlay, R.getMenuBtnSolidYellowRaised(), R.getMenuBtnSolidYellowClicked());
+		final MainMenuButton btnPlay = new MainMenuButton(GameProcessState.PLAY, shapePlay, R.getMenuBtnSolidYellowRaised(), R.getMenuBtnSolidYellowClicked());
 		final MainMenuButton btnOptions = new MainMenuButton(GameProcessState.SETTINGS_MENU, shapeOptions, R.getMenuBtnSolidYellowRaised(), R.getMenuBtnSolidYellowClicked());
-		final MainMenuButton btnExit = new MainMenuButton(GameProcessState.EXIT, shapeExit, R.getMenuBtnSolidYellowRaised(), R.getMenuBtnSolidYellowClicked());
+		final MainMenuButton btnExit = new MainMenuButton(GameProcessState.QUIT, shapeExit, R.getMenuBtnSolidYellowRaised(), R.getMenuBtnSolidYellowClicked());
 
 		final List<MainMenuButton> buttons = new ArrayList<>();
 		buttons.add(btnPlay);

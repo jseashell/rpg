@@ -7,11 +7,11 @@ public enum GameProcessState
 {
 	MAIN_MENU,
 
-	NEW_GAME,
+	PLAY,
 
 	SETTINGS_MENU,
 
-	EXIT,
+	QUIT,
 
 	;
 }

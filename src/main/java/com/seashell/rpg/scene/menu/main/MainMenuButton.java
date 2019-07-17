@@ -43,7 +43,7 @@ public class MainMenuButton extends AbstractMenuButton
 			buttonText_ = "Main Menu";
 			break;
 
-		case NEW_GAME:
+		case PLAY:
 			buttonText_ = "Play";
 			break;
 
@@ -51,7 +51,7 @@ public class MainMenuButton extends AbstractMenuButton
 			buttonText_ = "Setting";
 			break;
 
-		case EXIT:
+		case QUIT:
 			buttonText_ = "Exit";
 			break;
 

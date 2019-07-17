@@ -63,8 +63,7 @@ public final class GameProcess implements Runnable
 	private GameProcessState state_;
 
 	/**
-	 * Flag indicating whether or not a screenshot should be taken after the scene is rendered. This should really only be used for creating the background of the main menu scene using the last
-	 * snapshot of the world scene from the latest save game.
+	 * Flag indicating whether or not the canvas should be screenshot
 	 */
 	private boolean shouldScreenshot_;
 
@@ -88,13 +87,12 @@ public final class GameProcess implements Runnable
 	public GameProcess(GameProcessConfiguration configuration) throws NullPointerException, GameProcessConfigurationException, IOException
 	{
 		configuration_ = Objects.requireNonNull(configuration, "Game process configuration cannot be null.");
-		shouldScreenshot_ = false;
 		desiredFps_ = configuration_.getFps();
 		isRunning_ = false;
 
 		try
 		{
-			// Initialize assets
+			// Initialize resources
 			R.init();
 		}
 		catch(IOException e)
@@ -150,7 +148,7 @@ public final class GameProcess implements Runnable
 					scene_ = new MainMenuScene(this, mainMenuBackground_);
 					break;
 
-				case NEW_GAME:
+				case PLAY:
 					worldScene.resume();
 					scene_ = worldScene;
 					break;
@@ -159,9 +157,8 @@ public final class GameProcess implements Runnable
 					scene_ = new SettingsMenuScene();
 					break;
 
-				case EXIT:
-					// TODO Fix
-					// isRunning_ = false;
+				case QUIT:
+					isRunning_ = false;
 				}
 
 				// Cache the state
@@ -199,7 +196,9 @@ public final class GameProcess implements Runnable
 			}
 		}
 
-		stop();
+		// TODO Thread better
+		System.out.println("Quitting game");
+		System.exit(0);
 	}
 
 	/**
@@ -216,13 +215,27 @@ public final class GameProcess implements Runnable
 
 		if(getKeyManager().isEsc())
 		{
-			if(state_ == GameProcessState.NEW_GAME)
+			switch(state_)
 			{
+			case PLAY:
 				((WorldScene) scene_).pause();
 				shouldScreenshot_ = true;
+				state_ = GameProcessState.MAIN_MENU;
+				break;
+
+			case MAIN_MENU:
+				// do nothing
+				break;
+
+			case SETTINGS_MENU:
+				state_ = GameProcessState.MAIN_MENU;
+				break;
+
+			case QUIT:
+				// do nothing
+				break;
 			}
 
-			state_ = GameProcessState.MAIN_MENU;
 		}
 	}
 
@@ -253,7 +266,6 @@ public final class GameProcess implements Runnable
 
 		bufferStrategy.show();
 
-		// TODO do this better
 		if(shouldScreenshot_)
 		{
 			screenshot();
