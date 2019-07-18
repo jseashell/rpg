@@ -1,5 +1,7 @@
 package com.seashell.rpg.process;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
@@ -53,6 +55,11 @@ public final class GameProcess implements Runnable
 	private final int desiredFps_;
 
 	/**
+	 * Actual FPS achieved
+	 */
+	private int actualFps_;
+
+	/**
 	 * The current scene being displayed in the {@link #gui_}
 	 */
 	private Scene scene_;
@@ -88,6 +95,7 @@ public final class GameProcess implements Runnable
 	{
 		configuration_ = Objects.requireNonNull(configuration, "Game process configuration cannot be null.");
 		desiredFps_ = configuration_.getFps();
+		actualFps_ = 0;
 		isRunning_ = false;
 
 		try
@@ -130,9 +138,19 @@ public final class GameProcess implements Runnable
 		long now;
 		long lastTime = System.nanoTime();
 		int ticks = 0;
-		long fpsDisplayTimer = 0;
+		long timer = 0;
 
 		GameProcessState previousState = null; // Used to control logging
+
+		// Initialize the buffer strategy
+		while(gui_.getCanvas().getBufferStrategy() == null)
+		{
+			// On first launch, the buffer strategy will be null. So create a new one. 3 buffers should be enough for this game but if
+			// rendering begins lagging, maybe experiment with more.
+			gui_.getCanvas().createBufferStrategy(3);
+		}
+
+		final BufferStrategy bufferStrategy = gui_.getCanvas().getBufferStrategy();
 
 		// This loop should run for the lifecycle of execution. Once this loop exits, the application should terminate
 		while(isRunning_)
@@ -168,7 +186,7 @@ public final class GameProcess implements Runnable
 			now = System.nanoTime();
 			delta += (now - lastTime) / timePerTick;
 
-			fpsDisplayTimer += now - lastTime;
+			timer += now - lastTime;
 			lastTime = now;
 
 			if(delta >= 1)
@@ -176,22 +194,28 @@ public final class GameProcess implements Runnable
 				tick();
 				ticks++;
 
-				render();
+				Graphics2D g2d = (Graphics2D) bufferStrategy.getDrawGraphics();
+
+				render(g2d);
+
+				String fps = actualFps_ + " fps";
+
+				Font font = new Font(Font.MONOSPACED, Font.BOLD, 32);
+				g2d.setColor(Color.YELLOW);
+				g2d.setFont(font);
+				g2d.drawString(fps, 25, 25);
+
+				bufferStrategy.show();
+				g2d.dispose();
 
 				// Reset the difference
 				delta = 0;
 
-				if(fpsDisplayTimer >= NANO_)
+				if(timer >= NANO_)
 				{
-					String fps = ticks + " fps";
-
-					// TODO #15 Add fps display on screen
-					// g2d.setFont(new Font("Serif", Font.PLAIN, 96));
-					// g2d.drawString(fps, Gui.WIDTH, Gui.HEIGHT + g2d.getFontMetrics().getHeight());
-					System.out.println(fps);
-
+					actualFps_ = ticks;
 					ticks = 0;
-					fpsDisplayTimer = 0;
+					timer = 0;
 				}
 			}
 		}
@@ -242,19 +266,8 @@ public final class GameProcess implements Runnable
 	/**
 	 * Renders in-memory variables to the {@link Gui}
 	 */
-	private void render()
+	private void render(Graphics2D g2d)
 	{
-		BufferStrategy bufferStrategy = gui_.getCanvas().getBufferStrategy();
-		if(bufferStrategy == null)
-		{
-			// On first launch, the buffer strategy will be null. So create a new one. 3 buffers should be enough for this game but if
-			// rendering begins lagging, maybe experiment with more.
-			gui_.getCanvas().createBufferStrategy(3);
-			return;
-		}
-
-		Graphics2D g2d = (Graphics2D) bufferStrategy.getDrawGraphics();
-
 		// Clear any previous graphics on the display
 		g2d.clearRect(0, 0, configuration_.getResolutionWidth(), configuration_.getResolutionHeight());
 
@@ -264,14 +277,10 @@ public final class GameProcess implements Runnable
 			scene_.render(g2d);
 		}
 
-		bufferStrategy.show();
-
 		if(shouldScreenshot_)
 		{
 			screenshot();
 		}
-
-		g2d.dispose();
 	}
 
 	/**
