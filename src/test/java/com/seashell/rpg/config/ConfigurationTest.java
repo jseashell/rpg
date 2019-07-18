@@ -172,12 +172,12 @@ public class ConfigurationTest implements UnitTest
 	{
 		try
 		{
-			String expected = "w";
+			int expected = 87;
 
 			Path path = getTestResourcePath("config/test_config_valid.properties");
 			GameProcessConfiguration c = new GameProcessConfiguration(path);
 
-			String actual = c.getKeyBindingUp();
+			int actual = c.getKeyBindingUp();
 			assertEquals(expected, actual);
 		}
 		catch(URISyntaxException | IOException | NullPointerException | GameProcessConfigurationKeyException | GameProcessConfigurationValueException e)
@@ -195,12 +195,12 @@ public class ConfigurationTest implements UnitTest
 	{
 		try
 		{
-			String expected = "s";
+			int expected = 83;
 
 			Path path = getTestResourcePath("config/test_config_valid.properties");
 			GameProcessConfiguration c = new GameProcessConfiguration(path);
 
-			String actual = c.getKeyBindingDown();
+			int actual = c.getKeyBindingDown();
 			assertEquals(expected, actual);
 		}
 		catch(URISyntaxException | IOException | NullPointerException | GameProcessConfigurationKeyException | GameProcessConfigurationValueException e)
@@ -218,12 +218,12 @@ public class ConfigurationTest implements UnitTest
 	{
 		try
 		{
-			String expected = "a";
+			int expected = 65;
 
 			Path path = getTestResourcePath("config/test_config_valid.properties");
 			GameProcessConfiguration c = new GameProcessConfiguration(path);
 
-			String actual = c.getKeyBindingLeft();
+			int actual = c.getKeyBindingLeft();
 			assertEquals(expected, actual);
 		}
 		catch(URISyntaxException | IOException | NullPointerException | GameProcessConfigurationKeyException | GameProcessConfigurationValueException e)
@@ -241,12 +241,12 @@ public class ConfigurationTest implements UnitTest
 	{
 		try
 		{
-			String expected = "d";
+			int expected = 68;
 
 			Path path = getTestResourcePath("config/test_config_valid.properties");
 			GameProcessConfiguration c = new GameProcessConfiguration(path);
 
-			String actual = c.getKeyBindingRight();
+			int actual = c.getKeyBindingRight();
 			assertEquals(expected, actual);
 		}
 		catch(URISyntaxException | IOException | NullPointerException | GameProcessConfigurationKeyException | GameProcessConfigurationValueException e)
@@ -264,12 +264,12 @@ public class ConfigurationTest implements UnitTest
 	{
 		try
 		{
-			String expected = "shift";
+			int expected = 16;
 
 			Path path = getTestResourcePath("config/test_config_valid.properties");
 			GameProcessConfiguration c = new GameProcessConfiguration(path);
 
-			String actual = c.getKeyBindingSprint();
+			int actual = c.getKeyBindingSprint();
 			assertEquals(expected, actual);
 		}
 		catch(URISyntaxException | IOException | NullPointerException | GameProcessConfigurationKeyException | GameProcessConfigurationValueException e)

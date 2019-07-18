@@ -12,11 +12,11 @@ public enum GameProcessConfigurationKey
 	RESOLUTION_WIDTH("res_width", Integer.class),
 	RESOLUTION_HEIGHT("res_height", Integer.class),
 
-	KEY_BINDING_UP("key_binding_up", String.class),
-	KEY_BINDING_DOWN("key_binding_down", String.class),
-	KEY_BINDING_LEFT("key_binding_left", String.class),
-	KEY_BINDING_RIGHT("key_binding_right", String.class),
-	KEY_BINDING_SPRINT("key_binding_sprint", String.class),
+	KEY_BINDING_UP("key_binding_up", Integer.class),
+	KEY_BINDING_DOWN("key_binding_down", Integer.class),
+	KEY_BINDING_LEFT("key_binding_left", Integer.class),
+	KEY_BINDING_RIGHT("key_binding_right", Integer.class),
+	KEY_BINDING_SPRINT("key_binding_sprint", Integer.class),
 
 	SPAWN_X("spawn_x", Integer.class),
 	SPAWN_Y("spawn_y", Integer.class),
