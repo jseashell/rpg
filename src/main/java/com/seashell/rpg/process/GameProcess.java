@@ -102,7 +102,7 @@ public final class GameProcess implements Runnable
 		}
 
 		// Initialize the gui
-		gui_ = new Gui(configuration_.getResolutionWidth(), configuration_.getResolutionHeight());
+		gui_ = new Gui(configuration_);
 
 		// Set the states to main menu
 		state_ = GameProcessState.MAIN_MENU;

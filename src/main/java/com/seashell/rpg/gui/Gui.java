@@ -5,6 +5,8 @@ import java.awt.Dimension;
 
 import javax.swing.JFrame;
 
+import com.seashell.rpg.process.GameProcessConfiguration;
+
 /**
  * The graphical user interface for the game
  */
@@ -33,18 +35,16 @@ public class Gui
 	/**
 	 * Constructor
 	 *
-	 * @param resolutionWidth
-	 *            The width to use for the resolution
-	 * @param resolutionHeight
-	 *            The height to use for the resolution
+	 * @param config
+	 *            The configuration for the game process being shown via this gui
 	 */
-	public Gui(int resolutionWidth, int resolutionHeight)
+	public Gui(GameProcessConfiguration config)
 	{
-		camera_ = new GuiCamera(resolutionWidth, resolutionHeight);
+		camera_ = new GuiCamera(config.getResolutionWidth(), config.getResolutionHeight());
 
-		keyManager_ = new KeyManager(); // TODO Class out KeyManager. Move this specific KeyManager into WorldScene
+		keyManager_ = new KeyManager(config); // TODO Class out KeyManager. Move this specific KeyManager into WorldScene
 
-		final Dimension size = new Dimension(resolutionWidth, resolutionHeight);
+		final Dimension size = new Dimension(config.getResolutionWidth(), config.getResolutionHeight());
 
 		frame_ = new JFrame("RPG"); // TODO Replace this with the name of the game
 

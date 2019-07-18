@@ -17,7 +17,7 @@ import com.seashell.rpg.resource.R;
 /**
  * Test class for the {@link GameProcess}
  */
-public class GameProcessTest implements UnitTest
+public class GameProcessTest
 {
 	/**
 	 * Initializes the assets

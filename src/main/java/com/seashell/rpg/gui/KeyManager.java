@@ -3,11 +3,17 @@ package com.seashell.rpg.gui;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import com.seashell.rpg.process.GameProcessConfiguration;
+
 /**
  * An implementation of {@link KeyListener} for user input. Handles PC movement.
  */
 public class KeyManager implements KeyListener
 {
+	/**
+	 * Identifiers for key bindings set via the game process configuration provided at construction
+	 */
+	private final int upId_, downId_, leftId_, rightId_, sprintId_;
 	/**
 	 * Index of keys
 	 */
@@ -26,10 +32,16 @@ public class KeyManager implements KeyListener
 	/**
 	 * Constructor
 	 */
-	KeyManager()
+	KeyManager(GameProcessConfiguration config)
 	{
 		keyIndex = new boolean[256];
 		lastDirectionFaced_ = KeyEvent.VK_S; // Initialize last direction to Down
+
+		upId_ = config.getKeyBindingUp();
+		downId_ = config.getKeyBindingDown();
+		leftId_ = config.getKeyBindingLeft();
+		rightId_ = config.getKeyBindingRight();
+		sprintId_ = config.getKeyBindingSprint();
 	}
 
 	/**
@@ -37,13 +49,12 @@ public class KeyManager implements KeyListener
 	 */
 	public void tick()
 	{
-		// TODO #5 Load key bindings from config.properties. Mapping text representations to KeyEvent seems like it is not an option after a short amount of research
 		isEsc_ = keyIndex[KeyEvent.VK_ESCAPE];
-		isUp_ = keyIndex[KeyEvent.VK_W];
-		isDown_ = keyIndex[KeyEvent.VK_S];
-		isLeft_ = keyIndex[KeyEvent.VK_A];
-		isRight_ = keyIndex[KeyEvent.VK_D];
-		isSprint_ = keyIndex[KeyEvent.VK_SHIFT];
+		isUp_ = keyIndex[upId_];
+		isDown_ = keyIndex[downId_];
+		isLeft_ = keyIndex[leftId_];
+		isRight_ = keyIndex[rightId_];
+		isSprint_ = keyIndex[sprintId_];
 	}
 
 	/**
@@ -121,26 +132,26 @@ public class KeyManager implements KeyListener
 		keyIndex[e.getKeyCode()] = false;
 
 		// Update the lastKeyPressed
-		if(e.getKeyCode() == KeyEvent.VK_A || e.getKeyCode() == KeyEvent.VK_D)
+		if(e.getKeyCode() == leftId_ || e.getKeyCode() == rightId_)
 		{
 			if(isUp())
 			{
-				lastDirectionFaced_ = KeyEvent.VK_W;
+				lastDirectionFaced_ = upId_;
 			}
 			else if(isDown())
 			{
-				lastDirectionFaced_ = KeyEvent.VK_S;
+				lastDirectionFaced_ = downId_;
 			}
 		}
-		else if(e.getKeyCode() == KeyEvent.VK_S || e.getKeyCode() == KeyEvent.VK_W)
+		else if(e.getKeyCode() == downId_ || e.getKeyCode() == upId_)
 		{
 			if(isRight())
 			{
-				lastDirectionFaced_ = KeyEvent.VK_D;
+				lastDirectionFaced_ = rightId_;
 			}
 			else if(isLeft())
 			{
-				lastDirectionFaced_ = KeyEvent.VK_A;
+				lastDirectionFaced_ = leftId_;
 			}
 		}
 	}

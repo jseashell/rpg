@@ -3,13 +3,12 @@ package com.seashell.rpg.config;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import com.seashell.rpg.UnitTest;
 import com.seashell.rpg.process.GameProcessConfigurationKeyException;
 
 /**
  * Test class for {@link GameProcessConfigurationKeyException}
  */
-public class ConfigurationKeyExceptionTest implements UnitTest
+public class ConfigurationKeyExceptionTest
 {
 	/**
 	 * Tests that a {@link ConfigurationKeyException(String)} can be constructed and thrown

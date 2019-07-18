@@ -235,41 +235,46 @@ public final class GameProcessConfiguration
 	/**
 	 * @return The configured key binding for up
 	 */
-	public String getKeyBindingUp()
+	public int getKeyBindingUp()
 	{
-		return properties_.getProperty(GameProcessConfigurationKey.KEY_BINDING_UP.getKey());
+		String up = properties_.getProperty(GameProcessConfigurationKey.KEY_BINDING_UP.getKey());
+		return Integer.valueOf(up).intValue();
 	}
 
 	/**
 	 * @return The configured key binding for down
 	 */
-	public String getKeyBindingDown()
+	public int getKeyBindingDown()
 	{
-		return properties_.getProperty(GameProcessConfigurationKey.KEY_BINDING_DOWN.getKey());
+		String down = properties_.getProperty(GameProcessConfigurationKey.KEY_BINDING_DOWN.getKey());
+		return Integer.valueOf(down).intValue();
 	}
 
 	/**
 	 * @return The configured key binding for left
 	 */
-	public String getKeyBindingLeft()
+	public int getKeyBindingLeft()
 	{
-		return properties_.getProperty(GameProcessConfigurationKey.KEY_BINDING_LEFT.getKey());
+		String left = properties_.getProperty(GameProcessConfigurationKey.KEY_BINDING_LEFT.getKey());
+		return Integer.valueOf(left).intValue();
 	}
 
 	/**
 	 * @return The configured key binding for right
 	 */
-	public String getKeyBindingRight()
+	public int getKeyBindingRight()
 	{
-		return properties_.getProperty(GameProcessConfigurationKey.KEY_BINDING_RIGHT.getKey());
+		String right = properties_.getProperty(GameProcessConfigurationKey.KEY_BINDING_RIGHT.getKey());
+		return Integer.valueOf(right).intValue();
 	}
 
 	/**
 	 * @return The configured key binding for sprint
 	 */
-	public String getKeyBindingSprint()
+	public int getKeyBindingSprint()
 	{
-		return properties_.getProperty(GameProcessConfigurationKey.KEY_BINDING_SPRINT.getKey());
+		String sprint = properties_.getProperty(GameProcessConfigurationKey.KEY_BINDING_SPRINT.getKey());
+		return Integer.valueOf(sprint).intValue();
 	}
 
 	/**
