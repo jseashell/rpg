@@ -4,13 +4,12 @@ import java.awt.Graphics2D;
 
 import org.mockito.Mockito;
 
-import com.seashell.rpg.UnitTest;
 import com.seashell.rpg.tile.Tile;
 
 /**
  * API defining tests for {@link Tile} implementations
  */
-public interface TileTest extends UnitTest
+public interface TileTest
 {
 	/**
 	 * Tests the golden path usage of {@link Tile#getId()}

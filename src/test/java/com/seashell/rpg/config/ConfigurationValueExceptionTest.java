@@ -3,13 +3,12 @@ package com.seashell.rpg.config;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import com.seashell.rpg.UnitTest;
 import com.seashell.rpg.process.GameProcessConfigurationValueException;
 
 /**
  * Test class for {@link GameProcessConfigurationValueException}
  */
-public class ConfigurationValueExceptionTest implements UnitTest
+public class ConfigurationValueExceptionTest
 {
 	/**
 	 * Tests that a {@link ConfigurationValueException(String)} can be constructed and thrown

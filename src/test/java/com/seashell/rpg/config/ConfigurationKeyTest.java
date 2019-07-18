@@ -71,7 +71,7 @@ public class ConfigurationKeyTest
 	{
 		GameProcessConfigurationKey key = GameProcessConfigurationKey.KEY_BINDING_UP;
 		String expectedKey = "key_binding_up";
-		Class<?> expectedType = String.class;
+		Class<?> expectedType = Integer.class;
 
 		runTest(key, expectedKey, expectedType);
 	}
@@ -84,7 +84,7 @@ public class ConfigurationKeyTest
 	{
 		GameProcessConfigurationKey key = GameProcessConfigurationKey.KEY_BINDING_DOWN;
 		String expectedKey = "key_binding_down";
-		Class<?> expectedType = String.class;
+		Class<?> expectedType = Integer.class;
 
 		runTest(key, expectedKey, expectedType);
 	}
@@ -97,7 +97,7 @@ public class ConfigurationKeyTest
 	{
 		GameProcessConfigurationKey key = GameProcessConfigurationKey.KEY_BINDING_LEFT;
 		String expectedKey = "key_binding_left";
-		Class<?> expectedType = String.class;
+		Class<?> expectedType = Integer.class;
 
 		runTest(key, expectedKey, expectedType);
 	}
@@ -110,7 +110,7 @@ public class ConfigurationKeyTest
 	{
 		GameProcessConfigurationKey key = GameProcessConfigurationKey.KEY_BINDING_RIGHT;
 		String expectedKey = "key_binding_right";
-		Class<?> expectedType = String.class;
+		Class<?> expectedType = Integer.class;
 
 		runTest(key, expectedKey, expectedType);
 	}
@@ -123,7 +123,7 @@ public class ConfigurationKeyTest
 	{
 		GameProcessConfigurationKey key = GameProcessConfigurationKey.KEY_BINDING_SPRINT;
 		String expectedKey = "key_binding_sprint";
-		Class<?> expectedType = String.class;
+		Class<?> expectedType = Integer.class;
 
 		runTest(key, expectedKey, expectedType);
 	}
