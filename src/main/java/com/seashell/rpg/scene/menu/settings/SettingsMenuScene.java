@@ -8,7 +8,7 @@ import com.seashell.rpg.scene.menu.AbstractMenuScene;
 /**
  * A {@link Scene} for the settings menu screen
  */
-// TODO #17 Implement a settings menu
+// TODO Implement a settings menu
 public class SettingsMenuScene extends AbstractMenuScene
 {
 	@Override

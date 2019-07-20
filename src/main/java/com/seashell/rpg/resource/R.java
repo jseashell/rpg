@@ -23,6 +23,16 @@ public class R
 	private static SpriteSheet kenneyRpgUrban_;
 
 	/**
+	 * Value for {@link #getMenuBtnTwoToneYellowRaised()}
+	 */
+	private static BufferedImage menuBtnTwoToneYellowRaised_;
+
+	/**
+	 * Value for {@link #getMenuBtnTwoToneYellowClicked()}
+	 */
+	private static BufferedImage menuBtnTwoToneYellowClicked_;
+
+	/**
 	 * Value for {@link #getMenuBtnSolidYellowRaised()}
 	 */
 	private static BufferedImage menuBtnSolidYellowRaised_;
@@ -31,6 +41,16 @@ public class R
 	 * Value for {@link #getMenuBtnSolidYellowClicked()}
 	 */
 	private static BufferedImage menuBtnSolidYellowClicked_;
+
+	/**
+	 * Value for {@link #getMenuPanelYellow()}
+	 */
+	private static BufferedImage menuPanelYellow_;
+
+	/**
+	 * Value for {@link #getMenuPanelGrey()}
+	 */
+	private static BufferedImage menuPanelGrey_;
 
 	/**
 	 * Constructor prevents instantiation
@@ -48,8 +68,14 @@ public class R
 	public static void init() throws IOException
 	{
 		kenneyRpgUrban_ = new SpriteSheet(ResourceLoader.loadTexture("kenney_urban_rpg_tilemap_packed.png"));
-		menuBtnSolidYellowRaised_ = ResourceLoader.loadMenu("yellow/solid_raised_wide.png");
-		menuBtnSolidYellowClicked_ = ResourceLoader.loadMenu("yellow/solid_clicked_wide.png");
+
+		menuBtnTwoToneYellowRaised_ = ResourceLoader.loadMenu("yellow/yellow_button00.png");
+		menuBtnTwoToneYellowClicked_ = ResourceLoader.loadMenu("yellow/yellow_button01.png");
+		menuBtnSolidYellowRaised_ = ResourceLoader.loadMenu("yellow/yellow_button02.png");
+		menuBtnSolidYellowClicked_ = ResourceLoader.loadMenu("yellow/yellow_button03.png");
+		menuPanelYellow_ = ResourceLoader.loadMenu("yellow/yellow_panel.png");
+
+		menuPanelGrey_ = ResourceLoader.loadMenu("grey/grey_panel.png");
 	}
 
 	/**
@@ -746,6 +772,22 @@ public class R
 	}
 
 	/**
+	 * @return Image for a two-tone yellow menu button that is clicked
+	 */
+	public static BufferedImage getMenuBtnTwoToneYellowClicked()
+	{
+		return menuBtnTwoToneYellowClicked_;
+	}
+
+	/**
+	 * @return Image for a two-tone yellow menu button that is raised
+	 */
+	public static BufferedImage getMenuBtnTwoToneYellowRaised()
+	{
+		return menuBtnTwoToneYellowRaised_;
+	}
+
+	/**
 	 * @return Image for a solid yellow menu button that is clicked
 	 */
 	public static BufferedImage getMenuBtnSolidYellowClicked()
@@ -759,5 +801,21 @@ public class R
 	public static BufferedImage getMenuBtnSolidYellowRaised()
 	{
 		return menuBtnSolidYellowRaised_;
+	}
+
+	/**
+	 * @return Image for a yellow menu panel
+	 */
+	public static BufferedImage getMenuPanelYellow()
+	{
+		return menuPanelYellow_;
+	}
+
+	/**
+	 * @return Image for a gray menu panel
+	 */
+	public static BufferedImage getMenuPanelGrey()
+	{
+		return menuPanelGrey_;
 	}
 }

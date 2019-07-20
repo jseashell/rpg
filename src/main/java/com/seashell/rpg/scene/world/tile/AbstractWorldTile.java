@@ -13,11 +13,11 @@ import com.seashell.rpg.tile.Tile;
  */
 public abstract class AbstractWorldTile extends AbstractTile implements WorldTile
 {
-
 	/**
 	 * Hitbox for this character
 	 */
-	private final Rectangle hitbox_;
+	@SuppressWarnings("unused")
+	private final Rectangle debugOutline;
 
 	/**
 	 * Constructor
@@ -30,7 +30,7 @@ public abstract class AbstractWorldTile extends AbstractTile implements WorldTil
 	protected AbstractWorldTile(int id, BufferedImage texture)
 	{
 		super(id, texture);
-		hitbox_ = new Rectangle(0, 0, Tile.SIZE, Tile.SIZE); // TODO #12 Implement a strategy for defining a hitbox
+		debugOutline = new Rectangle(0, 0, Tile.SIZE, Tile.SIZE); // TODO #12 Implement a strategy for defining a hitbox
 	}
 
 	@Override
@@ -49,9 +49,9 @@ public abstract class AbstractWorldTile extends AbstractTile implements WorldTil
 		// // DEBUG
 		// // Draw an outline around the tile
 		// g2d.setColor(Color.RED);
-		// g2d.drawRect(x + hitbox_.x,
-		// y + hitbox_.y,
-		// hitbox_.width,
-		// hitbox_.height);
+		// g2d.drawRect(x + debugOutline.x,
+		// y + debugOutline.y,
+		// debugOutline.width,
+		// debugOutline.height);
 	}
 }

@@ -9,10 +9,11 @@ import java.io.IOException;
 import java.util.Objects;
 
 import com.seashell.rpg.gui.Gui;
-import com.seashell.rpg.gui.KeyManager;
 import com.seashell.rpg.resource.R;
+import com.seashell.rpg.scene.KeyManager;
 import com.seashell.rpg.scene.Scene;
 import com.seashell.rpg.scene.menu.main.MainMenuScene;
+import com.seashell.rpg.scene.menu.pause.PauseMenuScene;
 import com.seashell.rpg.scene.menu.settings.SettingsMenuScene;
 import com.seashell.rpg.scene.world.WorldScene;
 import com.seashell.rpg.scene.world.config.WorldConfigurationBuilderException;
@@ -77,7 +78,7 @@ public final class GameProcess implements Runnable
 	/**
 	 * Image to use for the background of the main menu
 	 */
-	private BufferedImage mainMenuBackground_;
+	private BufferedImage playScreenshot_;
 
 	/**
 	 * Constructor
@@ -119,7 +120,6 @@ public final class GameProcess implements Runnable
 	@Override
 	public void run()
 	{
-		// TODO do this better
 		WorldScene worldScene = null;
 		try
 		{
@@ -127,7 +127,7 @@ public final class GameProcess implements Runnable
 		}
 		catch(WorldConfigurationBuilderException | IOException e)
 		{
-			System.err.println("Failed to initialize world scene.");
+			System.err.println("Failed to initialize world.");
 			e.printStackTrace();
 			System.exit(0);
 		}
@@ -142,15 +142,7 @@ public final class GameProcess implements Runnable
 
 		GameProcessState previousState = null; // Used to control logging
 
-		// Initialize the buffer strategy
-		while(gui_.getCanvas().getBufferStrategy() == null)
-		{
-			// On first launch, the buffer strategy will be null. So create a new one. 3 buffers should be enough for this game but if
-			// rendering begins lagging, maybe experiment with more.
-			gui_.getCanvas().createBufferStrategy(3);
-		}
-
-		final BufferStrategy bufferStrategy = gui_.getCanvas().getBufferStrategy();
+		final BufferStrategy bufferStrategy = initializeBufferStrategy(gui_);
 
 		// This loop should run for the lifecycle of execution. Once this loop exits, the application should terminate
 		while(isRunning_)
@@ -163,20 +155,37 @@ public final class GameProcess implements Runnable
 				switch(state_)
 				{
 				case MAIN_MENU:
-					scene_ = new MainMenuScene(this, mainMenuBackground_);
+					// TODO worldScene.saveAndQuit();
+					scene_ = new MainMenuScene(this);
 					break;
 
 				case PLAY:
-					worldScene.resume();
+					if(previousState == GameProcessState.PAUSE)
+					{
+						worldScene.resume();
+					}
+					else
+					{
+						// TODO worldScene.start();
+						worldScene.resume();
+					}
 					scene_ = worldScene;
 					break;
 
-				case SETTINGS_MENU:
+				case PAUSE:
+					scene_ = new PauseMenuScene(this, playScreenshot_);
+					break;
+
+				case SETTINGS:
 					scene_ = new SettingsMenuScene();
 					break;
 
-				case QUIT:
+				case EXIT:
 					isRunning_ = false;
+					break;
+
+				default:
+					throw new AssertionError("Unhandled game process state \"" + state_ + "\".");
 				}
 
 				// Cache the state
@@ -226,6 +235,26 @@ public final class GameProcess implements Runnable
 	}
 
 	/**
+	 * Initializes a buffer strategy for the give GUI
+	 *
+	 * @param gui
+	 *            The gui to create the buffer strategy for
+	 * @return The buffer strategy
+	 */
+	private BufferStrategy initializeBufferStrategy(Gui gui)
+	{
+		// Initialize the buffer strategy
+		while(gui.getCanvas().getBufferStrategy() == null)
+		{
+			// On first launch, the buffer strategy will be null. So create a new one. 3 buffers should be enough for this game but if
+			// rendering begins lagging, maybe experiment with more.
+			gui.getCanvas().createBufferStrategy(3);
+		}
+
+		return gui.getCanvas().getBufferStrategy();
+	}
+
+	/**
 	 * Updates in-memory variables to be {@link render() rendered}
 	 */
 	private void tick()
@@ -244,27 +273,26 @@ public final class GameProcess implements Runnable
 			case PLAY:
 				((WorldScene) scene_).pause();
 				shouldScreenshot_ = true;
+				state_ = GameProcessState.PAUSE;
+				break;
+
+			// // TODO The key manager responds to quickly to be able to do leave the pause menu using ESC
+			// case PAUSE:
+			// state_ = GameProcessState.PLAY;
+			// break;
+
+			case SETTINGS:
 				state_ = GameProcessState.MAIN_MENU;
-				break;
 
-			case MAIN_MENU:
+			default:
 				// do nothing
-				break;
-
-			case SETTINGS_MENU:
-				state_ = GameProcessState.MAIN_MENU;
-				break;
-
-			case QUIT:
-				// do nothing
-				break;
 			}
 
 		}
 	}
 
 	/**
-	 * Renders in-memory variables to the {@link Gui}
+	 * Renders in-memory variables to the {@link #gui}
 	 */
 	private void render(Graphics2D g2d)
 	{
@@ -279,44 +307,24 @@ public final class GameProcess implements Runnable
 
 		if(shouldScreenshot_)
 		{
-			screenshot();
+			screenshotCurrentScene();
 		}
 	}
 
 	/**
-	 * Takes a screenshot of the current canvas
+	 * Takes a screenshot of the current scene
 	 */
-	private void screenshot()
+	private void screenshotCurrentScene()
 	{
 		BufferedImage image = new BufferedImage(gui_.getCanvas().getWidth(), gui_.getCanvas().getHeight(), BufferedImage.TYPE_INT_ARGB);
 
 		Graphics2D screenshotGraphics = (Graphics2D) image.getGraphics();
-
 		scene_.render(screenshotGraphics);
-
 		screenshotGraphics.dispose();
 
-		mainMenuBackground_ = image;
+		playScreenshot_ = image;
 
-		// try
-		// {
-		// ImageIO.write(image, "png",
-		// Paths.get(System.getProperty("user.dir"))
-		// .resolve("src")
-		// .resolve("main")
-		// .resolve("resources")
-		// .resolve("asset")
-		// .resolve("menu")
-		// .resolve("background")
-		// .resolve("screenshot.png").toFile());
-		// }
-		// catch(IOException e)
-		// {
-		// System.err.println("Failed to save screenshot");
-		// e.printStackTrace();
-		// }
-
-		shouldScreenshot_ = false;
+		shouldScreenshot_ = false; // Reset the flag
 	}
 
 	/**

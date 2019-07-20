@@ -20,7 +20,7 @@ public abstract class AbstractMenuScene extends AbstractScene
 	/**
 	 * Background color. Black, 50% transparent
 	 */
-	protected static final Color BG_COLOR_ = new Color(0, 0, 0, 127);
+	protected static final Color COLOR_MODAL_ = new Color(0, 0, 0, 127);
 
 	/**
 	 * Font size for buttons on this menu

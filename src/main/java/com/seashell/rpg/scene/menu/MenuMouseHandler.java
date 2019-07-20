@@ -1,4 +1,4 @@
-package com.seashell.rpg.scene.menu.main;
+package com.seashell.rpg.scene.menu;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -9,21 +9,22 @@ import java.util.Optional;
 
 import com.seashell.rpg.process.GameProcessState;
 import com.seashell.rpg.scene.InputHandler;
+import com.seashell.rpg.scene.menu.MenuButton;
 
 /**
  * Handles mouse events for the main menu
  */
-public class MainMenuMouseHandler extends MouseAdapter implements InputHandler, MouseMotionListener
+public class MenuMouseHandler extends MouseAdapter implements InputHandler, MouseMotionListener
 {
 	/**
 	 * The buttons to be observed by this handler
 	 */
-	private final List<MainMenuButton> buttons_;
+	private final List<MenuButton> buttons_;
 
 	/**
 	 * Selected button for the handler
 	 */
-	private Optional<MainMenuButton> selectedButton_;
+	private Optional<MenuButton> selectedButton_;
 
 	/**
 	 * Constructor
@@ -31,7 +32,7 @@ public class MainMenuMouseHandler extends MouseAdapter implements InputHandler, 
 	 * @param buttons
 	 *            The buttons to be observed by this handler
 	 */
-	public MainMenuMouseHandler(List<MainMenuButton> buttons)
+	public MenuMouseHandler(List<MenuButton> buttons)
 	{
 		buttons_ = Objects.requireNonNull(buttons);
 		selectedButton_ = Optional.empty();
@@ -45,7 +46,7 @@ public class MainMenuMouseHandler extends MouseAdapter implements InputHandler, 
 	{
 		super.mouseReleased(me);
 
-		for(MainMenuButton b : buttons_)
+		for(MenuButton b : buttons_)
 		{
 			if(b.getShape().contains(me.getPoint()))
 			{
@@ -70,7 +71,7 @@ public class MainMenuMouseHandler extends MouseAdapter implements InputHandler, 
 	{
 		super.mouseMoved(me);
 
-		for(MainMenuButton b : buttons_)
+		for(MenuButton b : buttons_)
 		{
 			if(b.getShape().contains(me.getPoint()))
 			{

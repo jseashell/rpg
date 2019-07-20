@@ -8,8 +8,8 @@ import java.io.IOException;
 
 import com.seashell.rpg.entity.dynamic.Animation;
 import com.seashell.rpg.gui.GuiCamera;
-import com.seashell.rpg.gui.KeyManager;
 import com.seashell.rpg.resource.R;
+import com.seashell.rpg.scene.KeyManager;
 import com.seashell.rpg.scene.world.World;
 import com.seashell.rpg.tile.Tile;
 

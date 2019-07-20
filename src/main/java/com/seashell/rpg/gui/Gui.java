@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 
 import com.seashell.rpg.process.GameProcessConfiguration;
+import com.seashell.rpg.scene.KeyManager;
 
 /**
  * The graphical user interface for the game

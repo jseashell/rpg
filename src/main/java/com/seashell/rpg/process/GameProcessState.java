@@ -9,9 +9,11 @@ public enum GameProcessState
 
 	PLAY,
 
-	SETTINGS_MENU,
+	PAUSE,
 
-	QUIT,
+	SETTINGS,
+
+	EXIT,
 
 	;
 }

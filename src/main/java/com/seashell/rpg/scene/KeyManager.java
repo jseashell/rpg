@@ -1,4 +1,4 @@
-package com.seashell.rpg.gui;
+package com.seashell.rpg.scene;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -32,7 +32,7 @@ public class KeyManager implements KeyListener
 	/**
 	 * Constructor
 	 */
-	KeyManager(GameProcessConfiguration config)
+	public KeyManager(GameProcessConfiguration config)
 	{
 		keyIndex = new boolean[256];
 		lastDirectionFaced_ = KeyEvent.VK_S; // Initialize last direction to Down
