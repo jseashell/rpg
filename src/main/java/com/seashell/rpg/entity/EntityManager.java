@@ -1,10 +1,12 @@
 package com.seashell.rpg.entity;
 
 import java.awt.Graphics2D;
-import java.util.LinkedHashSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import com.seashell.rpg.Render;
+import com.seashell.rpg.entity.dynamic.character.PlayerCharacter;
 
 /**
  * Utility for managing a collection of entities
@@ -14,34 +16,57 @@ public final class EntityManager implements Render
 	/**
 	 * Managed entities. Sorted by {@link #add(Entity)} order
 	 */
-	private final LinkedHashSet<Entity> entities_;
+	private final List<Entity> entities_;
+
+	/**
+	 * Value for {@link #getPlayerCharacter()}
+	 */
+	private final PlayerCharacter player_;
 
 	/**
 	 * Constructor
+	 *
+	 * @param player
+	 *            Value for {@link #getPlayerCharacter()}
 	 */
-	public EntityManager()
+	public EntityManager(PlayerCharacter player)
 	{
-		entities_ = new LinkedHashSet<>();
+		entities_ = new ArrayList<>();
+		player_ = player;
 	}
 
 	/**
-	 * Adds an entity to this end of this manager's interal collection of entities
+	 * @return The player character entity
+	 */
+	public PlayerCharacter getPlayerCharacter()
+	{
+		return player_;
+	}
+
+	/**
+	 * Adds an entity to this end of this manager's internal collection of entities
 	 *
 	 * @param entity
 	 *            The entity to add
 	 */
 	public void add(Entity entity)
 	{
-		entities_.add(Objects.requireNonNull(entity));
+		if(!entities_.add(Objects.requireNonNull(entity)))
+		{
+			System.err.println("Failed to add entity " + entity);
+		}
 	}
 
 	@Override
 	public void tick()
 	{
-		for(Entity e : entities_)
+		for(int i = 0; i < entities_.size(); i++)
 		{
+			Entity e = entities_.get(i);
 			e.tick();
 		}
+
+		player_.tick();
 	}
 
 	@Override
@@ -51,5 +76,7 @@ public final class EntityManager implements Render
 		{
 			e.render(g2d);
 		}
+
+		player_.render(g2d);
 	}
 }

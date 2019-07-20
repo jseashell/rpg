@@ -39,11 +39,6 @@ public class WorldScene extends AbstractScene
 	private final EntityManager entityManager_;
 
 	/**
-	 * The player character for this game play
-	 */
-	private final PlayerCharacter player_;
-
-	/**
 	 * Value manipulated by {@link #pause()} and {@link #resume()}
 	 */
 	private boolean isPaused_;
@@ -66,12 +61,13 @@ public class WorldScene extends AbstractScene
 		String worldFilename = gameProcess.getConfiguration().getWorldFilename();
 		world_ = new World(gameProcess.getGui().getCamera(), worldFilename, gameProcess.getConfiguration());
 
-		entityManager_ = new EntityManager();
+		entityManager_ =
+				new EntityManager(
+						new PlayerCharacter(world_, camera_, gameProcess.getKeyManager(), world_.getSpawnX(), world_.getSpawnY()));
 
 		// TODO #11 Make the open world scene smart enough to only spawn entities onto tiles that make sense
 
 		entityManager_.add(new Door(camera_, (23 * Tile.SIZE) + (R.SIZE * 2), (7 * Tile.SIZE) + (R.SIZE * 4)));
-
 		entityManager_.add(new Window(camera_, (22 * Tile.SIZE) + (R.SIZE * 3), (5 * Tile.SIZE) + (R.SIZE * 3)));
 		entityManager_.add(new Window(camera_, (22 * Tile.SIZE) + (R.SIZE * 3), (7 * Tile.SIZE) + (R.SIZE * 1)));
 		entityManager_.add(new Window(camera_, (24 * Tile.SIZE) + (R.SIZE * 1), (6 * Tile.SIZE) + (R.SIZE * 3)));
@@ -83,10 +79,6 @@ public class WorldScene extends AbstractScene
 		entityManager_.add(new Window(camera_, (29 * Tile.SIZE) + (R.SIZE * 3), (6 * Tile.SIZE) + (R.SIZE * 3)));
 		entityManager_.add(new Window(camera_, (31 * Tile.SIZE) + (R.SIZE * 1), (7 * Tile.SIZE) + (R.SIZE * 1)));
 		entityManager_.add(new StoplightDown(camera_, (20 * Tile.SIZE) - (R.SIZE * 2), (9 * Tile.SIZE) + (R.SIZE * 3)));
-
-		player_ = new PlayerCharacter(world_, camera_, gameProcess.getKeyManager(), world_.getSpawnX(), world_.getSpawnY());
-		entityManager_.add(player_);
-
 		entityManager_.add(new CarRed(0, camera_, world_.getWidth(), world_.getHeight(), 19 * R.SIZE * 8, 15 * R.SIZE * 8));
 		entityManager_.add(new CarTaxi(0, camera_, world_.getWidth(), world_.getHeight(), 19 * R.SIZE * 8, 9 * R.SIZE * 8));
 		entityManager_.add(new CarRed(1, camera_, world_.getWidth(), world_.getHeight(), 15 * R.SIZE * 8, 10 * R.SIZE * 8));
@@ -102,7 +94,7 @@ public class WorldScene extends AbstractScene
 			world_.tick();
 			entityManager_.tick();
 
-			camera_.centerOnEntity(player_);
+			camera_.centerOnEntity(entityManager_.getPlayerCharacter());
 		}
 	}
 
